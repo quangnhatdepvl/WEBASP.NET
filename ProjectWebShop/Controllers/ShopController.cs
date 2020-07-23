@@ -33,7 +33,14 @@ namespace ProjectWebShop.Controllers
         {
             return View();
         }
-
+        public ActionResult DangNhap()
+        {
+            return View();
+        }
+        public ActionResult DangKy()
+        {
+            return View();
+        }
 
     }
 }
