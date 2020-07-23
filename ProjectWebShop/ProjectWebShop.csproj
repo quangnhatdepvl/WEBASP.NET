@@ -211,6 +211,7 @@
     <Content Include="images\calender.png" />
     <Content Include="images\crossword.png" />
     <Content Include="images\dienthoai.jpg" />
+    <Content Include="images\disc.png" />
     <Content Include="images\domesticbannertour.jpg" />
     <Content Include="images\en.png" />
     <Content Include="images\h4-slide.png" />
@@ -248,8 +249,11 @@
     <Content Include="images\lg_phonxie_b.jpg" />
     <Content Include="images\lg_thrive_b.jpg" />
     <Content Include="images\Lighthouse.jpg" />
+    <Content Include="images\logo-bootstrap-shoping-cart.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\logo2.png" />
+    <Content Include="images\maestro.png" />
+    <Content Include="images\mc.png" />
     <Content Include="images\nokia110.jpg" />
     <Content Include="images\nokia130.jpg" />
     <Content Include="images\nokia150.jpg" />
@@ -265,7 +269,9 @@
     <Content Include="images\nokia7.2.jpg" />
     <Content Include="images\nokia72.jpg" />
     <Content Include="images\nokia800toughblack.jpg" />
+    <Content Include="images\paypal.jpg" />
     <Content Include="images\Penguins.jpg" />
+    <Content Include="images\pp.png" />
     <Content Include="images\product-1.jpg" />
     <Content Include="images\product-2.jpg" />
     <Content Include="images\product-3.jpg" />
@@ -289,6 +295,7 @@
     <Content Include="images\tour.jpg" />
     <Content Include="images\tải xuống.jpg" />
     <Content Include="images\vi.png" />
+    <Content Include="images\visa.png" />
     <Content Include="images\welcome.gif" />
     <Content Include="login\css\main.css" />
     <Content Include="login\css\util.css" />
@@ -470,6 +477,7 @@
     <Content Include="Views\Shop\DangNhap.cshtml" />
     <Content Include="Views\Shop\DangKy.cshtml" />
     <Content Include="Views\Shop\LienHe.cshtml" />
+    <Content Include="Views\Shop\GiaCao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

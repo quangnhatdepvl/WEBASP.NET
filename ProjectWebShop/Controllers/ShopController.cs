@@ -15,7 +15,14 @@ namespace ProjectWebShop.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            return View();
+            var sanphammoi = sanPhamMoi(6);
+            return View(sanphammoi);
+        }
+        public ActionResult GiaCao()
+        {
+            var giacao = spgiacao(6);
+            return View(giacao);
+
         }
         [HttpGet]
         public ActionResult DanhSach()
@@ -31,9 +38,12 @@ namespace ProjectWebShop.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult ChiTietSanPham()
+        public ActionResult ChiTietSanPham(int id)
         {
-            return View();
+            phone aphone = new phone();
+            aphone = banhangEntities.phones.Find(id);
+
+            return View(aphone);
         }
         [HttpGet]
         public ActionResult GioHang()
@@ -51,6 +61,14 @@ namespace ProjectWebShop.Controllers
         public ActionResult LienHe()
         {
             return View();
+        }
+        private List<phone> sanPhamMoi(int count)
+        {
+            return banhangEntities.phones.OrderByDescending(a => a.ngaySanXuat).Take(count).ToList();
+        }
+         private List<phone> spgiacao(int count)
+        {
+            return banhangEntities.phones.OrderByDescending(a => a.price).Take(count).ToList();
         }
 
     }
