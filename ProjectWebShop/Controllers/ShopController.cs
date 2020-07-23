@@ -21,7 +21,7 @@ namespace ProjectWebShop.Controllers
         public ActionResult GiaCao()
         {
             var giacao = spgiacao(6);
-            return View(giacao);
+            return PartialView(giacao);
 
         }
         [HttpGet]
@@ -45,6 +45,7 @@ namespace ProjectWebShop.Controllers
 
             return View(aphone);
         }
+    
         [HttpGet]
         public ActionResult GioHang()
         {
@@ -70,6 +71,15 @@ namespace ProjectWebShop.Controllers
         {
             return banhangEntities.phones.OrderByDescending(a => a.price).Take(count).ToList();
         }
+        public ActionResult typeSp(String nhaSanXuat)
+        {
+            var test = from s in banhangEntities.phones where s.nhaSanXuat == nhaSanXuat select s;
+
+            return View(test);
+        }
+      
+    
+
 
     }
 }
