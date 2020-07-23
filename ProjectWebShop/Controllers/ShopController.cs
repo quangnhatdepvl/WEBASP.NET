@@ -13,6 +13,27 @@ namespace ProjectWebShop.Controllers
         {
             return View();
         }
-       
+        [HttpGet]
+        public ActionResult DanhSach()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult DanhSachTheoHang()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult ChiTietSanPham()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult GioHang()
+        {
+            return View();
+        }
+
+
     }
 }
