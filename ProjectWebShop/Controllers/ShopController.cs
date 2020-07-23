@@ -33,11 +33,8 @@ namespace ProjectWebShop.Controllers
             return View(pg);
         }
         [HttpGet]
-        public ActionResult DanhSachTheoHang()
-        {
-            return View();
-        }
-        [HttpGet]
+   
+        
         public ActionResult ChiTietSanPham(int id)
         {
             phone aphone = new phone();
@@ -71,11 +68,11 @@ namespace ProjectWebShop.Controllers
         {
             return banhangEntities.phones.OrderByDescending(a => a.price).Take(count).ToList();
         }
-        public ActionResult typeSp(String nhaSanXuat)
+        public ActionResult HangSanPham()
         {
-            var test = from s in banhangEntities.phones where s.nhaSanXuat == nhaSanXuat select s;
+            var test = from sanpham in banhangEntities.phones select sanpham;
 
-            return View(test);
+            return PartialView(test);
         }
       
     
