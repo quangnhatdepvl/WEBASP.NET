@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Twitter Bootstrap shopping cart</title>
+  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -34,10 +34,9 @@
                     <div class="alignR">
 
 
-                        <a href=""><span class="icon-user"></span> ĐĂNG NHẬP</a>
-                        <a href="#"><span class="icon-edit"></span> ĐĂNG KÍ </a>
-
-                        <a href="#"><span class="icon-shopping-cart"></span> GIỎ HÀNG </a>
+                        <a href="@Url.Action("DangNhap","Shop")"><span class="icon-user"></span> ĐĂNG NHẬP</a>
+                        <a href="@Url.Action("DangKy","Shop")"><span class="icon-edit"></span> ĐĂNG KÝ </a>
+<a href="@Url.Action("GioHang","Shop")"><span class="icon-shopping-cart"></span> GIỎ HÀNG </a>
                     </div>
                 </div>
             </div>
@@ -47,7 +46,7 @@
             <div class="row">
                 <div class="span4">
                     <h1>
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="@Url.Action("Index","Shop")">
                             <span>Twitter Bootstrap ecommerce template</span>
                             <img src="~/images/logo-bootstrap-shoping-cart.png" style="width: 280px" alt="bootstrap sexy shop">
                         </a>
@@ -93,9 +92,7 @@
             Clients
             -->
             <section class="our_client">
-                <hr class="soften" />
-                <h4 class="title cntr"><span class="text">Manufactures</span></h4>
-                <hr class="soften" />
+             
                 <div class="row">
                     <div class="span2">
                         <a href="#"><img alt="" src="~/images/1.png"></a>

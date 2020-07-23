@@ -36,10 +36,10 @@
                     <div class="alignR">
 
 
-                        <a href=""><span class="icon-user"></span> ĐĂNG NHẬP</a>
-                        <a href="#"><span class="icon-edit"></span> ĐĂNG KÍ </a>
+                        <a href="@Url.Action("DangNhap","Shop")"><span class="icon-user"></span> ĐĂNG NHẬP</a>
+                        <a href="@Url.Action("DangKy","Shop")"><span class="icon-edit"></span> ĐĂNG KÝ </a>
 
-                        <a href="#"><span class="icon-shopping-cart"></span> GIỎ HÀNG </a>
+                        <a href="@Url.Action("GioHang","Shop")"><span class="icon-shopping-cart"></span> GIỎ HÀNG </a>
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="span4">
                     <h1>
-                        <a class="logo" href="index.html">
+                        <a class="logo" href="@Url.Action("Index","Shop")">
                             <span>Twitter Bootstrap ecommerce template</span>
                             <img src="~/images/logo-bootstrap-shoping-cart.png" style="width: 280px" alt="bootstrap sexy shop">
                         </a>
@@ -76,10 +76,9 @@
                     </a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class="active"><a href="index.html">TRANG CHỦ</a></li>
-                            <li class=""><a href="#">DANH SÁCH</a></li>
-                            <li class=""><a href="list-view.html">LIÊN HỆ</a></li>
-
+                            <li class="active"><a href="@Url.Action("Index","Shop")">TRANG CHỦ</a></li>
+                            <li class=""><a href="@Url.Action("DanhSach","Shop")">DANH SÁCH</a></li>
+                            <li class=""><a href="@Url.Action("DangNhap","Shop")">LIÊN HỆ</a></li>
                         </ul>
                        
                     </div>

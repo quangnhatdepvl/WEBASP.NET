@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="banhangModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="idcustomer" />
+          </Key>
+          <Property Name="idcustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_name" Type="varchar" MaxLength="45" />
+          <Property Name="customer_address" Type="varchar" MaxLength="45" />
+          <Property Name="customer_phone" Type="varchar" MaxLength="45" />
+          <Property Name="customer_email" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="phone">
+          <Key>
+            <PropertyRef Name="idPhone" />
+          </Key>
+          <Property Name="idPhone" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="phoneName" Type="varchar" MaxLength="255" />
+          <Property Name="typePhone" Type="varchar" MaxLength="255" />
+          <Property Name="price" Type="double" />
+          <Property Name="nhaSanXuat" Type="varchar" MaxLength="255" />
+          <Property Name="img_url" Type="varchar" MaxLength="255" />
+          <Property Name="ngaySanXuat" Type="date" />
+          <Property Name="des" Type="longtext" />
+          <Property Name="luotTruyCap" Type="int" />
+          <Property Name="soLuong" Type="int" />
+        </EntityType>
+        <EntityType Name="role_db">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="thanhtoan">
+          <Key>
+            <PropertyRef Name="idThanhToan" />
+          </Key>
+          <Property Name="customerId" Type="int" Nullable="false" />
+          <Property Name="phone_id" Type="int" Nullable="false" />
+          <Property Name="trang_thai" Type="tinyint" />
+          <Property Name="date_create" Type="date" />
+          <Property Name="idThanhToan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="phone" Type="varchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="user_db">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="user_password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+          <Property Name="customerId" Type="int" />
+        </EntityType>
+        <Association Name="cus_user_fk">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="user_db" Type="Self.user_db" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="idcustomer" />
+            </Principal>
+            <Dependent Role="user_db">
+              <PropertyRef Name="customerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="thanhtoan_ibfk_1">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="thanhtoan" Type="Self.thanhtoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="idcustomer" />
+            </Principal>
+            <Dependent Role="thanhtoan">
+              <PropertyRef Name="customerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="thanhtoan_ibfk_2">
+          <End Role="phone" Type="Self.phone" Multiplicity="1" />
+          <End Role="thanhtoan" Type="Self.thanhtoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="phone">
+              <PropertyRef Name="idPhone" />
+            </Principal>
+            <Dependent Role="thanhtoan">
+              <PropertyRef Name="phone_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_db_ibfk_1">
+          <End Role="role_db" Type="Self.role_db" Multiplicity="1" />
+          <End Role="user_db" Type="Self.user_db" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role_db">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="user_db">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="banhangModelStoreContainer">
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="banhang" store:Type="Tables" />
+          <EntitySet Name="phone" EntityType="Self.phone" Schema="banhang" store:Type="Tables" />
+          <EntitySet Name="role_db" EntityType="Self.role_db" Schema="banhang" store:Type="Tables" />
+          <EntitySet Name="thanhtoan" EntityType="Self.thanhtoan" Schema="banhang" store:Type="Tables" />
+          <EntitySet Name="user_db" EntityType="Self.user_db" Schema="banhang" store:Type="Tables" />
+          <AssociationSet Name="cus_user_fk" Association="Self.cus_user_fk">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="user_db" EntitySet="user_db" />
+          </AssociationSet>
+          <AssociationSet Name="thanhtoan_ibfk_1" Association="Self.thanhtoan_ibfk_1">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="thanhtoan" EntitySet="thanhtoan" />
+          </AssociationSet>
+          <AssociationSet Name="thanhtoan_ibfk_2" Association="Self.thanhtoan_ibfk_2">
+            <End Role="phone" EntitySet="phone" />
+            <End Role="thanhtoan" EntitySet="thanhtoan" />
+          </AssociationSet>
+          <AssociationSet Name="user_db_ibfk_1" Association="Self.user_db_ibfk_1">
+            <End Role="role_db" EntitySet="role_db" />
+            <End Role="user_db" EntitySet="user_db" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="banhangModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="idcustomer" />
+          </Key>
+          <Property Name="idcustomer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="customer_address" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="customer_phone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="customer_email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user_db" Relationship="Self.cus_user_fk" FromRole="customer" ToRole="user_db" />
+          <NavigationProperty Name="thanhtoans" Relationship="Self.thanhtoan_ibfk_1" FromRole="customer" ToRole="thanhtoan" />
+        </EntityType>
+        <EntityType Name="phone">
+          <Key>
+            <PropertyRef Name="idPhone" />
+          </Key>
+          <Property Name="idPhone" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phoneName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="typePhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Double" />
+          <Property Name="nhaSanXuat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="img_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ngaySanXuat" Type="DateTime" />
+          <Property Name="des" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="luotTruyCap" Type="Int32" />
+          <Property Name="soLuong" Type="Int32" />
+          <NavigationProperty Name="thanhtoans" Relationship="Self.thanhtoan_ibfk_2" FromRole="phone" ToRole="thanhtoan" />
+        </EntityType>
+        <EntityType Name="role_db">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user_db" Relationship="Self.user_db_ibfk_1" FromRole="role_db" ToRole="user_db" />
+        </EntityType>
+        <EntityType Name="thanhtoan">
+          <Key>
+            <PropertyRef Name="idThanhToan" />
+          </Key>
+          <Property Name="customerId" Type="Int32" Nullable="false" />
+          <Property Name="phone_id" Type="Int32" Nullable="false" />
+          <Property Name="trang_thai" Type="SByte" />
+          <Property Name="date_create" Type="DateTime" />
+          <Property Name="idThanhToan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="customer" Relationship="Self.thanhtoan_ibfk_1" FromRole="thanhtoan" ToRole="customer" />
+          <NavigationProperty Name="phone1" Relationship="Self.thanhtoan_ibfk_2" FromRole="thanhtoan" ToRole="phone" />
+        </EntityType>
+        <EntityType Name="user_db">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="user_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <Property Name="customerId" Type="Int32" />
+          <NavigationProperty Name="customer" Relationship="Self.cus_user_fk" FromRole="user_db" ToRole="customer" />
+          <NavigationProperty Name="role_db" Relationship="Self.user_db_ibfk_1" FromRole="user_db" ToRole="role_db" />
+        </EntityType>
+        <Association Name="cus_user_fk">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="user_db" Type="Self.user_db" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="idcustomer" />
+            </Principal>
+            <Dependent Role="user_db">
+              <PropertyRef Name="customerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="thanhtoan_ibfk_1">
+          <End Role="customer" Type="Self.customer" Multiplicity="1" />
+          <End Role="thanhtoan" Type="Self.thanhtoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="idcustomer" />
+            </Principal>
+            <Dependent Role="thanhtoan">
+              <PropertyRef Name="customerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="thanhtoan_ibfk_2">
+          <End Role="phone" Type="Self.phone" Multiplicity="1" />
+          <End Role="thanhtoan" Type="Self.thanhtoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="phone">
+              <PropertyRef Name="idPhone" />
+            </Principal>
+            <Dependent Role="thanhtoan">
+              <PropertyRef Name="phone_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="user_db_ibfk_1">
+          <End Role="role_db" Type="Self.role_db" Multiplicity="1" />
+          <End Role="user_db" Type="Self.user_db" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="role_db">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="user_db">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="banhangEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="customers" EntityType="Self.customer" />
+          <EntitySet Name="phones" EntityType="Self.phone" />
+          <EntitySet Name="role_db" EntityType="Self.role_db" />
+          <EntitySet Name="thanhtoans" EntityType="Self.thanhtoan" />
+          <EntitySet Name="user_db" EntityType="Self.user_db" />
+          <AssociationSet Name="cus_user_fk" Association="Self.cus_user_fk">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="user_db" EntitySet="user_db" />
+          </AssociationSet>
+          <AssociationSet Name="thanhtoan_ibfk_1" Association="Self.thanhtoan_ibfk_1">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="thanhtoan" EntitySet="thanhtoans" />
+          </AssociationSet>
+          <AssociationSet Name="thanhtoan_ibfk_2" Association="Self.thanhtoan_ibfk_2">
+            <End Role="phone" EntitySet="phones" />
+            <End Role="thanhtoan" EntitySet="thanhtoans" />
+          </AssociationSet>
+          <AssociationSet Name="user_db_ibfk_1" Association="Self.user_db_ibfk_1">
+            <End Role="role_db" EntitySet="role_db" />
+            <End Role="user_db" EntitySet="user_db" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="banhangModelStoreContainer" CdmEntityContainer="banhangEntities">
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="banhangModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="idcustomer" ColumnName="idcustomer" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="customer_address" ColumnName="customer_address" />
+                <ScalarProperty Name="customer_phone" ColumnName="customer_phone" />
+                <ScalarProperty Name="customer_email" ColumnName="customer_email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="phones">
+            <EntityTypeMapping TypeName="banhangModel.phone">
+              <MappingFragment StoreEntitySet="phone">
+                <ScalarProperty Name="idPhone" ColumnName="idPhone" />
+                <ScalarProperty Name="phoneName" ColumnName="phoneName" />
+                <ScalarProperty Name="typePhone" ColumnName="typePhone" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="nhaSanXuat" ColumnName="nhaSanXuat" />
+                <ScalarProperty Name="img_url" ColumnName="img_url" />
+                <ScalarProperty Name="ngaySanXuat" ColumnName="ngaySanXuat" />
+                <ScalarProperty Name="des" ColumnName="des" />
+                <ScalarProperty Name="luotTruyCap" ColumnName="luotTruyCap" />
+                <ScalarProperty Name="soLuong" ColumnName="soLuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role_db">
+            <EntityTypeMapping TypeName="banhangModel.role_db">
+              <MappingFragment StoreEntitySet="role_db">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="thanhtoans">
+            <EntityTypeMapping TypeName="banhangModel.thanhtoan">
+              <MappingFragment StoreEntitySet="thanhtoan">
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+                <ScalarProperty Name="phone_id" ColumnName="phone_id" />
+                <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
+                <ScalarProperty Name="date_create" ColumnName="date_create" />
+                <ScalarProperty Name="idThanhToan" ColumnName="idThanhToan" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_db">
+            <EntityTypeMapping TypeName="banhangModel.user_db">
+              <MappingFragment StoreEntitySet="user_db">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="customerId" ColumnName="customerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
