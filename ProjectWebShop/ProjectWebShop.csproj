@@ -470,7 +470,6 @@
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Shop\DanhSach.cshtml" />
-    <Content Include="Views\Shop\ChiTietSanPham.cshtml" />
     <Content Include="Views\Shop\GioHang.cshtml" />
     <Content Include="Views\Shared\_LayoutGioHang.cshtml" />
     <Content Include="Views\Shop\DangNhap.cshtml" />
@@ -478,6 +477,7 @@
     <Content Include="Views\Shop\LienHe.cshtml" />
     <Content Include="Views\Shop\GiaCao.cshtml" />
     <Content Include="Views\Shop\HangSanPham.cshtml" />
+    <Content Include="Views\Shop\ChiTietSanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

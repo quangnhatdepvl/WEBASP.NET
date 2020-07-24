@@ -20,13 +20,13 @@
             {
             <li class="span4" style="margin-left:0">
                 <div class="thumbnail">
-                    <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                    <a href="product_details.html"><img src="~/images/@item.img_url" alt=""></a>
+                    <a class="zoomTool" href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})" title="add to cart"><span class="icon-search"></span> GIỎ HÀNG</a>
+                    <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})"><img src="~/images/@item.img_url" alt=""></a>
                     <div class="caption cntr">
                         <h5>@item.phoneName</h5>
                         
                         <p style="color:red">Giá  :<strong>@item.price VND</strong></p>
-                        <h4><a class="shopBtn" style="text-align:center" href="#" title="add to cart"> Add to cart </a></h4>
+                        <h4><a class="@Url.Action("GioHang","Shop")" style="text-align:center" href="#" title="add to cart"> Add to cart </a></h4>
 
                         <br class="clr">    
                     </div>

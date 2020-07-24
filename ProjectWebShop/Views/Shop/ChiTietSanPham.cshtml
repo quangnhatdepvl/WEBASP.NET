@@ -1,6 +1,77 @@
-﻿
+﻿@model ProjectWebShop.Models.phone
 @{
     ViewBag.Title = "ChiTietSanPham";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
+
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+        <li><a href="products.html">Items</a> <span class="divider">/</span></li>
+        <li class="divider">@Model.phoneName</li>
+    </ul>
+    <div class="well well-small">
+        <div class="row-fluid">
+            <div class="span5">
+                <div id="myCarousel" class="carousel slide cntr">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <a href="#"> <img src="~/images/@Model.img_url" alt="" style="width:100%"></a>
+                        </div>
+                        <div class="item">
+                            <a href="#"> <img src="~/images/@Model.img_url" alt="" style="width:100%"></a>
+                        </div>
+                        <div class="item">
+                            <a href="#"> <img src="~/images/@Model.img_url" alt="" style="width:100%"></a>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+                </div>
+            </div>
+            <div class="span7">
+                <h3>@Model.phoneName</h3>
+                <hr class="soft" />
+
+                <form class="form-horizontal qtyFrm">
+                    <div class="control-group">
+
+                        <label class="control-label">Loại điện thoại: <span>@Model.typePhone</span></label>
+
+
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Giá cả: <span>@Model.price</span></label>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Nhà sản xuất: <span>@Model.nhaSanXuat</span></label>
+                    </div>
+                    
+
+                        
+                        <p>@Model.des
+                        <p>
+                            <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span> Add to cart</button>
+                </form>
+            </div>
+        </div>
+        <hr class="softn clr" />
+
+
+     
+        
+
+        </div>
+
+    </div>
+</div>
+</div> <!-- Body wrapper -->
+<!--
+Clients
+-->
+
+<!--
+Footer
+-->
+</div>
 
