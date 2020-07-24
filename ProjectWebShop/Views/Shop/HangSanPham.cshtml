@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ProjectWebShop.Models.phone>
+
+@{
+    ViewBag.Title = "HangSanPham";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+}
+
+@foreach(var item in Model)
+{
+    @item.nhaSanXuat;
+}
+

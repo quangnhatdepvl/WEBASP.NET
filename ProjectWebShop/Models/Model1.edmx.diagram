@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7dce23a94fc54900bf9bdd96baf64067" Name="Diagram1">
+        <EntityTypeShape EntityType="banhangModel.customer" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.phone" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.role_db" Width="1.5" PointX="3.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.thanhtoan" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="banhangModel.user_db" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="banhangModel.cus_user_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.thanhtoan_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.thanhtoan_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="banhangModel.user_db_ibfk_1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

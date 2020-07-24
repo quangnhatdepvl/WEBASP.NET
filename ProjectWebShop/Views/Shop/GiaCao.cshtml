@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ProjectWebShop.Models.phone>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+</head>
+
+<div class="well well-small">
+    <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">VIew More<span class="icon-plus"></span></a> SẢN PHẨM TIÊU BIỂU </h3>
+    <hr class="soften" />
+    <div class="row-fluid">
+        <ul class="thumbnails">
+            @foreach (var item in Model)
+            {
+            <li class="span4" style="margin-left:0">
+                <div class="thumbnail">
+                    <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+                    <a href="product_details.html"><img src="~/images/@item.img_url" alt=""></a>
+                    <div class="caption cntr">
+                        <h5>@item.phoneName</h5>
+                        
+                        <p style="color:red">Giá  :<strong>@item.price VND</strong></p>
+                        <h4><a class="shopBtn" style="text-align:center" href="#" title="add to cart"> Add to cart </a></h4>
+
+                        <br class="clr">    
+                    </div>
+                </div>
+            </li>
+            }
+        </ul>
+    </div>
+</div>
+</html>
