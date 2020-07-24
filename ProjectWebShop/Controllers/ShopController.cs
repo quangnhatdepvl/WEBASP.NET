@@ -33,8 +33,6 @@ namespace ProjectWebShop.Controllers
             return View(pg);
         }
         [HttpGet]
-
-
         public ActionResult ChiTietSanPham(int id)
         {
             phone aphone = new phone();
@@ -42,7 +40,6 @@ namespace ProjectWebShop.Controllers
 
             return View(aphone);
         }
-
 
 
         [HttpGet]
@@ -76,9 +73,6 @@ namespace ProjectWebShop.Controllers
 
             return PartialView(test);
         }
-      
-    
-
 
     }
 }
