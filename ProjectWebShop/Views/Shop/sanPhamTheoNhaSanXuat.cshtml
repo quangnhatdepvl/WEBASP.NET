@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<ProjectWebShop.Models.phone>
-
 @{
-    ViewBag.Title = "HangSanPham";
+    ViewBag.Title = "sanPhamTheoNhaSanXuat";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-@foreach(var item in Model)
+@foreach (var item in Model)
 {
-    @item.nhaSanXuat;
+<h2>@item.phoneName</h2>
+
 }
 

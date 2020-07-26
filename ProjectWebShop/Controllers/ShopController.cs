@@ -40,7 +40,17 @@ namespace ProjectWebShop.Controllers
 
             return View(aphone);
         }
+        public ActionResult sanPhamTheoNhaSanXuat(string tmp) {
+            {
+                var sanPham = banhangEntities.phones.Where(banhang => banhang.nhaSanXuat == tmp).ToList();
+                List<phone> sp = new List<phone>();
+                sp = sanPham.ToList();
+                return View(sp);
+            }
+            
 
+        }
+        
 
         [HttpGet]
         public ActionResult GioHang()
