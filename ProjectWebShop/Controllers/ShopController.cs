@@ -41,14 +41,17 @@ namespace ProjectWebShop.Controllers
             return View(aphone);
         }
         public ActionResult sanPhamTheoNhaSanXuat(string tmp) {
-            {
-                var sanPham = banhangEntities.phones.Where(banhang => banhang.nhaSanXuat == tmp).ToList();
-                List<phone> sp = new List<phone>();
-                sp = sanPham.ToList();
-                return View(sp);
-            }
-            
 
+            List<phone> sp = theoNhaSanXuat(tmp);
+           
+                return PartialView(sp);
+            
+        }
+        public List<phone> theoNhaSanXuat(String tmp)
+        {
+
+            return banhangEntities.phones.Where(phone => phone.nhaSanXuat == tmp).ToList();
+            
         }
         
 
