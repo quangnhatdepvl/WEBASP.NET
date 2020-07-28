@@ -23,8 +23,8 @@
                 <form class="form-horizontal qtyFrm">
                     <h3> @item.price VND</h3>
                     <div class="btn-group">
-                        <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-                        <a href="product_details.html" class="shopBtn">VIEW</a>
+                        <a href="@Url.Action("GioHang","Shop")" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
+                        <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})" class="shopBtn">VIEW</a>
                     </div>
                 </form>
             </div>

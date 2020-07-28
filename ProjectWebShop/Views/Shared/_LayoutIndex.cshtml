@@ -20,23 +20,12 @@
 </head>
 
 <body>
-  
-    <!--
-        Upper Header Section
-    -->
-    
-
-    <!--
-    Lower Header Section
-    -->
     <div class="container">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="topNav">
                 <div class="container">
                     <div class="alignR">
-
-
-                        <a href="@Url.Action("DangNhap","Shop")"><span class="icon-user"></span> ĐĂNG NHẬP</a>
+                  <a href="@Url.Action("DangNhap","Shop")"><span class="icon-user"></span> ĐĂNG NHẬP</a>
                         <a href="@Url.Action("DangKy","Shop")"><span class="icon-edit"></span> ĐĂNG KÝ </a>
 
                         <a href="@Url.Action("GioHang","Shop")"><span class="icon-shopping-cart"></span> GIỎ HÀNG </a>
@@ -93,91 +82,22 @@
                 <div class="well well-small">
                     <ul class="nav nav-list">
                         <p style="font-size: 20px; text-align:center"> DANH MỤC</p><hr style="border-top:1px solid black">
-                        @*@Html.Action("HangSanPham", "Shop");*@
-                        <li><a href="#" style="text-align:left" ><span class="icon-chevron-right "></span>NOKIA</a></li>
-                        <li><a href="#" style="text-align:left" ><span class="icon-chevron-right"></span>SAMSUNG</a></li>
-                        <li><a href="#" style="text-align:left"><span class="icon-chevron-right"></span>APPLE</a></li>
-                        <li><a href="#" style="text-align:left"><span class="icon-chevron-right"></span>HTC</a></li>
-                        <li><a href="#" style="text-align:left"><span class="icon-chevron-right"></span>LG</a></li>
+                        @Html.Action("HangSanPham", "Shop")
+                        
                         <li style="border:0"> &nbsp;</li>
                     </ul>
                 </div>
                 <div class="well well-small"><a href="#"><img src="~/images/paypal.jpg" alt="payment method paypal"></a></div>
-
-               
                 <br>
                 <br>
                 
-
             </div>
             @RenderBody()
         </div>
-            <!--
-    Clients
-    -->
-            <section class="our_client">
-                
-                <div class="row">
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/images/1.png"></a>
-                    </div>
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/images/2.png"></a>
-                    </div>
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/images/3.png"></a>
-                    </div>
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/images/4.png"></a>
-                    </div>
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/images/5.png"></a>
-                    </div>
-                    <div class="span2">
-                        <a href="#"><img alt="" src="~/images/6.png"></a>
-                    </div>
-                </div>
-            </section>
-        
+       </div>
             <!--
     Footer
-    -->
-            <footer class="footer">
-                <div class="row-fluid">
-                    <div class="span2">
-                        <h5>Your Account</h5>
-                        <a href="#">YOUR ACCOUNT</a><br>
-                        <a href="#">PERSONAL INFORMATION</a><br>
-                        <a href="#">ADDRESSES</a><br>
-                        <a href="#">DISCOUNT</a><br>
-                        <a href="#">ORDER HISTORY</a><br>
-                    </div>
-                    <div class="span2">
-                        <h5>Iinformation</h5>
-                        <a href="contact.html">CONTACT</a><br>
-                        <a href="#">SITEMAP</a><br>
-                        <a href="#">LEGAL NOTICE</a><br>
-                        <a href="#">TERMS AND CONDITIONS</a><br>
-                        <a href="#">ABOUT US</a><br>
-                    </div>
-                    <div class="span2">
-                        <h5>Our Offer</h5>
-                        <a href="#">NEW PRODUCTS</a> <br>
-                        <a href="#">TOP SELLERS</a><br>
-                        <a href="#">SPECIALS</a><br>
-                        <a href="#">MANUFACTURERS</a><br>
-                        <a href="#">SUPPLIERS</a> <br />
-                    </div>
-                    <div class="span6">
-                        <h5>The standard chunk of Lorem</h5>
-                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
-                        those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et
-                        Malorum" by Cicero are also reproduced in their exact original form,
-                        accompanied by English versions from the 1914 translation by H. Rackham.
-                    </div>
-                </div>
-            </footer>
-        </div><!-- /container -->
+    --> </div><!-- /container -->
 
     <div class="copyright">
         <div class="container">

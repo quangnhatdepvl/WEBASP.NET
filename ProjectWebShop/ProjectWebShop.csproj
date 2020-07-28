@@ -479,7 +479,8 @@
     <Content Include="Views\Shop\LienHe.cshtml" />
     <Content Include="Views\Shop\GiaCao.cshtml" />
     <Content Include="Views\Shop\ChiTietSanPham.cshtml" />
-    <Content Include="Views\Shop\sanPhamTheoNhaSanXuat.cshtml" />
+    <Content Include="Views\Shop\HangSanPham.cshtml" />
+    <Content Include="Views\Shop\SanPhamTheoNhaSanXuat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

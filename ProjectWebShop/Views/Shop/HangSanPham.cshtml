@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ProjectWebShop.Models.phone>
+@{
+    ViewBag.Title = "HangSanPham";
+}
+
+@foreach (var item in Model)
+{
+    <li><a href="@Url.Action("SanPhamTheoNhaSanXuat","Shop")" style="text-align:left"><span class="icon-chevron-right "></span>@item.nhaSanXuat</a></li>
+}
+
+
+

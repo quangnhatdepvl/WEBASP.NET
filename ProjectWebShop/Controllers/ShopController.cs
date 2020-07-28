@@ -40,19 +40,7 @@ namespace ProjectWebShop.Controllers
 
             return View(aphone);
         }
-        public ActionResult sanPhamTheoNhaSanXuat(string tmp) {
-
-            List<phone> sp = theoNhaSanXuat(tmp);
-           
-                return PartialView(sp);
-            
-        }
-        public List<phone> theoNhaSanXuat(String tmp)
-        {
-
-            return banhangEntities.phones.Where(phone => phone.nhaSanXuat == tmp).ToList();
-            
-        }
+      
         
 
         [HttpGet]
@@ -80,11 +68,22 @@ namespace ProjectWebShop.Controllers
         {
             return banhangEntities.phones.OrderByDescending(a => a.price).Take(count).ToList();
         }
+     
         public ActionResult HangSanPham()
         {
-            var test = from sanpham in banhangEntities.phones select sanpham;
+             var test = (from phone in banhangEntities.phones select phone).Distinct();
 
             return PartialView(test);
+        }
+        public ActionResult SanPhamTheoNhaSanXuat(string nsx)
+        {
+
+            var banhangEntities = new banhangEntities();
+            nsx = Request.Url.Segments.Last();
+            var test = (from c in banhangEntities.phones where c.nhaSanXuat == nsx select c).ToList();
+
+            return View(test);
+
         }
 
     }
