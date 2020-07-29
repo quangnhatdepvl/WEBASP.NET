@@ -71,7 +71,7 @@ namespace ProjectWebShop.Controllers
      
         public ActionResult HangSanPham()
         {
-             var test = (from phone in banhangEntities.phones select phone).Distinct();
+             var test = (from phone in banhangEntities.phones select phone.nhaSanXuat).Distinct();
 
             return PartialView(test);
         }
