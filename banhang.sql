@@ -11,7 +11,7 @@
  Target Server Version : 100413
  File Encoding         : 65001
 
- Date: 28/07/2020 23:37:09
+ Date: 29/07/2020 19:15:32
 */
 
 SET NAMES utf8mb4;
@@ -75,9 +75,7 @@ INSERT INTO `phone` VALUES (19, 'SamSung Note 9', 'SmartPhone', 22990000.00, 'SA
 INSERT INTO `phone` VALUES (20, 'SamSung S10+', 'SmartPhone', 22990000.00, 'SAMSUNG', 'samsungs10512.jpg', '2019-01-02', 'Đây là 1 sản phẩm tốt', NULL, 10);
 INSERT INTO `phone` VALUES (21, 'LG Phoneix ', 'Phone', 450000.00, 'LG', 'lg_phonxie_b.jpg', '2012-05-12', 'Đây là 1 sản phẩm tốt', NULL, 10);
 INSERT INTO `phone` VALUES (22, 'LG Thrive B', 'Phone', 555000.00, 'LG', 'lg_thrive_b.jpg', '2012-08-12', 'Đây là 1 sản phẩm tốt', NULL, 10);
-INSERT INTO `phone` VALUES (23, 'LG GW620', 'Phone', 750000.00, 'LG', 'LG-GW620_b.jpg', '2013-09-25', 'Đây là 1 sản phẩm tốt', NULL, 10);
 INSERT INTO `phone` VALUES (24, 'LG K50s', 'Phone', 650000.00, 'LG', 'lg-k50s.jpg', '2014-02-12', 'Đây là 1 sản phẩm tốt', NULL, 10);
-INSERT INTO `phone` VALUES (25, 'LG KS101', 'Phone', 289000.00, 'LG', 'lg-KS101.jpg', '2013-02-12', 'Đây là 1 sản phẩm tốt', NULL, 10);
 INSERT INTO `phone` VALUES (26, 'LG Q70-Black', 'SmartPhone', 2000000.00, 'LG', 'lg-q70-black.jpg', '2016-09-09', 'Đây là 1 sản phẩm tốt', NULL, 10);
 INSERT INTO `phone` VALUES (27, 'LG Double Pay', 'Phone', 199000.00, 'LG', 'lgdoubleplay.jpg', '2017-08-08', 'Đây là 1 sản phẩm tốt', 4, 10);
 INSERT INTO `phone` VALUES (28, 'LG G10', 'SmartPhone', 3000000.00, 'LG', 'lgg10.jpg', '2019-01-01', 'Đây là 1 sản phẩm tốt', NULL, 10);
