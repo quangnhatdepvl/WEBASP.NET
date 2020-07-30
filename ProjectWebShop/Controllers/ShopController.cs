@@ -80,6 +80,7 @@ namespace ProjectWebShop.Controllers
 
             return View(test);
 
+
         }
         public List<Giohang> Laygiohang()
         {
@@ -143,6 +144,9 @@ namespace ProjectWebShop.Controllers
             ViewBag.Tongtien = TongTien();
             return View(lstGiohang);
         }
+
+        }       
+
 
     }
 }
