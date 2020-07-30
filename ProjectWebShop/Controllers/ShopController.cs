@@ -29,7 +29,7 @@ namespace ProjectWebShop.Controllers
         {
             List<phone> lst = new List<phone>();
             lst = banhangEntities.phones.ToList();
-            PagedList<phone> pg = new PagedList<phone>(lst, 1, 10); 
+            PagedList<phone> pg = new PagedList<phone>(lst, 1, 10);
             return View(pg);
         }
         [HttpGet]
@@ -40,7 +40,7 @@ namespace ProjectWebShop.Controllers
 
             return View(aphone);
         }
-      
+
         public ActionResult DangNhap()
         {
             return View();
@@ -57,14 +57,14 @@ namespace ProjectWebShop.Controllers
         {
             return banhangEntities.phones.OrderByDescending(a => a.ngaySanXuat).Take(count).ToList();
         }
-         private List<phone> spgiacao(int count)
+        private List<phone> spgiacao(int count)
         {
             return banhangEntities.phones.OrderByDescending(a => a.price).Take(count).ToList();
         }
-     
+
         public ActionResult HangSanPham()
         {
-             var test = (from phone in banhangEntities.phones select phone.nhaSanXuat).Distinct();
+            var test = (from phone in banhangEntities.phones select phone.nhaSanXuat).Distinct();
 
             return PartialView(test);
         }
@@ -142,7 +142,8 @@ namespace ProjectWebShop.Controllers
             return View(lstGiohang);
         }
 
-              
+
 
 
     }
+}
