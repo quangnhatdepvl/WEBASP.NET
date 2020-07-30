@@ -11,7 +11,7 @@
  Target Server Version : 100413
  File Encoding         : 65001
 
- Date: 30/07/2020 12:16:28
+ Date: 30/07/2020 13:49:19
 */
 
 SET NAMES utf8mb4;
@@ -60,15 +60,15 @@ CREATE TABLE `phone`  (
 INSERT INTO `phone` VALUES (5, 'Nokia 120', 'Phone', 450000.00, 'NOKIA', 'nokia110.jpg', '2012-05-12', 'Đây là 1 sản phẩm tốt', 1, 10);
 INSERT INTO `phone` VALUES (6, 'Nokia 130', 'Phone', 520000.00, 'NOKIA', 'nokia130.jpg', '2012-06-12', 'Đây là 1 sản phẩm tốt', 1, 10);
 INSERT INTO `phone` VALUES (7, 'Nokia 150', 'Phone', 650000.00, 'NOKIA', 'nokia150.jpg', '2016-02-12', 'Đây là 1 sản phẩm tốt', 0, 10);
-INSERT INTO `phone` VALUES (8, 'Nokia 230', 'Phone', 1250000.00, 'NOKIA', 'nokia230.jpg', '2017-03-25', 'Đây là 1 sản phẩm tốt', 1, 10);
+INSERT INTO `phone` VALUES (8, 'Nokia 230', 'Phone', 1250000.00, 'NOKIA', 'nokia230.jpg', '2017-03-03', 'Đây là 1 sản phẩm tốt', 1, 10);
 INSERT INTO `phone` VALUES (9, 'Nokia 2720', 'Phone', 1990000.00, 'NOKIA', 'nokia2720.jpg', '2019-02-01', 'Đây là 1 sản phẩm tốt', 0, 10);
 INSERT INTO `phone` VALUES (10, 'Nokia 3310', 'Phone', 1060000.00, 'NOKIA', 'nokia3310.jpg', '2017-08-09', 'Đây là 1 sản phẩm tốt', 1, 10);
-INSERT INTO `phone` VALUES (11, 'SamSung A7', 'SmartPhone', 6990000.00, 'SAMSUNG', 'samsunga7.jpg', '2018-09-19', 'Đây là 1 sản phẩm tốt', 2, 10);
+INSERT INTO `phone` VALUES (11, 'SamSung A7', 'SmartPhone', 6990000.00, 'SAMSUNG', 'samsunga7.jpg', '2018-09-10', 'Đây là 1 sản phẩm tốt', 2, 10);
 INSERT INTO `phone` VALUES (12, 'SamSung A20', 'SmartPhone', 4190000.00, 'SAMSUNG', 'samsunga20.jpg', '2019-01-10', 'Đây là 1 sản phẩm tốt', 1, 10);
-INSERT INTO `phone` VALUES (13, 'SamSung A50', 'SmartPhone', 6990000.00, 'SAMSUNG', 'samsunga20.jpg', '2018-09-19', 'Đây là 1 sản phẩm tốt', 0, 10);
+INSERT INTO `phone` VALUES (13, 'SamSung A50', 'SmartPhone', 6990000.00, 'SAMSUNG', 'samsunga20.jpg', '2018-09-10', 'Đây là 1 sản phẩm tốt', 0, 10);
 INSERT INTO `phone` VALUES (14, 'SamSung A70', 'SmartPhone', 8290000.00, 'SAMSUNG', 'samsunga7.jpg', '2019-01-12', 'Đây là 1 sản phẩm tốt', 1, 10);
 INSERT INTO `phone` VALUES (15, 'SamSung A80', 'SmartPhone', 11490000.00, 'SAMSUNG', 'samsunga80.jpg', '2019-01-12', 'Đây là 1 sản phẩm tốt', 1, 9);
-INSERT INTO `phone` VALUES (16, 'SamSung A9', 'SmartPhone', 12490000.00, 'SAMSUNG', 'samsunga9.jpg', '2017-03-25', 'Đây là 1 sản phẩm tốt', 0, 10);
+INSERT INTO `phone` VALUES (16, 'SamSung A9', 'SmartPhone', 12490000.00, 'SAMSUNG', 'samsunga9.jpg', '2017-03-03', 'Đây là 1 sản phẩm tốt', 0, 10);
 INSERT INTO `phone` VALUES (17, 'SamSung Galaxy A30s', 'SmartPhone', 5090000.00, 'SAMSUNG', 'samsunga20.jpg', '2019-01-10', 'Đây là 1 sản phẩm tốt', 0, 10);
 INSERT INTO `phone` VALUES (18, 'SamSung Note 10+', 'SmartPhone', 24990000.00, 'SAMSUNG', 'samsungnote10.jpg', '2019-01-10', 'Đây là 1 sản phẩm tốt', 9, 10);
 INSERT INTO `phone` VALUES (19, 'SamSung Note 9', 'SmartPhone', 22990000.00, 'SAMSUNG', 'samsungnote9.jpg', '2019-01-02', 'Đây là 1 sản phẩm tốt', 2, 10);
