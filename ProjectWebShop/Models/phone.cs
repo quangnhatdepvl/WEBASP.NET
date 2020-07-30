@@ -22,13 +22,13 @@ namespace ProjectWebShop.Models
         public int idPhone { get; set; }
         public string phoneName { get; set; }
         public string typePhone { get; set; }
-        public Nullable<double> price { get; set; }
+        public double price { get; set; }
         public string nhaSanXuat { get; set; }
         public string img_url { get; set; }
         public Nullable<System.DateTime> ngaySanXuat { get; set; }
         public string des { get; set; }
-        public Nullable<int> luotTruyCap { get; set; }
-        public Nullable<int> soLuong { get; set; }
+        public int luotTruyCap { get; set; }
+        public int soLuong { get; set; }
     
         public virtual ICollection<thanhtoan> thanhtoans { get; set; }
     }

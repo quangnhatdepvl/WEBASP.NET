@@ -30,6 +30,5 @@ namespace ProjectWebShop.Models
         public DbSet<role_db> role_db { get; set; }
         public DbSet<thanhtoan> thanhtoans { get; set; }
         public DbSet<user_db> user_db { get; set; }
-
     }
 }

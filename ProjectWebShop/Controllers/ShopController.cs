@@ -43,11 +43,7 @@ namespace ProjectWebShop.Controllers
       
         
 
-        [HttpGet]
-        public ActionResult GioHang()
-        {
-            return View();
-        }
+     
         public ActionResult DangNhap()
         {
             return View();
@@ -84,7 +80,73 @@ namespace ProjectWebShop.Controllers
 
             return View(test);
 
+
+        }
+        public List<Giohang> Laygiohang()
+        {
+            List<Giohang> lstGiohang = Session["Giohang"] as List<Giohang>;
+            if (lstGiohang == null)
+            {
+                lstGiohang = new List<Giohang>();
+                Session["Giohang"] = lstGiohang;
+            }
+            return lstGiohang;
+        }
+        public ActionResult ThemGiohang(int gh_idPhone, string strURL)
+        {
+            List<Giohang> lstGioHang = Laygiohang();
+            Giohang sanpham = lstGioHang.Find(p => p.gh_idPhone == gh_idPhone);
+            if (sanpham == null)
+            {
+                sanpham = new Giohang(gh_idPhone);
+                lstGioHang.Add(sanpham);
+                return Redirect(strURL);
+            }
+            else
+            {
+                sanpham.gh_soLuong++;
+                return Redirect(strURL);
+            }
+        }
+        private int TongSoLuong()
+        {
+            int gh_TongSoLuong = 0;
+            List<Giohang> lstGiohang = Session["Giohang"] as List<Giohang>;
+            if (lstGiohang != null)
+            {
+                gh_TongSoLuong = lstGiohang.Sum(n => n.gh_soLuong);
+            }
+            return gh_TongSoLuong;
+        }
+
+        private double TongTien()
+        {
+            double gh_TongTien = 0;
+            List<Giohang> lstGiohang = Session["Giohang"] as List<Giohang>;
+            if (lstGiohang != null)
+            {
+                gh_TongTien = lstGiohang.Sum(n => n.gh_ThanhTien);
+
+            }
+            return gh_TongTien;
+        }
+
+        // GET: GioHang
+
+        public ActionResult GioHang()
+        {
+            List<Giohang> lstGiohang = Laygiohang();
+            if (lstGiohang.Count == 0)
+            {
+                return RedirectToAction("Index", "Shop");
+            }
+            ViewBag.Tongsoluong = TongSoLuong();
+            ViewBag.Tongtien = TongTien();
+            return View(lstGiohang);
+        }
+
         }       
+
 
     }
 }

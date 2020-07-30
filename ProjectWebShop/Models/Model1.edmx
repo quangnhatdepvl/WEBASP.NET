@@ -20,15 +20,15 @@
             <PropertyRef Name="idPhone" />
           </Key>
           <Property Name="idPhone" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="phoneName" Type="varchar" MaxLength="255" />
-          <Property Name="typePhone" Type="varchar" MaxLength="255" />
-          <Property Name="price" Type="double" />
-          <Property Name="nhaSanXuat" Type="varchar" MaxLength="255" />
-          <Property Name="img_url" Type="varchar" MaxLength="255" />
+          <Property Name="phoneName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="typePhone" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="price" Type="double" Nullable="false" />
+          <Property Name="nhaSanXuat" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="img_url" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ngaySanXuat" Type="date" />
-          <Property Name="des" Type="longtext" />
-          <Property Name="luotTruyCap" Type="int" />
-          <Property Name="soLuong" Type="int" />
+          <Property Name="des" Type="longtext" Nullable="false" />
+          <Property Name="luotTruyCap" Type="int" Nullable="false" />
+          <Property Name="soLuong" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="role_db">
           <Key>
@@ -152,15 +152,15 @@
             <PropertyRef Name="idPhone" />
           </Key>
           <Property Name="idPhone" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="phoneName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="typePhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="price" Type="Double" />
-          <Property Name="nhaSanXuat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="img_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="phoneName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="typePhone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="nhaSanXuat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="img_url" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ngaySanXuat" Type="DateTime" />
-          <Property Name="des" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Name="luotTruyCap" Type="Int32" />
-          <Property Name="soLuong" Type="Int32" />
+          <Property Name="des" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="luotTruyCap" Type="Int32" Nullable="false" />
+          <Property Name="soLuong" Type="Int32" Nullable="false" />
           <NavigationProperty Name="thanhtoans" Relationship="Self.thanhtoan_ibfk_2" FromRole="phone" ToRole="thanhtoan" />
         </EntityType>
         <EntityType Name="role_db">
