@@ -182,8 +182,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\add.html" />
-    <Content Include="Admin\admin_index.html" />
     <Content Include="Admin\css\style.css" />
     <Content Include="Admin\gulpfile.js" />
     <Content Include="Admin\js\chart.js" />
@@ -200,12 +198,6 @@
     <Content Include="Admin\js\template.js" />
     <Content Include="Admin\logo.png" />
     <Content Include="Admin\pages\charts\chartjs.html" />
-    <Content Include="Admin\quanlydienthoai.html" />
-    <Content Include="Admin\quanlydonhang.html" />
-    <Content Include="Admin\quanlykhachhang.html" />
-    <Content Include="Admin\quanlythanhtoan.html" />
-    <Content Include="Admin\sanphamconlai.html" />
-    <Content Include="Admin\sanphamdaban.html" />
     <Content Include="Admin\vendors\base\vendor.bundle.base.css" />
     <Content Include="Admin\vendors\base\vendor.bundle.base.js" />
     <Content Include="Admin\vendors\chart.js\Chart.min.js" />
