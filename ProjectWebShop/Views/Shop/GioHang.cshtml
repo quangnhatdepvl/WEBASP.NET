@@ -1,4 +1,5 @@
-﻿
+﻿@using  ProjectWebShop.Models
+@model List<Giohang>
 @{
     ViewBag.Title = "GioHang";
     Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
@@ -11,112 +12,53 @@
             <li class="active">Check Out</li>
         </ul>
         <div class="well well-small">
-            <h1>Check Out <small class="pull-right"> 2 Items are in the cart </small></h1>
+
             <hr class="soften" />
 
             <table class="table table-bordered table-condensed">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Description</th>
-                        <th>	Ref. </th>
-                        <th>Avail.</th>
-                        <th>Unit price</th>
-                        <th>Qty </th>
-                        <th>Total</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Loại điện thoại</th>
+                        <th>Giá</th>
+                        <th>Nhà sản xuất</th>
+                        <th>Hình ảnh</th>
+                      
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach (var item in Model)
+                    {
                     <tr>
-                        <td><img width="100" src="~/images/e.jpg" alt=""></td>
-                        <td>Items name here<br>Carate : 22<br>Model : n/a</td>
-                        <td> - </td>
-                        <td><span class="shopBtn"><span class="icon-ok"></span></span> </td>
-                        <td>$50.00</td>
+
+                        <td>@item.gh_phoneName</td>
+                        <td>@item.gh_typePhone </td>
+                        <td>@String.Format("{0:0,0}", item.gh_price)</td>
+                        <td>@item.gh_nhaSanXuat</td>
+                        <td><img width="100" src="~/images/@item.gh_img_url" alt=""></td>
+                         
                         <td>
-                            <input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="2">
-                            <div class="input-append">
-                                <button class="btn btn-mini" type="button">-</button><button class="btn btn-mini" type="button"> + </button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
+                            <div class="quantity buttons_added">
+                                        <input type="number" class="input-text qty text" style="width: 26px; text-align:center" value="@item.gh_soLuong" min="0" step="1">
+                             
                             </div>
                         </td>
-                        <td>$100.00</td>
+                        <td></td>
                     </tr>
-                    <tr>
-                        <td><img width="100" src="~/images/f.jpg" alt=""></td>
-                        <td>Item names and brief details<br>Carate:24 <br>Model:HBK24</td>
-                        <td> - </td>
-                        <td><span class="shopBtn"><span class="icon-ok"></span></span> </td>
-                        <td>$348.42</td>
-                        <td>
-                            <input class="span1" style="max-width:34px" placeholder="1" size="16" type="text">
-                            <div class="input-append">
-                                <button class="btn btn-mini" type="button">-</button><button class="btn btn-mini" type="button">+</button><button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button>
-                            </div>
-                        </td>
-                        <td>$348.42</td>
-                    </tr>
+                    }
                     <tr>
                         <td colspan="6" class="alignR">Total products:	</td>
-                        <td> $448.42</td>
+                        <td>@String.Format("{0:0,0}", ViewBag.Tongtien)</td>
                     </tr>
-                    <tr>
-                        <td colspan="6" class="alignR">Total products:	</td>
-                        <td> $448.42</td>
-                    </tr>
-                    <tr>
-                        <td colspan="6" class="alignR">Total products:	</td>
-                        <td> $448.42</td>
-                    </tr>
-                    <tr>
-                        <td colspan="6" class="alignR">Total products:	</td>
-                        <td class="label label-primary"> $448.42</td>
-                    </tr>
+
                 </tbody>
             </table><br />
 
 
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <td>
-                            <form class="form-inline">
-                                <label style="min-width:159px"> VOUCHERS Code: </label>
-                                <input type="text" class="input-medium" placeholder="CODE">
-                                <button type="submit" class="shopBtn"> ADD</button>
-                            </form>
-                        </td>
-                    </tr>
 
-                </tbody>
-            </table>
-            <table class="table table-bordered">
-                <tbody>
-                    <tr><td>ESTIMATE YOUR SHIPPING & TAXES</td></tr>
-                    <tr>
-                        <td>
-                            <form class="form-horizontal">
-                                <div class="control-group">
-                                    <label class="span2 control-label" for="inputEmail">Country</label>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Country">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <label class="span2 control-label" for="inputPassword">Post Code/ Zipcode</label>
-                                    <div class="controls">
-                                        <input type="password" placeholder="Password">
-                                    </div>
-                                </div>
-                                <div class="control-group">
-                                    <div class="controls">
-                                        <button type="submit" class="shopBtn">Click to check the price</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+
             <a href="@Url.Action("Index","Shop")" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
             <a href="@Url.Action("DangNhap","Shop")" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
 
