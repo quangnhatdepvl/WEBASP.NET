@@ -41,9 +41,6 @@ namespace ProjectWebShop.Controllers
             return View(aphone);
         }
       
-        
-
-     
         public ActionResult DangNhap()
         {
             return View();
@@ -149,4 +146,3 @@ namespace ProjectWebShop.Controllers
 
 
     }
-}
