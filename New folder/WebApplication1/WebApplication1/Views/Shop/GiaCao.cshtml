@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebApplication1.Models.phone>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+
+<div class="well well-small">
+    <h3>SẢN PHẨM TIÊU BIỂU </h3>
+    <hr class="soften" />
+    <div class="row-fluid">
+        <ul class="thumbnails">
+            @foreach (var item in Model)
+            {
+                <li class="span4" style="margin-left:0">
+                    <div class="thumbnail">
+                        <a class="zoomTool" href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})"><span class="icon-search"></span> XEM CHI TIẾT</a>
+                        <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})"><img src="~/images/@item.img_url" alt=""></a>
+                        <div class="caption cntr">
+                            <h5>@item.phoneName</h5>
+
+                            <p style="color: red">
+                                Giá :<strong>
+                                    @String.Format("{0:0,0}", item.price) VND
+                            </strong>
+                        </p>
+                        <h4><a class="shopBtn" href="@Url.Action("ThemGiohang","Shop",new { @gh_idPhone = @item.idPhone, @strURl = Request.Url.ToString()})" title="add to cart"> Add to cart </a></h4>
+
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+</html>

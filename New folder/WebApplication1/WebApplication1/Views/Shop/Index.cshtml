@@ -1,89 +1,45 @@
 ﻿@model IEnumerable<WebApplication1.Models.phone>
-
 @{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.phoneName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.typePhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nhaSanXuat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.img_url)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ngaySanXuat)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.des)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.luotTruyCap)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.soLuong)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.phoneName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.typePhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nhaSanXuat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.img_url)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ngaySanXuat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.des)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.luotTruyCap)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.soLuong)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.idPhone }) |
-                @Html.ActionLink("Details", "Details", new { id=item.idPhone }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.idPhone })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+<div class="span9">
+
+    <!--
+    New Products
+    -->
+    <div class="well well-small">
+        <h3>SẢN PHẨM MỚI </h3>
+        <hr class="soften" />
+        <div class="row-fluid">
+            <div class="row-fluid">
+                <ul class="thumbnails">
+                    @foreach (var item in Model)
+                    {
+                        <li class="span4" style=" margin-left: 0px;">
+
+                            <div class="thumbnail">
+
+                                <a class="zoomTool" href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})" title="add to cart"><span class="icon-search"></span> XEM CHI TIẾT</a>
+                                <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})"><img src="~/images/@item.img_url" alt=""></a>
+                                <div class="caption cntr">
+                                    <p>@item.phoneName</p>
+                                    <p style="color: red"> Giá :<strong>@String.Format("{0:0,0}", item.price) VND
+</strong></p>
+                                    <h4><a class="shopBtn" href="@Url.Action("ThemGiohang","Shop",new { @gh_idPhone = @item.idPhone, @strURl = Request.Url.ToString()})" title="add to cart"> Add to cart </a></h4>
+
+                                    <br class="clr">
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+@Html.Action("GiaCao", "Shop")

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<string>
+@{
+    ViewBag.Title = "HangSanPham";
+}
+
+@foreach (var item in Model)
+{
+    <li><a href="@Url.Action("SanPhamTheoNhaSanXuat","Shop", new { id = item.ToString()})" style="text-align:left"><span class="icon-chevron-right "></span>@item.ToString()</a></li>
+}
+
+
+

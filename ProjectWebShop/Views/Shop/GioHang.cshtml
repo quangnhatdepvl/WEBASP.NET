@@ -1,68 +1,68 @@
-﻿@using  ProjectWebShop.Models
-@model List<Giohang>
-@{
-    ViewBag.Title = "GioHang";
-    Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
-}
+﻿    @using  ProjectWebShop.Models
+    @model List<Giohang>
+    @{
+        ViewBag.Title = "GioHang";
+        Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
+    }
 
-<div class="row">
-    <div class="span12">
-        <ul class="breadcrumb">
-            <li><a href="index.html">Home</a> <span class="divider">/</span></li>
-            <li class="active">Check Out</li>
-        </ul>
-        <div class="well well-small">
+    <div class="row">
+        <div class="span12">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a> <span class="divider">/</span></li>
+                <li class="active">Check Out</li>
+            </ul>
+            <div class="well well-small">
 
-            <hr class="soften" />
+                <hr class="soften" />
 
-            <table class="table table-bordered table-condensed">
-                <thead>
-                    <tr>
-                        <th>Tên sản phẩm</th>
-                        <th>Loại điện thoại</th>
-                        <th>Giá</th>
-                        <th>Nhà sản xuất</th>
-                        <th>Hình ảnh</th>
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <th>Loại điện thoại</th>
+                            <th>Giá</th>
+                            <th>Nhà sản xuất</th>
+                            <th>Hình ảnh</th>
                       
-                        <th>Số lượng</th>
-                        <th>Tổng tiền</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
-                    <tr>
+                            <th>Số lượng</th>
+                            <th>Tổng tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
 
-                        <td>@item.gh_phoneName</td>
-                        <td>@item.gh_typePhone </td>
-                        <td>@String.Format("{0:0,0}", item.gh_price)</td>
-                        <td>@item.gh_nhaSanXuat</td>
-                        <td><img width="100" src="~/images/@item.gh_img_url" alt=""></td>
+                            <td>@item.gh_phoneName</td>
+                            <td>@item.gh_typePhone </td>
+                            <td>@String.Format("{0:0,0}", item.gh_price)</td>
+                            <td>@item.gh_nhaSanXuat</td>
+                            <td><img width="100" src="~/images/@item.gh_img_url" alt=""></td>
                          
-                        <td>
-                            <div class="quantity buttons_added">
-                                        <input type="number" class="input-text qty text" style="width: 26px; text-align:center" value="@item.gh_soLuong" min="0" step="1">
+                            <td>
+                                <div class="quantity buttons_added">
+                                            <input type="number" class="input-text qty text" style="width: 26px; text-align:center" value="@item.gh_soLuong" min="0" step="1">
                              
-                            </div>
-                        </td>
-                        <td></td>
-                    </tr>
-                    }
-                    <tr>
-                        <td colspan="6" class="alignR">Total products:	</td>
-                        <td>@String.Format("{0:0,0}", ViewBag.Tongtien)</td>
-                    </tr>
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        }
+                        <tr>
+                            <td colspan="6" class="alignR">Total products:	</td>
+                            <td>@String.Format("{0:0,0}", ViewBag.Tongtien)</td>
+                        </tr>
 
-                </tbody>
-            </table><br />
-
-
+                    </tbody>
+                </table><br />
 
 
-            <a href="@Url.Action("Index","Shop")" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
-            <a href="@Url.Action("DangNhap","Shop")" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
 
+
+                <a href="@Url.Action("Index","Shop")" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
+                <a href="@Url.Action("DangNhap","Shop")" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
+
+            </div>
         </div>
     </div>
-</div>
 
