@@ -25,13 +25,21 @@ namespace WebApplication1.Controllers
             return PartialView(giacao);
 
         }
+        
+
         [HttpGet]
         public ActionResult DanhSach()
         {
+            return View();
+        }
+
+        public PartialViewResult GetPaging(int? page)
+        {
             List<phone> lst = new List<phone>();
             lst = applicationDbContext.phones.ToList();
-            PagedList<phone> pg = new PagedList<phone>(lst, 1, 10);
-            return View(pg);
+            int pageNumber = (page ?? 1);
+
+            return PartialView("GetPaging",lst.ToPagedList(pageNumber, 10));
         }
         [HttpGet]
         public ActionResult ChiTietSanPham(int id)

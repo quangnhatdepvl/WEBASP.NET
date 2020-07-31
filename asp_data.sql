@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : localhost
+ Source Server         : localhost_3306
  Source Server Type    : MySQL
- Source Server Version : 100406
+ Source Server Version : 100413
  Source Host           : localhost:3306
  Source Schema         : asp_data
 
  Target Server Type    : MySQL
- Target Server Version : 100406
+ Target Server Version : 100413
  File Encoding         : 65001
 
- Date: 30/07/2020 15:11:07
+ Date: 31/07/2020 15:04:54
 */
 
 SET NAMES utf8mb4;
@@ -142,7 +142,7 @@ CREATE TABLE `phones`  (
   `nhaSanXuat` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `img_url` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
   `ngaySanXuat` datetime(0) NULL DEFAULT NULL,
-  `des` longtext CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL,
+  `des` longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `luotTruyCap` int(11) NOT NULL,
   `soLuong` int(11) NOT NULL,
   PRIMARY KEY (`idPhone`) USING BTREE
@@ -151,46 +151,43 @@ CREATE TABLE `phones`  (
 -- ----------------------------
 -- Records of phones
 -- ----------------------------
-INSERT INTO `phones` VALUES (5, 'Nokia 120', 'phones', 450000, 'NOKIA', 'nokia110.jpg', '2012-05-12 00:00:00', '?ây là 1 s?n ph?m t?t', 1, 10);
-INSERT INTO `phones` VALUES (6, 'Nokia 130', 'phones', 520000, 'NOKIA', 'nokia130.jpg', '2012-06-12 00:00:00', '?ây là 1 s?n ph?m t?t', 1, 10);
-INSERT INTO `phones` VALUES (7, 'Nokia 150', 'phones', 650000, 'NOKIA', 'nokia150.jpg', '2016-02-12 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (8, 'Nokia 230', 'phoness', 1250000, 'NOKIA', 'nokia230.jpg', '2017-03-25 00:00:00', '?ây là 1 s?n ph?m t?t', 1, 10);
-INSERT INTO `phones` VALUES (9, 'Nokia 2720', 'phoness', 1990000, 'NOKIA', 'nokia2720.jpg', '2019-02-01 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (10, 'Nokia 3310', 'phoness', 1060000, 'NOKIA', 'nokia3310.jpg', '2017-08-09 00:00:00', '?ây là 1 s?n ph?m t?t', 1, 10);
-INSERT INTO `phones` VALUES (11, 'SamSung A7', 'Smartphoness', 6990000, 'SAMSUNG', 'samsunga7.jpg', '2018-09-19 00:00:00', '?ây là 1 s?n ph?m t?t', 2, 10);
-INSERT INTO `phones` VALUES (12, 'SamSung A20', 'Smartphoness', 4190000, 'SAMSUNG', 'samsunga20.jpg', '2019-01-10 00:00:00', '?ây là 1 s?n ph?m t?t', 1, 10);
-INSERT INTO `phones` VALUES (13, 'SamSung A50', 'Smartphoness', 6990000, 'SAMSUNG', 'samsunga20.jpg', '2018-09-19 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (14, 'SamSung A70', 'Smartphoness', 8290000, 'SAMSUNG', 'samsunga7.jpg', '2019-01-12 00:00:00', '?ây là 1 s?n ph?m t?t', 1, 10);
-INSERT INTO `phones` VALUES (15, 'SamSung A80', 'Smartphoness', 11490000, 'SAMSUNG', 'samsunga80.jpg', '2019-01-12 00:00:00', '?ây là 1 s?n ph?m t?t', 1, 9);
-INSERT INTO `phones` VALUES (16, 'SamSung A9', 'Smartphoness', 12490000, 'SAMSUNG', 'samsunga9.jpg', '2017-03-25 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (17, 'SamSung Galaxy A30s', 'Smartphones', 5090000, 'SAMSUNG', 'samsunga20.jpg', '2019-01-10 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (18, 'SamSung Note 10+', 'Smartphones', 24990000, 'SAMSUNG', 'samsungnote10.jpg', '2019-01-10 00:00:00', '?ây là 1 s?n ph?m t?t', 9, 10);
-INSERT INTO `phones` VALUES (19, 'SamSung Note 9', 'Smartphones', 22990000, 'SAMSUNG', 'samsungnote9.jpg', '2019-01-02 00:00:00', '?ây là 1 s?n ph?m t?t', 2, 10);
-INSERT INTO `phones` VALUES (20, 'SamSung S10+', 'Smartphones', 22990000, 'SAMSUNG', 'samsungs10512.jpg', '2019-01-02 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (21, 'LG phonesix ', 'phones', 450000, 'LG', 'lg_phonxie_b.jpg', '2012-05-12 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (22, 'LG Thrive B', 'phones', 555000, 'LG', 'lg_thrive_b.jpg', '2012-08-12 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (24, 'LG K50s', 'phones', 650000, 'LG', 'lg-k50s.jpg', '2014-02-12 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (26, 'LG Q70-Black', 'Smartphones', 2000000, 'LG', 'lg-q70-black.jpg', '2016-09-09 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (27, 'LG Double Pay', 'phones', 199000, 'LG', 'lgdoubleplay.jpg', '2017-08-08 00:00:00', '?ây là 1 s?n ph?m t?t', 4, 10);
-INSERT INTO `phones` VALUES (28, 'LG G10', 'Smartphones', 3000000, 'LG', 'lgg10.jpg', '2019-01-01 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (29, 'LG K30', 'Smartphones', 4000000, 'LG', 'lgk30.jpg', '2018-08-08 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (30, 'LG K40s', 'Smartphones', 5000000, 'LG', 'lgk40s.jpg', '2018-09-10 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (31, 'LG M10', 'Smartphones', 27000000, 'LG', 'lgm10.jpg', '2018-01-12 00:00:00', '?ây là 1 s?n ph?m t?t', 11, 8);
-INSERT INTO `phones` VALUES (32, 'LG Eoone', 'Smartphones', 5000000, 'LG', 'lgneoone.jpg', '2017-08-08 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (33, 'LG V50s', 'Smartphones', 200000, 'LG', 'lgv50sthinq.jpg', '2016-09-09 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (34, 'LG V60s', 'Smartphones', 350000, 'LG', 'lgv60s.jpg', '2018-09-10 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (35, 'LG V60thin', 'Smartphones', 230000, 'LG', 'lgv60thinq.jpg', '2018-01-12 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (36, 'Iphones 11 Pro 256Gb', 'Smartphones', 33900000, 'APPLE', 'iphones11pro256gb.jpg', '2019-01-01 00:00:00', '?ây là 1 s?n ph?m t?t', 18, 8);
-INSERT INTO `phones` VALUES (37, 'Iphones 11 Pro 512Gb', 'Smartphones', 36900000, 'APPLE', 'iphones11pro512gb.jpg', '2019-01-01 00:00:00', '?ây là 1 s?n ph?m t?t', 35, 7);
-INSERT INTO `phones` VALUES (38, 'Iphones 7 32Gb', 'Smartphones', 12000000, 'APPLE', 'iphones11pro256gb.jpg', '2017-06-05 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (39, 'Iphones 8 plus', 'Smartphones', 16500000, 'APPLE', 'iphones11pro512gb.jpg', '2018-09-09 00:00:00', '?ây là 1 s?n ph?m t?t', 1, 10);
-INSERT INTO `phones` VALUES (40, 'Iphones XS Max 256GB', 'Smartphones', 22900000, 'APPLE', 'iphones11pro256gb.jpg', '2019-01-01 00:00:00', '?ây là 1 s?n ph?m t?t', 1, 10);
-INSERT INTO `phones` VALUES (41, 'HTC 4G', 'Smartphones', 2500000, 'HTC', 'htc4g.jpg', '2016-02-03 00:00:00', '?ây là 1 s?n ph?m t?t', 1, 9);
-INSERT INTO `phones` VALUES (42, 'HTC Exodus', 'Smartphones', 3670000, 'HTC', 'htcexodus1s.jpg', '2017-10-10 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (43, 'HTC WildFire', 'Smartphones', 3900000, 'HTC', 'htcwildfiree.jpg', '2017-08-09 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (44, 'HTC WildFire 1', 'Smartphones', 4900000, 'HTC', 'htcwildfiree1.jpg', '2012-01-03 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (45, 'HTC WildFire Plus', 'Smartphones', 4900000, 'HTC', 'htcwildfireeplus.jpg', '2019-02-02 00:00:00', '?ây là 1 s?n ph?m t?t', 4, 10);
-INSERT INTO `phones` VALUES (46, 'HTC WildFire 70', 'Smartphones', 5999000, 'HTC', 'htcwildfirex.jpg', '2018-02-02 00:00:00', '?ây là 1 s?n ph?m t?t', 0, 10);
-INSERT INTO `phones` VALUES (47, 'HTC WildFirex', 'Smartphones', 30000000, 'HTC', 'htcwildfirex.jpg', '2019-02-02 00:00:00', '?ây là 1 s?n ph?m t?t', 19, 7);
+INSERT INTO `phones` VALUES (5, 'Nokia 120', 'phone', 450000, 'NOKIA', 'nokia110.jpg', '2012-05-12 00:00:00', 'Đây là một sản phẩm tốt', 1, 10);
+INSERT INTO `phones` VALUES (6, 'Nokia 130', 'phone', 520000, 'NOKIA', 'nokia130.jpg', '2012-06-12 00:00:00', 'Đây là một sản phẩm tốt', 1, 10);
+INSERT INTO `phones` VALUES (7, 'Nokia 150', 'phone', 650000, 'NOKIA', 'nokia150.jpg', '2016-02-12 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (8, 'Nokia 230', 'phones', 1250000, 'NOKIA', 'nokia230.jpg', '2017-03-25 00:00:00', 'Đây là một sản phẩm tốt', 1, 10);
+INSERT INTO `phones` VALUES (9, 'Nokia 2720', 'phones', 1990000, 'NOKIA', 'nokia2720.jpg', '2019-02-01 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (10, 'Nokia 3310', 'phones', 1060000, 'NOKIA', 'nokia3310.jpg', '2017-08-09 00:00:00', 'Đây là một sản phẩm tốt', 1, 10);
+INSERT INTO `phones` VALUES (11, 'SamSung A7', 'Smartphones', 6990000, 'SAMSUNG', 'samsunga7.jpg', '2018-09-19 00:00:00', 'Đây là một sản phẩm tốt', 2, 10);
+INSERT INTO `phones` VALUES (12, 'SamSung A20', 'Smartphones', 4190000, 'SAMSUNG', 'samsunga20.jpg', '2019-01-10 00:00:00', 'Đây là một sản phẩm tốt', 1, 10);
+INSERT INTO `phones` VALUES (13, 'SamSung A50', 'Smartphones', 6990000, 'SAMSUNG', 'samsunga20.jpg', '2018-09-19 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (14, 'SamSung A70', 'Smartphones', 8290000, 'SAMSUNG', 'samsunga7.jpg', '2019-01-12 00:00:00', 'Đây là một sản phẩm tốt', 1, 10);
+INSERT INTO `phones` VALUES (15, 'SamSung A80', 'Smartphones', 11490000, 'SAMSUNG', 'samsunga80.jpg', '2019-01-12 00:00:00', 'Đây là một sản phẩm tốt', 1, 9);
+INSERT INTO `phones` VALUES (16, 'SamSung A9', 'Smartphones', 12490000, 'SAMSUNG', 'samsunga9.jpg', '2017-03-25 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (17, 'SamSung Galaxy A30s', 'Smartphone', 5090000, 'SAMSUNG', 'samsunga20.jpg', '2019-01-10 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (18, 'SamSung Note 10+', 'Smartphone', 24990000, 'SAMSUNG', 'samsungnote10.jpg', '2019-01-10 00:00:00', 'Đây là một sản phẩm tốt', 9, 10);
+INSERT INTO `phones` VALUES (19, 'SamSung Note 9', 'Smartphone', 22990000, 'SAMSUNG', 'samsungnote9.jpg', '2019-01-02 00:00:00', 'Đây là một sản phẩm tốt', 2, 10);
+INSERT INTO `phones` VALUES (20, 'SamSung S10+', 'Smartphone', 22990000, 'SAMSUNG', 'samsungs10512.jpg', '2019-01-02 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (21, 'LG phoneix ', 'phone', 450000, 'LG', 'lg_phonxie_b.jpg', '2012-05-12 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (22, 'LG Thrive B', 'phone', 555000, 'LG', 'lg_thrive_b.jpg', '2012-08-12 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (24, 'LG K50s', 'phone', 650000, 'LG', 'lg-k50s.jpg', '2014-02-12 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (26, 'LG Q70-Black', 'Smartphone', 2000000, 'LG', 'lg-q70-black.jpg', '2016-09-09 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (27, 'LG Double Pay', 'phone', 199000, 'LG', 'lgdoubleplay.jpg', '2017-08-08 00:00:00', 'Đây là một sản phẩm tốt', 4, 10);
+INSERT INTO `phones` VALUES (28, 'LG G10', 'Smartphone', 3000000, 'LG', 'lgg10.jpg', '2019-01-01 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (29, 'LG K30', 'Smartphone', 4000000, 'LG', 'lgk30.jpg', '2018-08-08 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (30, 'LG K40s', 'Smartphone', 5000000, 'LG', 'lgk40s.jpg', '2018-09-10 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (31, 'LG M10', 'Smartphone', 27000000, 'LG', 'lgm10.jpg', '2018-01-12 00:00:00', 'Đây là một sản phẩm tốt', 11, 8);
+INSERT INTO `phones` VALUES (32, 'LG Eoone', 'Smartphone', 5000000, 'LG', 'lgneoone.jpg', '2017-08-08 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (33, 'LG V50s', 'Smartphone', 200000, 'LG', 'lgv50sthinq.jpg', '2016-09-09 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (34, 'LG V60s', 'Smartphone', 350000, 'LG', 'lgv60s.jpg', '2018-09-10 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (35, 'LG V60thin', 'Smartphone', 230000, 'LG', 'lgv60thinq.jpg', '2018-01-12 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (38, 'Iphone 7 32Gb', 'Smartphone', 12000000, 'APPLE', 'iphone11pro256gb.jpg', '2017-06-05 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (39, 'Iphone  8 plus', 'Smartphone', 16500000, 'APPLE', 'iphone11pro512gb.jpg', '2018-09-09 00:00:00', 'Đây là một sản phẩm tốt', 1, 10);
+INSERT INTO `phones` VALUES (41, 'HTC 4G', 'Smartphone', 2500000, 'HTC', 'htc4g.jpg', '2016-02-03 00:00:00', 'Đây là một sản phẩm tốt', 1, 9);
+INSERT INTO `phones` VALUES (42, 'HTC Exodus', 'Smartphone', 3670000, 'HTC', 'htcexodus1s.jpg', '2017-10-10 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (43, 'HTC WildFire', 'Smartphone', 3900000, 'HTC', 'htcwildfiree.jpg', '2017-08-09 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (44, 'HTC WildFire 1', 'Smartphone', 4900000, 'HTC', 'htcwildfiree1.jpg', '2012-01-03 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (45, 'HTC WildFire Plus', 'Smartphone', 4900000, 'HTC', 'htcwildfireeplus.jpg', '2019-02-02 00:00:00', 'Đây là một sản phẩm tốt', 4, 10);
+INSERT INTO `phones` VALUES (46, 'HTC WildFire 70', 'Smartphone', 5999000, 'HTC', 'htcwildfirex.jpg', '2018-02-02 00:00:00', 'Đây là một sản phẩm tốt', 0, 10);
+INSERT INTO `phones` VALUES (47, 'HTC WildFirex', 'Smartphone', 30000000, 'HTC', 'htcwildfirex.jpg', '2019-02-02 00:00:00', 'Đây là một sản phẩm tốt', 19, 7);
 
 SET FOREIGN_KEY_CHECKS = 1;
