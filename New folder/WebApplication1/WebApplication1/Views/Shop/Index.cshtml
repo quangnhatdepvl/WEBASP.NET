@@ -26,20 +26,24 @@
                                 <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})"><img src="~/images/@item.img_url" alt=""></a>
                                 <div class="caption cntr">
                                     <p>@item.phoneName</p>
-                                    <p style="color: red"> Giá :<strong>@String.Format("{0:0,0}", item.price) VND
-</strong></p>
-                                    <h4><a class="shopBtn" href="@Url.Action("ThemGiohang","Shop",new { @gh_idPhone = @item.idPhone, @strURl = Request.Url.ToString()})" title="add to cart"> Add to cart </a></h4>
+                                    <p style="color: red">
+                                        Giá :<strong>
+                                            @String.Format("{0:0,0}", item.price) VND
+                                    </strong>
+                                </p>
+                                <h4><a class="shopBtn" href="@Url.Action("ThemGiohang","Shop",new { @gh_idPhone = @item.idPhone, @strURl = Request.Url.ToString()})" title="add to cart"> Add to cart </a></h4>
 
-                                    <br class="clr">
-                                </div>
+                                <br class="clr">
                             </div>
-                        </li>
-                    }
+                        </div>
+                    </li>
+                }
                 </ul>
 
             </div>
         </div>
 
     </div>
+    @Html.Action("GiaCao", "Shop")
+
 </div>
-@Html.Action("GiaCao", "Shop")

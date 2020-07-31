@@ -1,43 +1,10 @@
-﻿
+﻿@using PagedList.Mvc
+
+@model PagedList.IPagedList<WebApplication1.Models.phone>
 @{
     ViewBag.Title = "DanhSach";
-    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+   
 }
-
-<div class="span9">
-
-    <div class="well well-small">
-        @foreach (var item in Model)
-        {
-            <div class="row-fluid">
-                <div class="span2">
-                    <img src="~/images/@item.img_url" alt="">
-                </div>
-                <div class="span6">
-                    <h5>@item.phoneName </h5>
-                    <p>
-                        @item.des
-                    </p>
-                </div>
-                <div class="span4 alignR">
-                    <form class="form-horizontal qtyFrm">
-                        <h3>@String.Format("{0:0,0}", item.price) VND</h3>
-                        <div class="btn-group">
-                            <a href="@Url.Action("GioHang","Shop")" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-                            <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})" class="shopBtn">VIEW</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <hr class="soften">
-            <div class="row-fluid">
-                <div class="span2">
-                    <img src="~/images/b.jpg" alt="">
-                </div>
-
-            </div>
-        }
-    </div>
+<div id="phone_area">
+    @{Html.RenderAction("GetPaging", "Shop", new { page = 1 });}
 </div>
-
-
