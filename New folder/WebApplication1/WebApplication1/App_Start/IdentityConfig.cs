@@ -11,51 +11,36 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using WebApplication1.Models;
-//using SendGrid;
 using System.Net;
-using System.Configuration;
-using System.Diagnostics;
 using System.Net.Mail;
-using System.Net.Mime;
-using SendGrid;
 
 namespace WebApplication1
 {
     public class EmailService : IIdentityMessageService
     {
-        public async Task SendAsync(IdentityMessage message)
+        public  Task SendAsync(IdentityMessage message)
         {
-            await configSendGridasync(message);
-        }
-        private async Task configSendGridasync(IdentityMessage message)
-        {
-
-            SendGridMessage myMessage = new SendGridMessage();
-            myMessage.AddTo(message.Destination);
-            myMessage.From = new System.Net.Mail.MailAddress(
-                                "17130130@st.hcmuaf.edu.vn", "Joe S.");
-            myMessage.Subject = message.Subject;
-            myMessage.Text = message.Body;
-            myMessage.Html = message.Body;
-
-            NetworkCredential credentials = new NetworkCredential(
-                       ConfigurationManager.AppSettings["mailAccount"],
-                       ConfigurationManager.AppSettings["mailPassword"]
-                       );
-           
-            // Create a Web transport for sending email.
-            var transportWeb = new Web(ConfigurationManager.AppSettings["api_key"]);
-            //// Send the email.
-            if (transportWeb != null)
+            var client = new SmtpClient
             {
-                await transportWeb.DeliverAsync(myMessage);
-            }
-            else
+                Host = "smtp.gmail.com",
+                Port = 587,
+                UseDefaultCredentials = false,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                Credentials = new NetworkCredential("ltn290999@gmail.com", "0985974620"),
+                EnableSsl = true,
+            };
+            var from = new MailAddress("ltn290999@gmail.com", "Admin");
+            var to = new MailAddress(message.Destination);
+            var mail = new MailMessage(from, to)
             {
-                Trace.TraceError("Failed to create Web transport.");
-                await Task.FromResult(0);
-            }
+                Subject = message.Subject,
+                Body = message.Body,
+                IsBodyHtml = true,
+            };
+            client.Send(mail);
+            return Task.FromResult(0);
         }
+       
     }
 
     public class SmsService : IIdentityMessageService
@@ -88,11 +73,11 @@ namespace WebApplication1
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
-                RequireDigit = true,
-                RequireLowercase = true,
-                RequireUppercase = true,
+                RequiredLength = 1,
+                RequireNonLetterOrDigit = false,
+                RequireDigit = false,
+                RequireLowercase = false,
+                RequireUppercase = false,
             };
 
             // Configure user lockout defaults
