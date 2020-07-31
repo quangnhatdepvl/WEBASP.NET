@@ -226,6 +226,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageRoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ManageUseController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -241,6 +244,10 @@
     <Compile Include="Migrations\202007300800209_add model.cs" />
     <Compile Include="Migrations\202007300800209_add model.Designer.cs">
       <DependentUpon>202007300800209_add model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007310816015_update model.cs" />
+    <Compile Include="Migrations\202007310816015_update model.Designer.cs">
+      <DependentUpon>202007310816015_update model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -588,6 +595,14 @@
     <Content Include="Admin\vendors\mdi\fonts\materialdesignicons-webfont.ttf" />
     <Content Include="Admin\vendors\mdi\fonts\materialdesignicons-webfont.woff" />
     <Content Include="Admin\vendors\mdi\fonts\materialdesignicons-webfont.woff2" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\ManageRole\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageRole\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageRole\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageUse\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageUse\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageUse\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ManageUse\EditRole.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -641,7 +656,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\Info.cshtml" />
     <Content Include="Views\Shop\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutGioHang.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
@@ -664,6 +678,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -684,6 +700,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007300800209_add model.resx">
       <DependentUpon>202007300800209_add model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007310816015_update model.resx">
+      <DependentUpon>202007310816015_update model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
