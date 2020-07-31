@@ -34,9 +34,9 @@
                     <div class="alignR">
 
 
-                        <a href="@Url.Action("DangNhap","Shop")"><span class="icon-user"></span> ĐĂNG NHẬP</a>
-                        <a href="@Url.Action("DangKy","Shop")"><span class="icon-edit"></span> ĐĂNG KÝ </a>
-                        <a href="@Url.Action("GioHang","Shop")"><span class="icon-shopping-cart"></span> GIỎ HÀNG </a>
+                        <a href="@Url.Action("Login","Account")"><span class="icon-user"></span> ĐĂNG NHẬP</a>
+                        <a href="@Url.Action("Register","Account")"><span class="icon-edit"></span> ĐĂNG KÝ </a>
+                        @Html.Action("GioHangPartial", "Shop")
                     </div>
                 </div>
             </div>

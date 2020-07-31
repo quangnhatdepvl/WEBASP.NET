@@ -126,15 +126,44 @@ namespace WebApplication1.Controllers
         public ActionResult GioHang()
         {
             List<Giohang> lstGiohang = Laygiohang();
-            if (lstGiohang.Count == 0)
-            {
-                return RedirectToAction("Index", "Shop");
-            }
+           
             ViewBag.Tongsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
             return View(lstGiohang);
         }
 
+            public ActionResult GioHangPartial()
+        {
+            ViewBag.Tongsoluong = TongSoLuong();
+            ViewBag.Tongtien = TongTien();
+            return PartialView();
+
+        }
+        public ActionResult XoaGiohang(int gh_idPhone)
+        {
+            List<Giohang> lstGioHang = Laygiohang();
+            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_idPhone == gh_idPhone);
+            if(sanPham != null)
+            {
+                lstGioHang.RemoveAll(sp => sp.gh_idPhone == gh_idPhone);
+                 return RedirectToAction("GioHang");
+            }
+            if(lstGioHang.Count == 0)
+            {
+                return RedirectToAction("Index", "Shop");
+            }
+            return RedirectToAction("GioHang");
+        }
+        public ActionResult CapNhatGioHang(int gh_idPhone, FormCollection f)
+        {
+            List<Giohang> lstGioHang = Laygiohang();
+            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_idPhone == gh_idPhone);
+            if (sanPham != null)
+            {
+                sanPham.gh_soLuong = int.Parse(f["txtSoluong"].ToString());
+                        }
+            return RedirectToAction("GioHang");
+        }
 
 
 
