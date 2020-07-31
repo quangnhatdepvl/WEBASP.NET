@@ -92,7 +92,7 @@ namespace WebApplication1.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -177,10 +177,9 @@ namespace WebApplication1.Controllers
 
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
 
-                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
-                                    + "before you can log in.";
+                    ViewBag.Message = "Bạn đã đăng ký thành công vui lòng kiểm tra mail để xác thực tài khoản";
 
-                    return View("Info");
+                    return View(model);
                     //return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
@@ -475,7 +474,7 @@ namespace WebApplication1.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Shop");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
