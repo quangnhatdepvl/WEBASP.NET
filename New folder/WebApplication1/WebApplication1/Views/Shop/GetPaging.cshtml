@@ -1,10 +1,7 @@
 ﻿@using PagedList.Mvc
 
 @model PagedList.IPagedList<WebApplication1.Models.phone>
-@{
-    ViewBag.Title = "DanhSach";
-    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
-}
+
 
 <div class="span9">
 
@@ -24,9 +21,9 @@
                 <div class="span4 alignR">
                     <form class="form-horizontal qtyFrm">
                         <h3>@String.Format("{0:0,0}", item.price) VND</h3>
-                        <div class="btn-group">
-                            <a href="@Url.Action("GioHang","Shop")" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-                            <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})" class="shopBtn">VIEW</a>
+                        <div class="btn-group" style="margin-left:-45px;">
+                            <a href="@Url.Action("ThemGiohang","Shop",new { @gh_idPhone = @item.idPhone, @strURl = Request.Url.ToString()})" class="defaultBtn"><span class=" icon-shopping-cart"></span> Thêm vào giỏ hàng</a>
+                            <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.idPhone})" class="shopBtn">Xem chi tiết</a>
                         </div>
                     </form>
                 </div>

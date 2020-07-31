@@ -34,7 +34,7 @@
                             <div class="caption cntr">
                                 <p>@item.phoneName</p>
                                 <p style="color: red"> Giá :<strong>@String.Format("{0:0,0}", item.price) VND</strong></p>
-                                <h4><a class="shopBtn" href="@Url.Action("GioHang","Shop")" title="add to cart"> Add to cart </a></h4>
+                                <h4><a class="shopBtn" href="@Url.Action("ThemGiohang","Shop",new { @gh_idPhone = @item.idPhone, @strURl = Request.Url.ToString()})" title="add to cart"> Add to cart </a></h4>
 
                                 <br class="clr">
                             </div>

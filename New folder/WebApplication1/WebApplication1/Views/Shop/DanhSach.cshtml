@@ -3,7 +3,7 @@
 @model PagedList.IPagedList<WebApplication1.Models.phone>
 @{
     ViewBag.Title = "DanhSach";
-   
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 <div id="phone_area">
     @{Html.RenderAction("GetPaging", "Shop", new { page = 1 });}
