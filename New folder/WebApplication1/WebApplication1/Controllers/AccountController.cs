@@ -17,15 +17,16 @@ namespace WebApplication1.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ApplicationRoleManager _roleManager;
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -37,6 +38,17 @@ namespace WebApplication1.Controllers
             private set 
             { 
                 _signInManager = value; 
+            }
+        }
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
 
@@ -174,7 +186,7 @@ namespace WebApplication1.Controllers
                 {
                     //  Comment the following line to prevent log in until the user is confirmed.
                     //  await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
+                    result = await UserManager.AddToRoleAsync(user.Id,"KhachHang");
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
 
                     ViewBag.Message = "Bạn đã đăng ký thành công vui lòng kiểm tra mail để xác thực tài khoản";
@@ -508,4 +520,5 @@ namespace WebApplication1.Controllers
         #endregion
     }
 
+ 
 }
