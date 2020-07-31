@@ -16,7 +16,7 @@ namespace WebApplication1.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            var sanphammoi = sanPhamMoi(6);
+            var sanphammoi = sanPhamMoi(4);
             return View(sanphammoi);
         }
         public ActionResult GiaCao()
