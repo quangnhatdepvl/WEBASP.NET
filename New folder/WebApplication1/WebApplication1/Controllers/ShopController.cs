@@ -165,7 +165,12 @@ namespace WebApplication1.Controllers
             return RedirectToAction("GioHang");
         }
 
-
+        public ActionResult XoaTatCaGioHang()
+        {
+            List<Giohang> lstGioHang = Laygiohang();
+            lstGioHang.Clear();
+            return RedirectToAction("GioHang");
+        }
 
     }
 }
