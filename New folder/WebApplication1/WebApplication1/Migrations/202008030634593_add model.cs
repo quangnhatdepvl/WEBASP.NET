@@ -8,44 +8,34 @@ namespace WebApplication1.Migrations
         public override void Up()
         {
             CreateTable(
-                "dbo.ChuDes",
+                "dbo.ChiTietDonHangs",
                 c => new
                     {
-                        MaCD = c.Int(nullable: false, identity: true),
-                        TenChuDe = c.String(nullable: false, unicode: false),
-                    })
-                .PrimaryKey(t => t.MaCD);
-            
-            CreateTable(
-                "dbo.Saches",
-                c => new
-                    {
-                        MaSach = c.Int(nullable: false, identity: true),
-                        TenSach = c.String(nullable: false, unicode: false),
+                        MaDonHang = c.Int(nullable: false),
+                        MaSach = c.Int(nullable: false),
                         price = c.Double(nullable: false),
-                        Mota = c.String(unicode: false),
-                        Anhbia = c.String(unicode: false),
-                        NgayCapNhat = c.DateTime(nullable: false, precision: 0),
-                        SoLuongTon = c.Int(nullable: false),
-                        MaCD = c.Int(nullable: false),
-                        MaNXB = c.Int(nullable: false),
+                        DonGia = c.Double(nullable: false),
                     })
-                .PrimaryKey(t => t.MaSach)
-                .ForeignKey("dbo.ChuDes", t => t.MaCD, cascadeDelete: true)
-                .ForeignKey("dbo.NhaXuatBans", t => t.MaNXB, cascadeDelete: true)
-                .Index(t => t.MaCD)
-                .Index(t => t.MaNXB);
+                .PrimaryKey(t => new { t.MaDonHang, t.MaSach })
+                .ForeignKey("dbo.DonDatHangs", t => t.MaDonHang, cascadeDelete: true)
+                .ForeignKey("dbo.Saches", t => t.MaSach, cascadeDelete: true)
+                .Index(t => t.MaDonHang)
+                .Index(t => t.MaSach);
             
             CreateTable(
-                "dbo.NhaXuatBans",
+                "dbo.DonDatHangs",
                 c => new
                     {
-                        MaNXB = c.Int(nullable: false, identity: true),
-                        TenNXB = c.String(nullable: false, unicode: false),
-                        DiaChi = c.String(unicode: false),
-                        DienThoai = c.String(unicode: false),
+                        MaDonHang = c.Int(nullable: false, identity: true),
+                        MaKH = c.Int(nullable: false),
+                        NgayDatHang = c.DateTime(nullable: false, precision: 0),
+                        NgayGiaoHang = c.DateTime(nullable: false, precision: 0),
+                        TinhTrang = c.Boolean(),
+                        ThanhToan = c.Boolean(),
                     })
-                .PrimaryKey(t => t.MaNXB);
+                .PrimaryKey(t => t.MaDonHang)
+                .ForeignKey("dbo.KhachHangs", t => t.MaKH, cascadeDelete: true)
+                .Index(t => t.MaKH);
             
             CreateTable(
                 "dbo.KhachHangs",
@@ -122,6 +112,46 @@ namespace WebApplication1.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
+                "dbo.Saches",
+                c => new
+                    {
+                        MaSach = c.Int(nullable: false, identity: true),
+                        TenSach = c.String(nullable: false, unicode: false),
+                        price = c.Double(nullable: false),
+                        Mota = c.String(unicode: false),
+                        Anhbia = c.String(unicode: false),
+                        NgayCapNhat = c.DateTime(nullable: false, precision: 0),
+                        SoLuongTon = c.Int(nullable: false),
+                        MaCD = c.Int(nullable: false),
+                        MaNXB = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.MaSach)
+                .ForeignKey("dbo.ChuDes", t => t.MaCD, cascadeDelete: true)
+                .ForeignKey("dbo.NhaXuatBans", t => t.MaNXB, cascadeDelete: true)
+                .Index(t => t.MaCD)
+                .Index(t => t.MaNXB);
+            
+            CreateTable(
+                "dbo.ChuDes",
+                c => new
+                    {
+                        MaCD = c.Int(nullable: false, identity: true),
+                        TenChuDe = c.String(nullable: false, unicode: false),
+                    })
+                .PrimaryKey(t => t.MaCD);
+            
+            CreateTable(
+                "dbo.NhaXuatBans",
+                c => new
+                    {
+                        MaNXB = c.Int(nullable: false, identity: true),
+                        TenNXB = c.String(nullable: false, unicode: false),
+                        DiaChi = c.String(unicode: false),
+                        DienThoai = c.String(unicode: false),
+                    })
+                .PrimaryKey(t => t.MaNXB);
+            
+            CreateTable(
                 "dbo.phones",
                 c => new
                     {
@@ -183,35 +213,43 @@ namespace WebApplication1.Migrations
             DropForeignKey("dbo.VietSaches", "MaTG", "dbo.TacGias");
             DropForeignKey("dbo.VietSaches", "MaSach", "dbo.Saches");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.ChiTietDonHangs", "MaSach", "dbo.Saches");
+            DropForeignKey("dbo.Saches", "MaNXB", "dbo.NhaXuatBans");
+            DropForeignKey("dbo.Saches", "MaCD", "dbo.ChuDes");
+            DropForeignKey("dbo.ChiTietDonHangs", "MaDonHang", "dbo.DonDatHangs");
+            DropForeignKey("dbo.DonDatHangs", "MaKH", "dbo.KhachHangs");
             DropForeignKey("dbo.KhachHangs", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Saches", "MaNXB", "dbo.NhaXuatBans");
-            DropForeignKey("dbo.Saches", "MaCD", "dbo.ChuDes");
             DropIndex("dbo.VietSaches", new[] { "MaSach" });
             DropIndex("dbo.VietSaches", new[] { "MaTG" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Saches", new[] { "MaNXB" });
+            DropIndex("dbo.Saches", new[] { "MaCD" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.KhachHangs", new[] { "UserId" });
-            DropIndex("dbo.Saches", new[] { "MaNXB" });
-            DropIndex("dbo.Saches", new[] { "MaCD" });
+            DropIndex("dbo.DonDatHangs", new[] { "MaKH" });
+            DropIndex("dbo.ChiTietDonHangs", new[] { "MaSach" });
+            DropIndex("dbo.ChiTietDonHangs", new[] { "MaDonHang" });
             DropTable("dbo.VietSaches");
             DropTable("dbo.TacGias");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.phones");
+            DropTable("dbo.NhaXuatBans");
+            DropTable("dbo.ChuDes");
+            DropTable("dbo.Saches");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.KhachHangs");
-            DropTable("dbo.NhaXuatBans");
-            DropTable("dbo.Saches");
-            DropTable("dbo.ChuDes");
+            DropTable("dbo.DonDatHangs");
+            DropTable("dbo.ChiTietDonHangs");
         }
     }
 }
