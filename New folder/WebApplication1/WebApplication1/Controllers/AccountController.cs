@@ -518,7 +518,12 @@ namespace WebApplication1.Controllers
             }
         }
         #endregion
+        public ActionResult ForgotPass()
+        {
+            return View();
+        }
     }
+    
 
  
 }

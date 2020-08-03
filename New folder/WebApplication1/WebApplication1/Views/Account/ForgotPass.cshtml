@@ -1,4 +1,4 @@
-﻿
+﻿@model WebApplication1.Models.ForgotPasswordViewModel
 @{
     Layout = null;
 }
@@ -54,10 +54,33 @@
 <body>
     <div class="limiter" style="background-color:aqua ;">
         <div class="container-login100">
-            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" >
- 
-                  <h3> Xin vui  lòng kiểm tra và xác nhận Mail!!!</h3>  
-             
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                <section id="loginForm" class="login100-form validate-form">
+                    @using (Html.BeginForm("ForgotPassword", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <span class="login100-form-title p-b-49">
+                            QUÊN MẬT KHẨU
+                        </span>
+
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn">
+                                    XÁC NHẬN
+                                </button>
+                            </div>
+                        </div>
+                    }
+
+                </section>
             </div>
         </div>
     </div>
@@ -85,4 +108,3 @@
 </body>
 
 </html>
-
