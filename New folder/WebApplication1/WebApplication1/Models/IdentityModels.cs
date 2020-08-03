@@ -26,9 +26,17 @@ namespace WebApplication1.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
-        public DbSet<customer> customers { get; set; }
+
+        public DbSet<KhachHang> khachHangs { get; set; }
         public DbSet<phone> phones { get; set; }
-   
+        public DbSet<NhaXuatBan> nhaXuatBans { get; set; }
+        public DbSet<Sach> saches { get; set; }
+        public DbSet<TacGia> tacGias { get; set; }
+        public DbSet<VietSach> vietSaches { get; set; }
+        public DbSet<ChuDe> chuDes { get; set; }
+        public DbSet<DonDatHang> donDatHangs { get; set; }
+        public DbSet<ChiTietDonHang> chiTietDonHangs { get; set; }
+        
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
