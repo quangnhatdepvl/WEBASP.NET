@@ -1,10 +1,10 @@
 ﻿@using PagedList.Mvc
 
-@model PagedList.IPagedList<WebApplication1.Models.phone>
+@model PagedList.IPagedList<WebApplication1.Models.Sach>
 @{
     ViewBag.Title = "DanhSach";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
-<div id="phone_area">
+<div id="sach_area">
     @{Html.RenderAction("GetPaging", "Shop", new { page = 1 });}
 </div>

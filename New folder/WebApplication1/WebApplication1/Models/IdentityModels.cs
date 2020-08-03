@@ -28,7 +28,7 @@ namespace WebApplication1.Models
 
 
         public DbSet<KhachHang> khachHangs { get; set; }
-        public DbSet<phone> phones { get; set; }
+     
         public DbSet<NhaXuatBan> nhaXuatBans { get; set; }
         public DbSet<Sach> saches { get; set; }
         public DbSet<TacGia> tacGias { get; set; }

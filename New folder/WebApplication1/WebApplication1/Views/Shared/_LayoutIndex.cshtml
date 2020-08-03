@@ -61,7 +61,7 @@
                 <div class="span4">
                     <h1>
                         <a class="logo" href="@Url.Action("Index","Shop")">
-                            <span>Twitter Bootstrap ecommerce template</span>
+                
                             <img src="~/images/logo-bootstrap-shoping-cart.png" style="width: 280px" alt="bootstrap sexy shop">
                         </a>
                     </h1>
@@ -103,42 +103,19 @@
             <div id="sidebar" class="span3">
                 <div class="well well-small">
                     <ul class="nav nav-list">
-                        <p style="font-size: 20px; text-align:center"> DANH MỤC</p>
+                        <p style="font-size: 20px; text-align:center"> CHỦ ĐỀ</p>
                         <hr style="border-top:1px solid black">
-                        @Html.Action("HangSanPham", "Shop")
-
+                        @Html.Action("Chude", "Shop")
+                        <br />
+                        <p style="font-size: 20px; text-align:center">NHÀ XUẤT BẢN</p>
+                        <hr style="border-top:1px solid black">
+                       @Html.Action("Nhaxuatban", "Shop")
                         <li style="border:0"> &nbsp;</li>
 
-                </div>
-                <div class="well well-small"><a href="#"><img src="~/images/paypal.jpg" alt="payment method paypal"></a></div>
+                                </div>
+                
                 </ul>
-                <ul class="nav nav-list promowrapper">
-                    <li>
-                        <div class="thumbnail">
-                            <img src="~/images/htcexodus1s.jpg" alt="bootstrap ecommerce templates">
-                        </div>
-                    </li>
-                    <li style="border:0"> &nbsp;</li>
-                    <li>
-                        <div class="thumbnail">
-                            <img src="~/images/iphone11pro256gb.jpg" alt="bootstrap ecommerce templates">
-                        </div>
-                    </li>
-                    <li style="border:0"> &nbsp;</li>
-                    <li>
-                        <div class="thumbnail">
-                            <img src="~/images/samsunggalaxya30s.jpg" alt="bootstrap ecommerce templates">
-                        </div>
-                    </li>
-                    <li style="border:0"> &nbsp;</li>
-                    <li>
-                        <div class="thumbnail">
-                            <img src="~/images/htcwildfireeplus.jpg" alt="bootstrap ecommerce templates">
-                        </div>
-                    </li>
-                    <li style="border:0"> &nbsp;</li>
-
-                </ul>
+                
             </div>
             @RenderBody()
         </div>

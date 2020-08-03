@@ -11,7 +11,7 @@
  Target Server Version : 100413
  File Encoding         : 65001
 
- Date: 03/08/2020 15:26:44
+ Date: 03/08/2020 17:00:43
 */
 
 SET NAMES utf8mb4;
@@ -219,24 +219,6 @@ INSERT INTO `nhaxuatbans` VALUES (5, 'Văn hóa nghệ thuật', 'Đà Nẵng', 
 INSERT INTO `nhaxuatbans` VALUES (6, 'Văn hóa', 'Bình Dương', '0913336677');
 INSERT INTO `nhaxuatbans` VALUES (7, 'Lao động - Xã hội', 'Tp.HCM', '0989888888');
 INSERT INTO `nhaxuatbans` VALUES (8, 'Khoa Học & Kỹ Thuật', 'Hà Nội', '8351056');
-
--- ----------------------------
--- Table structure for phones
--- ----------------------------
-DROP TABLE IF EXISTS `phones`;
-CREATE TABLE `phones`  (
-  `idPhone` int(11) NOT NULL AUTO_INCREMENT,
-  `phoneName` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `typePhone` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `price` double NOT NULL,
-  `nhaSanXuat` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `img_url` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `ngaySanXuat` datetime(0) NULL DEFAULT NULL,
-  `des` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `luotTruyCap` int(11) NOT NULL,
-  `soLuong` int(11) NOT NULL,
-  PRIMARY KEY (`idPhone`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for saches

@@ -35,8 +35,8 @@ namespace WebApplication1.Controllers
 
         public PartialViewResult GetPaging(int? page)
         {
-            List<phone> lst = new List<phone>();
-            lst = applicationDbContext.phones.ToList();
+            List<Sach> lst = new List<Sach>();
+            lst = applicationDbContext.saches.ToList();
             int pageNumber = (page ?? 1);
 
             return PartialView("GetPaging",lst.ToPagedList(pageNumber, 10));
@@ -44,42 +44,52 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult ChiTietSanPham(int id)
         {
-            phone aphone = new phone();
-            aphone = applicationDbContext.phones.Find(id);
+            Sach asach = new Sach();
+            asach = applicationDbContext.saches.Find(id);
+       
 
-            return View(aphone);
+            return View(asach);
         }
         
         public ActionResult LienHe()
         {
             return View();
         }
-        private List<phone> sanPhamMoi(int count)
+        private List<Sach> sanPhamMoi(int count)
         {
-            return applicationDbContext.phones.OrderByDescending(a => a.ngaySanXuat).Take(count).ToList();
+            return applicationDbContext.saches.OrderByDescending(a => a.NgayCapNhat).Take(count).ToList();
         }
-        private List<phone> spgiacao(int count)
+        private List<Sach> spgiacao(int count)
         {
-            return applicationDbContext.phones.OrderByDescending(a => a.price).Take(count).ToList();
+            return applicationDbContext.saches.OrderByDescending(a => a.price).Take(count).ToList();
         }
 
-        public ActionResult HangSanPham()
+
+        public ActionResult Chude()
         {
-            var test = (from phone in applicationDbContext.phones select phone.nhaSanXuat).Distinct();
-
-            return PartialView(test);
+            var chude = from ChuDe in applicationDbContext.chuDes select ChuDe;
+            return PartialView(chude);
         }
-        public ActionResult SanPhamTheoNhaSanXuat(string nsx)
+        public ActionResult Nhaxuatban()
         {
-
-            var sanpham = new ApplicationDbContext();
-            nsx = Request.Url.Segments.Last();
-            var test = (from c in sanpham.phones where c.nhaSanXuat == nsx select c).ToList();
-
-            return View(test);
-
-
+            var nxb = from NhaXuatBan in applicationDbContext.nhaXuatBans select NhaXuatBan;
+            return PartialView(nxb);
         }
+        public ActionResult spTheoNhaXuatBan(int id)
+        {
+            var sp = from s in applicationDbContext.saches where s.MaNXB == id select s;
+
+            return PartialView(sp);
+        }
+
+
+        public ActionResult spTheoChuDe(int id)
+        {
+            var sp = from s in applicationDbContext.saches where s.MaCD == id select s;
+
+            return PartialView(sp);
+        }
+       
         public List<Giohang> Laygiohang()
         {
             List<Giohang> lstGiohang = Session["Giohang"] as List<Giohang>;
@@ -90,13 +100,13 @@ namespace WebApplication1.Controllers
             }
             return lstGiohang;
         }
-        public ActionResult ThemGiohang(int gh_idPhone, string strURL)
+        public ActionResult ThemGiohang(int gh_Masach, string strURL)
         {
             List<Giohang> lstGioHang = Laygiohang();
-            Giohang sanpham = lstGioHang.Find(p => p.gh_idPhone == gh_idPhone);
+            Giohang sanpham = lstGioHang.Find(rs => rs.gh_Masach == gh_Masach);
             if (sanpham == null)
             {
-                sanpham = new Giohang(gh_idPhone);
+                sanpham = new Giohang(gh_Masach);
                 lstGioHang.Add(sanpham);
                 return Redirect(strURL);
             }
@@ -125,7 +135,7 @@ namespace WebApplication1.Controllers
             {
                 gh_TongTien = lstGiohang.Sum(n => n.gh_ThanhTien);
 
-            }
+            }   
             return gh_TongTien;
         }
 
@@ -150,10 +160,10 @@ namespace WebApplication1.Controllers
         public ActionResult XoaGiohang(int gh_idPhone)
         {
             List<Giohang> lstGioHang = Laygiohang();
-            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_idPhone == gh_idPhone);
+            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_Masach == gh_idPhone);
             if(sanPham != null)
             {
-                lstGioHang.RemoveAll(sp => sp.gh_idPhone == gh_idPhone);
+                lstGioHang.RemoveAll(sp => sp.gh_Masach == gh_idPhone);
                  return RedirectToAction("GioHang");
             }
             if(lstGioHang.Count == 0)
@@ -162,10 +172,10 @@ namespace WebApplication1.Controllers
             }
             return RedirectToAction("GioHang");
         }
-        public ActionResult CapNhatGioHang(int gh_idPhone, FormCollection f)
+        public ActionResult CapNhatGioHang(int gh_Masach, FormCollection f)
         {
             List<Giohang> lstGioHang = Laygiohang();
-            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_idPhone == gh_idPhone);
+            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_Masach == gh_Masach);
             if (sanPham != null)
             {
                 sanPham.gh_soLuong = int.Parse(f["txtSoluong"].ToString());
