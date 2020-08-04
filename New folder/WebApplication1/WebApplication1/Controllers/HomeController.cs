@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using WebApplication1.Models;
 namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
@@ -13,18 +14,15 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public JsonResult GetSearchValue(string search)
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-        [Authorize]
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            ApplicationDbContext db = new ApplicationDbContext();
+            IEnumerable<object> allsearch = db.saches.Where(x => x.TenSach.Contains(search)).Select(x => new 
+            {
+                MaSach = x.MaSach,
+                TenSach = x.TenSach
+            }).AsNoTracking().ToList();
+            return new JsonResult { Data = allsearch, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using WebApplication1.Models;
 using PagedList;
 using PagedList.Mvc;
+using System.Data.Entity;
 
 namespace WebApplication1.Controllers
 {
@@ -25,7 +26,17 @@ namespace WebApplication1.Controllers
             return PartialView(giacao);
 
         }
-        
+       
+        public JsonResult Search(string search)
+        {
+         
+            IEnumerable<object> allsearch = applicationDbContext.saches.Where(x => x.TenSach.Contains(search)).Select(x => new
+            {
+                MaSach = x.MaSach,
+                TenSach = x.TenSach
+            }).AsNoTracking().ToList();
+            return new JsonResult { Data = allsearch, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
 
         [HttpGet]
         public ActionResult DanhSach()
