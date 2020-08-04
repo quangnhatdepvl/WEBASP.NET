@@ -189,6 +189,52 @@ namespace WebApplication1.Controllers
             lstGioHang.Clear();
             return RedirectToAction("GioHang");
         }
+        [HttpGet]
+        public ActionResult DatHang()
+        {
+            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            {
+                return RedirectToAction("Login", "Account");
+            } 
+            if (Session["Giohang"] == null)
+            {
+                return RedirectToAction("Index", "Shop");
+            }
+            List<Giohang> lstGioHang = Laygiohang();
+            ViewBag.Tongsoluong = TongSoLuong();
+            ViewBag.Tongtien = TongTien();
+            return View(lstGioHang);
+        }
+    
+        public ActionResult DatHang(FormCollection collection)
+        {
+            DonDatHang ddh = new DonDatHang();
+            KhachHang kh = (KhachHang)Session["TaiKhoan"];
+            List<Giohang> gh = Laygiohang();
+            ddh.MaKH = kh.MaKH;
+            ddh.NgayDatHang = DateTime.Now;
+            var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["Ngaygiao"]);
+            ddh.NgayGiaoHang = DateTime.Parse(ngaygiao);
+            ddh.TinhTrang = false;
+            ddh.ThanhToan = false;
+            applicationDbContext.donDatHangs.Add(ddh);
+            applicationDbContext.SaveChanges();
+            foreach(var item in gh)
+            {
+                ChiTietDonHang ctdh = new ChiTietDonHang();
+                ctdh.MaDonHang = ddh.MaDonHang;
+                ctdh.MaSach = item.gh_Masach;
+                ctdh.price =  item.gh_Dongia;
+                applicationDbContext.chiTietDonHangs.Add(ctdh);
 
+            }
+                       applicationDbContext.SaveChanges();
+            Session["Giohang"] = null;
+            return RedirectToAction("Xacnhandonhang", "Shop");
+        }
+        public ActionResult Xacnhandonhang()
+        {
+            return View();
+        }
     }
 }

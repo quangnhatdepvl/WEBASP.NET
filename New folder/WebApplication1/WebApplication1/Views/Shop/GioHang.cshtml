@@ -28,35 +28,39 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
+                        <tr>
 
-                        <td>@item.gh_Masach</td>
-                        <td>@item.gh_Tensach </td>
+                            <td>@item.gh_Masach</td>
+                            <td>@item.gh_Tensach </td>
 
 
 
-                        @using (Html.BeginForm("CapNhatGioHang", "Shop", new { gh_Masach = item.gh_Masach }))
-                        {
-                            <td><img width="100" src="~/images/@item.gh_anhBia" alt=""></td>
-                            <td>
-                                <div class="quantity buttons_added">
-                                    <input type="number" name="txtSoluong" class="input-text qty text" style="width: 50px; text-align:center" value="@item.gh_soLuong" min="0" step="1">
-                                </div>
-                            </td>
-                            <td>@String.Format("{0:0,0}", item.gh_Dongia)</td>
-                            <td>@String.Format("{0:0,0}", item.gh_ThanhTien)</td>
-                            <td>@Html.ActionLink("Xóa", "XoaGioHang", new { gh_Masach = item.gh_Masach })</td>
-                            <td><input type="submit" value="Cập nhật" /></td>
-                        }
-                    </tr>
-                    }
-                        <tr style="font-weight: bold; text-align: center; color:red">
-                            <td>Tổng: </td>
-                            <td colspan="5"> Số lượng : @ViewBag.Tongsoluong</td>
-                            <td colspan="5">Tổng tiền :@String.Format("{0:0,0}", ViewBag.Tongtien) VND</td>
+                            @using (Html.BeginForm("CapNhatGioHang", "Shop", new { gh_Masach = item.gh_Masach }))
+                            {
+                                <td><img width="100" src="~/images/@item.gh_anhBia" alt=""></td>
+                                <td>
+                                    <div class="quantity buttons_added">
+                                        <input type="number" name="txtSoluong" class="input-text qty text" style="width: 50px; text-align:center" value="@item.gh_soLuong" min="0" step="1">
+                                    </div>
+                                </td>
+                                <td>@String.Format("{0:0,0}", item.gh_Dongia)</td>
+                                <td>@String.Format("{0:0,0}", item.gh_ThanhTien)</td>
+                                <td>@Html.ActionLink("Xóa", "XoaGioHang", new { gh_Masach = item.gh_Masach })</td>
+                                <td><input type="submit" value="Cập nhật" /></td>
+                            }
                         </tr>
-                    <tr >
+                    }
+                    <tr style="font-weight: bold; text-align: center; color:red">
+                        <td>Tổng: </td>
+                        <td colspan="5"> Số lượng : @ViewBag.Tongsoluong</td>
+                        <td colspan="5">Tổng tiền :@String.Format("{0:0,0}", ViewBag.Tongtien) VND</td>
+                    </tr>
+                    <tr>
                         <td colspan="10" style="font-weight: bold; text-align: right; text-decoration: none"> @Html.ActionLink("Xóa giỏ hàng", "XoaTatCaGioHang")</td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="10" style="font-weight: bold; text-align: center; text-decoration: none"> @Html.ActionLink("ĐẶT HÀNG", "DatHang", "Shop")</td>
 
                     </tr>
 
@@ -67,7 +71,7 @@
 
 
             <a href="@Url.Action("Index","Shop")" class="shopBtn btn-large"><span class="icon-arrow-left"></span>Tiếp tục mua sắm </a>
-            <a href="@Url.Action("Login","Account")" class="shopBtn btn-large pull-right">Thanh toán <span class="icon-arrow-right"></span></a>
+           
 
         </div>
     </div>

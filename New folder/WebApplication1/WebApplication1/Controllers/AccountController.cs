@@ -72,6 +72,7 @@ namespace WebApplication1.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+               
                 return RedirectToAction("Index", "Shop");
             }
             ViewBag.ReturnUrl = returnUrl;
@@ -96,18 +97,22 @@ namespace WebApplication1.Controllers
                 // var user = await UserManager.FindByNameAsync(model.Email);
                 var user = UserManager.Find(model.Email, model.Password);
                 if (user != null)
+                 
                 {
+                 Session["TaiKhoan"] = user;
                     if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                     {
                         string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
-
-                        // Uncomment to debug locally  
-                        // ViewBag.Link = callbackUrl;
-                        ViewBag.errorMessage = "You must have a confirmed email to log on. "
+                   
+                    // Uncomment to debug locally  
+                    // ViewBag.Link = callbackUrl;
+                    ViewBag.errorMessage = "You must have a confirmed email to log on. "
                                              + "The confirmation token has been resent to your email account.";
                         return View("Error");
                     }
-                }
+
+                
+            }
 
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, change to shouldLockout: true

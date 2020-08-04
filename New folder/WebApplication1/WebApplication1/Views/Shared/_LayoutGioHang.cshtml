@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -32,11 +33,31 @@
             <div class="topNav">
                 <div class="container">
                     <div class="alignR">
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
 
 
-                        <a href="@Url.Action("Login","Account")"><span class="icon-user"></span> ĐĂNG NHẬP</a>
-                        <a href="@Url.Action("Register","Account")"><span class="icon-edit"></span> ĐĂNG KÝ </a>
-                        @Html.Action("GioHangPartial", "Shop")
+                                <a href="@Url.Action("Login","Account")"><span class="icon-user"></span>Welcome @User.Identity.GetUserName()</a>
+                                @Html.Action("GioHangPartial", "Shop")
+                                <a href="javascript:document.getElementById('logoutForm').submit()"><span class="icon-signout"></span>Log off</a>
+
+                            }
+                        }
+                        else
+                        {
+
+                            <a href="@Url.Action("Login","Account")"><span class="icon-signin"></span> ĐĂNG NHẬP</a>
+                            <a href="@Url.Action("Register","Account")"><span class="icon-sign-blank"></span> ĐĂNG KÝ </a>
+                            @Html.Action("GioHangPartial", "Shop")
+
+                        }
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -47,7 +68,7 @@
                 <div class="span4">
                     <h1>
                         <a class="logo" href="@Url.Action("Index","Shop")">
-                       
+
                             <img src="~/images/logo-bootstrap-shoping-cart.png" style="width: 280px" />
                         </a>
                     </h1>
