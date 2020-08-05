@@ -19,7 +19,7 @@
     {
         <tr style="text-align:center; font-weight:bold">
             <td> @item.gh_Masach</td>
-            <td> @item.gh_Masach</td>
+            <td> @item.gh_Tensach</td>
             <td><img width="100" src="~/images/@item.gh_anhBia" alt=""></td>
             @using (Html.BeginForm("CapNhatGioHang", "Shop", new { gh_Masach = item.gh_Masach }))
             {
@@ -42,8 +42,8 @@
  
 </table>
 <h2 style="text-align:center">THÔNG TIN ĐẶT HÀNG</h2>
-    @{ 
-    KhachHang kh = (KhachHang)Session["TaiKhoan"];
+    @*@{ 
+        KhachHang kh = (KhachHang)Session["TaiKhoan"];
 }
 <table align="center">
     @using (Html.BeginForm())
@@ -74,4 +74,4 @@
         </tr>
 
     }
-</table>
+</table>*@
