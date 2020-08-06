@@ -628,6 +628,7 @@
     <Content Include="Views\Shop\spTheoChuDe.cshtml" />
     <Content Include="Views\Shop\DatHang.cshtml" />
     <Content Include="Views\Shop\Xacnhandonhang.cshtml" />
+    <Content Include="Views\Shop\ThongTinKhachHang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
