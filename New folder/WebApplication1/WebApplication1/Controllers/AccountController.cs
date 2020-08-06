@@ -98,7 +98,7 @@ namespace WebApplication1.Controllers
             var user = UserManager.Find(model.Email, model.Password);
             if (user != null)
             {
-                
+             
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
@@ -544,10 +544,7 @@ namespace WebApplication1.Controllers
             }
         }
         #endregion
-        public ActionResult ForgotPass()
-        {
-            return View();
-        }
+        
     }
 
 

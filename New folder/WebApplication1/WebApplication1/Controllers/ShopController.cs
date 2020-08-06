@@ -7,6 +7,7 @@ using WebApplication1.Models;
 using PagedList;
 using PagedList.Mvc;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity;
 
 namespace WebApplication1.Controllers
 {
@@ -168,13 +169,13 @@ namespace WebApplication1.Controllers
             return PartialView();
 
         }
-        public ActionResult XoaGiohang(int gh_idPhone)
+        public ActionResult XoaGiohang(int gh_Masach)
         {
             List<Giohang> lstGioHang = Laygiohang();
-            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_Masach == gh_idPhone);
+            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_Masach == gh_Masach);
             if (sanPham != null)
             {
-                lstGioHang.RemoveAll(sp => sp.gh_Masach == gh_idPhone);
+                lstGioHang.RemoveAll(sp => sp.gh_Masach == gh_Masach);
                 return RedirectToAction("GioHang");
             }
             if (lstGioHang.Count == 0)
@@ -203,8 +204,8 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult DatHang()
         {
-
-            if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
+            var userId = User.Identity.GetUserId();
+            if (string.IsNullOrEmpty(userId))
             {
                 return RedirectToAction("Login", "Account");
             }
@@ -249,8 +250,26 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+        [HttpGet]
         public ActionResult ThongTinKhachHang()
+          {
+            var userId = User.Identity.GetUserId();
+            var kh = applicationDbContext.khachHangs.FirstOrDefault(c => c.UserId == userId );
+          
+            return View(kh);
+
+        }
+
+        [HttpPost]
+        public ActionResult ThongTinKhachHang(KhachHang kh)
         {
+            if (ModelState.IsValid)
+            {
+                kh.UserId = User.Identity.GetUserId();
+                applicationDbContext.Entry(kh).State = EntityState.Modified;
+                applicationDbContext.SaveChanges();
+                return RedirectToAction("Index","Shop");
+            }
             return View();
         }
     }

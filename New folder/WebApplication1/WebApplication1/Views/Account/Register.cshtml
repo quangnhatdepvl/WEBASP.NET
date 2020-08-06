@@ -1,122 +1,44 @@
 ﻿@model WebApplication1.Models.RegisterViewModel
 @{
-    Layout = null;
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
+<div class="text-success">
+    <p>@ViewBag.Message</p>
+</div>
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <span class="login100-form-title p-b-49">
+        ĐĂNG KÝ
+    </span>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="~/login/images/icons/favicon.ico" />
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/login/vendor/bootstrap/css/bootstrap.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/login/fonts/iconic/css/material-design-iconic-font.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/login/vendor/animate/animate.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/login/vendor/css-hamburgers/hamburgers.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/login/vendor/animsition/css/animsition.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/login/vendor/select2/select2.min.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/login/vendor/daterangepicker/daterangepicker.css">
-    <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="~/login/css/util.css">
-    <link rel="stylesheet" type="text/css" href="~/login/css/main.css">
-    <!--===============================================================================================-->
-</head>
-<header id="header">
-    <div class="row">
-        <div class="span4">
-            <a class="logo" href="@Url.Action("Index","Shop")">
-
-                <img src="~/images/logo-bootstrap-shoping-cart.png" style="width: 280px; margin-left: 90px" alt="bootstrap sexy shop">
-            </a>
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
-
-        <a class="logo" style="margin-left:1000px; font-size: 20px; margin-top:-40px; color:black" href="@Url.Action("LienHe","Shop")">
-            Cần trợ giúp?
-        </a>
-
     </div>
-</header>
-<body>
-
-    <div class="limiter" style="background-color:aqua ;">
-        <div class="container-login100">
-            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-                <div class="text-success">
-                    <p>@ViewBag.Message</p>
-                </div>
-                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <span class="login100-form-title p-b-49">
-                        ĐĂNG KÝ
-                    </span>
-
-                    @Html.ValidationSummary("", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                        <div class="col-md-10">
-                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                        </div>
-                    </div>
-                   
-                    <div class="container-login100-form-btn">
-                        <div class="wrap-login100-form-btn">
-                            <div class="login100-form-bgbtn"></div>
-                            <button class="login100-form-btn">
-                                ĐĂNG KÝ
-                            </button>
-                        </div>
-                    </div>
-                }
-
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
 
-  
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
-    <script src="~/login/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/login/vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/login/vendor/bootstrap/js/popper.js"></script>
-    <script src="~/login/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/login/vendor/select2/select2.min.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/login/vendor/daterangepicker/moment.min.js"></script>
-    <script src="~/login/vendor/daterangepicker/daterangepicker.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/login/vendor/countdowntime/countdowntime.js"></script>
-    <!--===============================================================================================-->
-    <script src="~/login/js/main.js"></script>
-
-</body>
-</html>
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn">
+                ĐĂNG KÝ
+            </button>
+        </div>
+    </div>
+}
