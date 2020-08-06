@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
         {
           
             using (ApplicationDbContext applicationDbContext = new ApplicationDbContext()) {
-           var   kh1 = applicationDbContext.khachHangs.ToList();
+           var   kh1 = applicationDbContext.khachHangs.FirstOrDefault();
                 return View(kh1);
             }
           
