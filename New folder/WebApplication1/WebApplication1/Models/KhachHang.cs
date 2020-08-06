@@ -19,7 +19,7 @@ namespace WebApplication1.Models
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
         public string FullName { get; set; }
-        public string Address { get; set; }
+     
         public Nullable<bool> Gender { get; set; }
         public string DiachiKH { get; set; }
 

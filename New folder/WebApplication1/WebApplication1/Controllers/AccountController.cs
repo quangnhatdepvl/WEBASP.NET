@@ -23,7 +23,7 @@ namespace WebApplication1.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -36,9 +36,9 @@ namespace WebApplication1.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
         public ApplicationRoleManager RoleManager
@@ -72,7 +72,7 @@ namespace WebApplication1.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-               
+
                 return RedirectToAction("Index", "Shop");
             }
             ViewBag.ReturnUrl = returnUrl;
@@ -83,53 +83,53 @@ namespace WebApplication1.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        
+
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            
-           
-                if (!ModelState.IsValid)
-                {
-                    return View(model);
-                }
 
-                // Require the user to have a confirmed email before they can log on.
-                // var user = await UserManager.FindByNameAsync(model.Email);
-                var user = UserManager.Find(model.Email, model.Password);
-                if (user != null)                 
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            // Require the user to have a confirmed email before they can log on.
+            // var user = await UserManager.FindByNameAsync(model.Email);
+            var user = UserManager.Find(model.Email, model.Password);
+            if (user != null)
+            {
+                
+                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
-                 Session["TaiKhoan"] = user;
-                    if (!await UserManager.IsEmailConfirmedAsync(user.Id))
-                    {
-                        string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
-                   
+                    string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
+
                     // Uncomment to debug locally  
                     // ViewBag.Link = callbackUrl;
                     ViewBag.errorMessage = "You must have a confirmed email to log on. "
                                              + "The confirmation token has been resent to your email account.";
-                        return View("Error");
-                    }
+                    return View("Error");
+                }
 
-                
+
             }
 
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, change to shouldLockout: true
-                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
-                switch (result)
-                {
-                    case SignInStatus.Success:
-                        return RedirectToLocal(returnUrl);
-                    case SignInStatus.LockedOut:
-                        return View("Lockout");
-                    case SignInStatus.RequiresVerification:
-                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                    case SignInStatus.Failure:
-                    default:
-                        ModelState.AddModelError("", "Invalid login attempt.");
-                        return View(model);
-                }
-                    }
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToLocal(returnUrl);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
+            }
+        }
 
         //
         // GET: /Account/VerifyCode
@@ -160,7 +160,7 @@ namespace WebApplication1.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -205,13 +205,14 @@ namespace WebApplication1.Controllers
                     result = await UserManager.AddToRoleAsync(user.Id, "KhachHang");
                     ApplicationDbContext applicationDbContext = new ApplicationDbContext();
 
-                    KhachHang kh = new KhachHang {
-                       UserId = user.Id,
-                       
-                };
-                     applicationDbContext.khachHangs.Add(kh);
+                    KhachHang kh = new KhachHang
+                    {
+                        UserId = user.Id,
+
+                    };
+                    applicationDbContext.khachHangs.Add(kh);
                     applicationDbContext.SaveChanges();
-                   
+
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
 
                     ViewBag.Message = "Bạn đã đăng ký thành công vui lòng kiểm tra mail để xác thực tài khoản";
@@ -266,7 +267,7 @@ namespace WebApplication1.Controllers
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
                 return RedirectToAction("ForgotPasswordConfirmation", "Account");
-              
+
             }
 
             // If we got this far, something failed, redisplay form
@@ -548,7 +549,7 @@ namespace WebApplication1.Controllers
             return View();
         }
     }
-    
 
- 
+
+
 }

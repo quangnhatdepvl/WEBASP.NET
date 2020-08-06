@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication1.Models.KhachHang>
+﻿@model WebApplication1.Models.KhachHang
 
 @{
     Layout = null;
@@ -12,42 +12,57 @@
     <title>Index</title>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
+    <div>
+        <h4>KhachHang</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
                 @Html.DisplayNameFor(model => model.UserId)
-            </th>
-            <th>
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.UserId)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+    
+        
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+    
+            <dt>
                 @Html.DisplayNameFor(model => model.DiachiKH)
-            </th>
-            <th>
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DiachiKH)
+            </dd>
+    
+            <dt>
                 @Html.DisplayNameFor(model => model.DienThoaiKH)
-            </th>
-            <th></th>
-        </tr>
+            </dt>
     
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiachiKH)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DienThoaiKH)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.MaKH }) |
-                @Html.ActionLink("Details", "Details", new { id=item.MaKH }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.MaKH })
-            </td>
-        </tr>
-    }
+            <dd>
+                @Html.DisplayFor(model => model.DienThoaiKH)
+            </dd>
     
-    </table>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.MaKH }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </body>
 </html>
