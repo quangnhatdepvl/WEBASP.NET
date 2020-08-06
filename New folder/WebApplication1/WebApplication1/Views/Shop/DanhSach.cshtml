@@ -1,5 +1,14 @@
 ﻿@using PagedList.Mvc
-
+@helper Truncate(String input, int length) { 
+if(input.Length < length)
+{
+        @input
+}
+else
+{
+        @input.Substring(0,length)<text>...</text>
+}
+    }
 @model PagedList.IPagedList<WebApplication1.Models.Sach>
 @{
     ViewBag.Title = "DanhSach";

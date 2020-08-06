@@ -6,68 +6,64 @@
 
 @using (Html.BeginForm())
 {
-   
 
-<div class="span9">
-    <div class="row-fluid">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MaKH)
+    <div class="span9">
+        <div class="row-fluid">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.MaKH)
+            <table class="table table-hover">
+                <tbody>
+                    <h2 style="color:red; font-weight:bold; text-align:center">THÔNG TIN KHÁCH HÀNG</h2>
+                    <tr>
+                        <td><b>Tên tài khoản :</b></td>
+                        <td style="color: #00a157">
+                            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Họ và tên  :</b></td>
+                        <td style="color: #00a157">
+                            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Giới tính :</b></td>
+                        <td style="color: #00a157">
+                            @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
 
+                    <tr>
+                        <td><b>Địa chỉ :</b></td>
+                        <td style="color: #00a157">
+                            @Html.EditorFor(model => model.DiachiKH, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DiachiKH, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b>Số điện thoại :</b></td>
+                        <td style="color: #00a157">
+                            @Html.EditorFor(model => model.DienThoaiKH, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DienThoaiKH, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
 
-
-        <table class="table table-hover">
-            <tbody>
-                <h2 style="color:red; font-weight:bold; text-align:center">THÔNG TIN KHÁCH HÀNG</h2>
-                <tr>
-                    <td><b>Tên tài khoản :</b></td>
-                    <td style="color: #00a157">
-                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-                    </td>
-                </tr>
-                <tr>
-                    <td><b>Họ và tên  :</b></td>
-                    <td style="color: #00a157">
-                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
-                    </td>
-                </tr>
-                <tr>
-                    <td><b>Giới tính :</b></td>
-                    <td style="color: #00a157">
-                        @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
-                    </td>
-                </tr>
-
-                <tr>
-                    <td><b>Địa chỉ :</b></td>
-                    <td style="color: #00a157">
-                        @Html.EditorFor(model => model.DiachiKH, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.DiachiKH, "", new { @class = "text-danger" })
-                    </td>
-                </tr>
-                <tr>
-                    <td><b>Số điện thoại :</b></td>
-                    <td style="color: #00a157">
-                        @Html.EditorFor(model => model.DienThoaiKH, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.DienThoaiKH, "", new { @class = "text-danger" })
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                </tbody>
+            </table>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
             </div>
+
+
+
         </div>
-
-
-
+-
     </div>
-
-</div>
 }
 
 

@@ -1,5 +1,14 @@
 ﻿@model WebApplication1.Models.Sach
-
+@helper Truncate(String input, int length) { 
+if(input.Length < length)
+{
+        @input
+}
+else
+{
+        @input.Substring(0,length)<text>...</text>
+}
+    }
 @{
     ViewBag.Title = "ChiTietSanPham";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";

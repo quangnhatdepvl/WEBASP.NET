@@ -1,7 +1,17 @@
 ﻿@using PagedList.Mvc
 
 @model PagedList.IPagedList<WebApplication1.Models.Sach>
-
+@helper Truncate(String input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
 
 <div class="span9">
 
@@ -15,17 +25,19 @@
                 <div class="span6">
                     <h5>@item.TenSach </h5>
                     <p>
-                        @item.Mota
+                       @Truncate(item.Mota, 50)
                     </p>
                 </div>
                 <div class="span4 alignR">
                     <form class="form-horizontal qtyFrm">
                         <h3>@String.Format("{0:0,0}", item.price) VND</h3>
-                        <div class="btn-group" style="margin-left:-45px">
-                            <a href="@Url.Action("ThemGiohang","Shop",new { @gh_Masach = @item.MaSach, @strURl = Request.Url.ToString()})" class="defaultBtn" style=""><span class=" icon-shopping-cart" ></span> Thêm vào giỏ hàng</a>
-                            <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.MaSach})" class="shopBtn">Xem chi tiết</a>
-                        </div>
+
                     </form>
+                    <br />
+                    <div class="btn-group" style="margin-left:-100px">
+                        <a href="@Url.Action("ThemGiohang","Shop",new { @gh_Masach = @item.MaSach, @strURl = Request.Url.ToString()})" class="defaultBtn" style=""><span class=" icon-shopping-cart"></span> Thêm vào giỏ hàng</a>
+                        <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.MaSach})" class="shopBtn">Xem chi tiết</a>
+                    </div>
                 </div>
             </div>
             <hr class="soften">
