@@ -18,6 +18,8 @@
 
     <!-- Favicons -->
     <link rel="shortcut icon" href="~/fonts/ico/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
@@ -35,7 +37,19 @@
 
                                 <a href="@Url.Action("Login","Account")"><span class="icon-user"></span>Welcome @User.Identity.GetUserName()</a>
                                 @Html.Action("GioHangPartial", "Shop")
-                                <a href="javascript:document.getElementById('logoutForm').submit()"><span class="icon-signout"></span>Log off</a>
+
+
+                                <div class="w3-dropdown-hover">
+                                    <a href="#"><span class="icon-signout"></span>Cài đặt</a>
+
+                                    <div class="w3-dropdown-content w3-bar-block w3-border">
+                                        <a href="#" class="w3-bar-item w3-button">Cài đặt tài khoản </a>
+                                        <a href="#" class="w3-bar-item w3-button">Đơn mua</a>
+                                        <a href="javascript:document.getElementById('logoutForm').submit()" class="w3-bar-item w3-button">Đăng xuất</a>
+                                    </div>
+                                </div>
+
+
 
                             }
                         }
@@ -147,13 +161,13 @@
                         <br />
                         <p style="font-size: 20px; text-align:center">NHÀ XUẤT BẢN</p>
                         <hr style="border-top:1px solid black">
-                       @Html.Action("Nhaxuatban", "Shop")
+                        @Html.Action("Nhaxuatban", "Shop")
                         <li style="border:0"> &nbsp;</li>
 
-                                </div>
-                
+                </div>
+
                 </ul>
-                
+
             </div>
             @RenderBody()
         </div>
