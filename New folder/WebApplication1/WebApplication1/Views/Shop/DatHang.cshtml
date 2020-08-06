@@ -39,27 +39,27 @@
             @Html.ActionLink("TRỞ VỀ GIỎ HÀNG", "GioHang", "Shop")
         </td>
     </tr>
- 
+
 </table>
 <h2 style="text-align:center">THÔNG TIN ĐẶT HÀNG</h2>
-    @*@{ 
-        KhachHang kh = (KhachHang)Session["TaiKhoan"];
+@{
+    ApplicationUser kh = Session["TaiKhoan"] as ApplicationUser;
 }
 <table align="center">
     @using (Html.BeginForm())
     {
         <tr style="height: 40px">
             <td> Mã khách hàng</td>
-            <td style="font-weight:bold"> @kh.MaKH </td>
+            <td style="font-weight:bold"> @kh.Id </td>
         </tr>
-        <tr style="height: 40px">
+        @*<tr style="height: 40px">
             <td> Điện thoại khách hàng</td>
-            <td style="font-weight:bold"> @kh.DienThoaiKH </td>
-        </tr>
-        <tr style="height: 40px">
-            <td>Địa chỉ </td>
-            <td style="font-weight:bold"> @kh.DiachiKH </td>
-        </tr>
+            <td style="font-weight:bold"> @kh.PhoneNumber </td>
+        </tr>*@
+        @*<tr style="height: 40px">
+                <td>Địa chỉ </td>
+                <td style="font-weight:bold"> @kh. </td>
+            </tr>*@
         <tr style="height: 40px">
             <td>Ngày đặt </td>
             <td style="font-weight:bold">@DateTime.Now.ToShortDateString() </td>
@@ -74,4 +74,4 @@
         </tr>
 
     }
-</table>*@
+</table>

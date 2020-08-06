@@ -13,13 +13,14 @@ namespace WebApplication1.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
-        
         public int MaKH { get; set; }
         public string UserId { get; set; }
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
+        public string FullName { get; set; }
+        public string Address { get; set; }
+        public Nullable<bool> Gender { get; set; }
         public string DiachiKH { get; set; }
 
         public string DienThoaiKH { get; set; }

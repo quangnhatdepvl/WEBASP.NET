@@ -1,27 +1,53 @@
-﻿<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+﻿@model IEnumerable<WebApplication1.Models.KhachHang>
 
-<div>
-    <label>Country Search</label>
-    <input class="form-control" id="searchInput" />
-</div>
-<script>
-    $("#searchInput").autocomplete({
-        source: function (request, response) {
-            $.ajax({
-                url: '@Url.Action("GetSearchValue","Home")',
-                dataType: "json",
-                data: { search: $("#searchInput").val() },
-                success: function (data) {
-                    response($.map(data, function (item) {
-                        return { label: item.Name, value: item.Name };
-                    }));
-                },
-                error: function (xhr, status, error) {
-                    alert("Error");
-                }
-            });
-        }
-    });
-</script>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiachiKH)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DienThoaiKH)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiachiKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoaiKH)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.MaKH }) |
+                @Html.ActionLink("Details", "Details", new { id=item.MaKH }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.MaKH })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

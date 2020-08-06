@@ -96,8 +96,7 @@ namespace WebApplication1.Controllers
                 // Require the user to have a confirmed email before they can log on.
                 // var user = await UserManager.FindByNameAsync(model.Email);
                 var user = UserManager.Find(model.Email, model.Password);
-                if (user != null)
-                 
+                if (user != null)                 
                 {
                  Session["TaiKhoan"] = user;
                     if (!await UserManager.IsEmailConfirmedAsync(user.Id))
@@ -200,9 +199,19 @@ namespace WebApplication1.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
                     //  Comment the following line to prevent log in until the user is confirmed.
                     //  await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    result = await UserManager.AddToRoleAsync(user.Id,"KhachHang");
+                    result = await UserManager.AddToRoleAsync(user.Id, "KhachHang");
+                    ApplicationDbContext applicationDbContext = new ApplicationDbContext();
+
+                    KhachHang kh = new KhachHang {
+                       UserId = user.Id,
+                       
+                };
+                     applicationDbContext.khachHangs.Add(kh);
+                    applicationDbContext.SaveChanges();
+                   
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");
 
                     ViewBag.Message = "Bạn đã đăng ký thành công vui lòng kiểm tra mail để xác thực tài khoản";

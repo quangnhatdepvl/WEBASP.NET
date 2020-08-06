@@ -5,6 +5,8 @@
     ViewBag.Title = "DanhSach";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
-<div id="sach_area">
+
+<div id="sach_area" style="display:inline">
     @{Html.RenderAction("GetPaging", "Shop", new { page = 1 });}
+  
 </div>

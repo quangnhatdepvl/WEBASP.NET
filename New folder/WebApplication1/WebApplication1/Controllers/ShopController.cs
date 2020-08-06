@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
     public class ShopController : Controller
     {
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
- 
+
         // GET: Shop
         public ActionResult Index()
         {
@@ -26,10 +26,10 @@ namespace WebApplication1.Controllers
             return PartialView(giacao);
 
         }
-       
+
         public JsonResult Search(string search)
         {
-         
+
             IEnumerable<object> allsearch = applicationDbContext.saches.Where(x => x.TenSach.Contains(search)).Select(x => new
             {
                 MaSach = x.MaSach,
@@ -50,18 +50,18 @@ namespace WebApplication1.Controllers
             lst = applicationDbContext.saches.ToList();
             int pageNumber = (page ?? 1);
 
-            return PartialView("GetPaging",lst.ToPagedList(pageNumber, 10));
+            return PartialView("GetPaging", lst.ToPagedList(pageNumber, 10));
         }
         [HttpGet]
         public ActionResult ChiTietSanPham(int id)
         {
             Sach asach = new Sach();
             asach = applicationDbContext.saches.Find(id);
-       
+
 
             return View(asach);
         }
-        
+
         public ActionResult LienHe()
         {
             return View();
@@ -100,7 +100,7 @@ namespace WebApplication1.Controllers
 
             return PartialView(sp);
         }
-       
+
         public List<Giohang> Laygiohang()
         {
             List<Giohang> lstGiohang = Session["Giohang"] as List<Giohang>;
@@ -146,7 +146,7 @@ namespace WebApplication1.Controllers
             {
                 gh_TongTien = lstGiohang.Sum(n => n.gh_ThanhTien);
 
-            }   
+            }
             return gh_TongTien;
         }
 
@@ -155,13 +155,13 @@ namespace WebApplication1.Controllers
         public ActionResult GioHang()
         {
             List<Giohang> lstGiohang = Laygiohang();
-           
+
             ViewBag.Tongsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
             return View(lstGiohang);
         }
 
-            public ActionResult GioHangPartial()
+        public ActionResult GioHangPartial()
         {
             ViewBag.Tongsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
@@ -172,12 +172,12 @@ namespace WebApplication1.Controllers
         {
             List<Giohang> lstGioHang = Laygiohang();
             Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_Masach == gh_idPhone);
-            if(sanPham != null)
+            if (sanPham != null)
             {
                 lstGioHang.RemoveAll(sp => sp.gh_Masach == gh_idPhone);
-                 return RedirectToAction("GioHang");
+                return RedirectToAction("GioHang");
             }
-            if(lstGioHang.Count == 0)
+            if (lstGioHang.Count == 0)
             {
                 return RedirectToAction("Index", "Shop");
             }
@@ -190,7 +190,7 @@ namespace WebApplication1.Controllers
             if (sanPham != null)
             {
                 sanPham.gh_soLuong = int.Parse(f["txtSoluong"].ToString());
-                        }
+            }
             return RedirectToAction("GioHang");
         }
 
@@ -203,10 +203,11 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public ActionResult DatHang()
         {
+
             if (Session["TaiKhoan"] == null || Session["TaiKhoan"].ToString() == "")
             {
                 return RedirectToAction("Login", "Account");
-            } 
+            }
             if (Session["Giohang"] == null)
             {
                 return RedirectToAction("Index", "Shop");
@@ -216,13 +217,14 @@ namespace WebApplication1.Controllers
             ViewBag.Tongtien = TongTien();
             return View(lstGioHang);
         }
-    
+
         public ActionResult DatHang(FormCollection collection)
         {
             DonDatHang ddh = new DonDatHang();
-            KhachHang kh = (KhachHang)Session["TaiKhoan"];
+            ApplicationUser kh = Session["TaiKhoan"] as ApplicationUser;
             List<Giohang> gh = Laygiohang();
-            ddh.MaKH = kh.MaKH;
+
+            //ddh.user = kh.us;
             ddh.NgayDatHang = DateTime.Now;
             var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["Ngaygiao"]);
             ddh.NgayGiaoHang = DateTime.Parse(ngaygiao);
@@ -230,16 +232,16 @@ namespace WebApplication1.Controllers
             ddh.ThanhToan = false;
             applicationDbContext.donDatHangs.Add(ddh);
             applicationDbContext.SaveChanges();
-            foreach(var item in gh)
+            foreach (var item in gh)
             {
                 ChiTietDonHang ctdh = new ChiTietDonHang();
                 ctdh.MaDonHang = ddh.MaDonHang;
                 ctdh.MaSach = item.gh_Masach;
-                ctdh.price =  item.gh_Dongia;
+                ctdh.price = item.gh_Dongia;
                 applicationDbContext.chiTietDonHangs.Add(ctdh);
 
             }
-                       applicationDbContext.SaveChanges();
+            applicationDbContext.SaveChanges();
             Session["Giohang"] = null;
             return RedirectToAction("Xacnhandonhang", "Shop");
         }

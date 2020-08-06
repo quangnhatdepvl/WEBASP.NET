@@ -11,7 +11,12 @@ namespace WebApplication1.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+          
+            using (ApplicationDbContext applicationDbContext = new ApplicationDbContext()) {
+           var   kh1 = applicationDbContext.khachHangs.ToList();
+                return View(kh1);
+            }
+          
         }
 
         public JsonResult GetSearchValue(string search)
