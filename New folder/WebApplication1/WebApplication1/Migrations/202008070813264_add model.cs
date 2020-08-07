@@ -27,26 +27,27 @@ namespace WebApplication1.Migrations
                 c => new
                     {
                         MaDonHang = c.Int(nullable: false, identity: true),
-                        MaKH = c.Int(nullable: false),
                         NgayDatHang = c.DateTime(nullable: false, precision: 0),
                         NgayGiaoHang = c.DateTime(nullable: false, precision: 0),
                         TinhTrang = c.Boolean(),
                         ThanhToan = c.Boolean(),
+                        KhachHang_UserId = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
                     })
                 .PrimaryKey(t => t.MaDonHang)
-                .ForeignKey("dbo.KhachHangs", t => t.MaKH, cascadeDelete: true)
-                .Index(t => t.MaKH);
+                .ForeignKey("dbo.KhachHangs", t => t.KhachHang_UserId, cascadeDelete: true)
+                .Index(t => t.KhachHang_UserId);
             
             CreateTable(
                 "dbo.KhachHangs",
                 c => new
                     {
-                        MaKH = c.Int(nullable: false, identity: true),
-                        UserId = c.String(maxLength: 128, storeType: "nvarchar"),
+                        UserId = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
+                        FullName = c.String(unicode: false),
+                        Gender = c.Boolean(),
                         DiachiKH = c.String(unicode: false),
                         DienThoaiKH = c.String(unicode: false),
                     })
-                .PrimaryKey(t => t.MaKH)
+                .PrimaryKey(t => t.UserId)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.UserId);
             
@@ -55,9 +56,6 @@ namespace WebApplication1.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128, storeType: "nvarchar"),
-                        FullName = c.String(unicode: false),
-                        Address = c.String(unicode: false),
-                        Gender = c.Boolean(),
                         Email = c.String(maxLength: 256, storeType: "nvarchar"),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(unicode: false),
@@ -152,23 +150,6 @@ namespace WebApplication1.Migrations
                 .PrimaryKey(t => t.MaNXB);
             
             CreateTable(
-                "dbo.phones",
-                c => new
-                    {
-                        idPhone = c.Int(nullable: false, identity: true),
-                        phoneName = c.String(unicode: false),
-                        typePhone = c.String(unicode: false),
-                        price = c.Double(nullable: false),
-                        nhaSanXuat = c.String(unicode: false),
-                        img_url = c.String(unicode: false),
-                        ngaySanXuat = c.DateTime(precision: 0),
-                        des = c.String(unicode: false),
-                        luotTruyCap = c.Int(nullable: false),
-                        soLuong = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.idPhone);
-            
-            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -217,7 +198,7 @@ namespace WebApplication1.Migrations
             DropForeignKey("dbo.Saches", "MaNXB", "dbo.NhaXuatBans");
             DropForeignKey("dbo.Saches", "MaCD", "dbo.ChuDes");
             DropForeignKey("dbo.ChiTietDonHangs", "MaDonHang", "dbo.DonDatHangs");
-            DropForeignKey("dbo.DonDatHangs", "MaKH", "dbo.KhachHangs");
+            DropForeignKey("dbo.DonDatHangs", "KhachHang_UserId", "dbo.KhachHangs");
             DropForeignKey("dbo.KhachHangs", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
@@ -233,13 +214,12 @@ namespace WebApplication1.Migrations
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.KhachHangs", new[] { "UserId" });
-            DropIndex("dbo.DonDatHangs", new[] { "MaKH" });
+            DropIndex("dbo.DonDatHangs", new[] { "KhachHang_UserId" });
             DropIndex("dbo.ChiTietDonHangs", new[] { "MaSach" });
             DropIndex("dbo.ChiTietDonHangs", new[] { "MaDonHang" });
             DropTable("dbo.VietSaches");
             DropTable("dbo.TacGias");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.phones");
             DropTable("dbo.NhaXuatBans");
             DropTable("dbo.ChuDes");
             DropTable("dbo.Saches");

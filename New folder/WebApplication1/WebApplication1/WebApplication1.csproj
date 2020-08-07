@@ -248,13 +248,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202008030634593_add model.cs" />
-    <Compile Include="Migrations\202008030634593_add model.Designer.cs">
-      <DependentUpon>202008030634593_add model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202008060408287_update model.cs" />
-    <Compile Include="Migrations\202008060408287_update model.Designer.cs">
-      <DependentUpon>202008060408287_update model.cs</DependentUpon>
+    <Compile Include="Migrations\202008070813264_add model.cs" />
+    <Compile Include="Migrations\202008070813264_add model.Designer.cs">
+      <DependentUpon>202008070813264_add model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -651,11 +647,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202008030634593_add model.resx">
-      <DependentUpon>202008030634593_add model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202008060408287_update model.resx">
-      <DependentUpon>202008060408287_update model.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202008070813264_add model.resx">
+      <DependentUpon>202008070813264_add model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

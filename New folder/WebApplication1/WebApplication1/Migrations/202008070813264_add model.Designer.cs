@@ -7,18 +7,18 @@ namespace WebApplication1.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class updatemodel : IMigrationMetadata
+    public sealed partial class addmodel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updatemodel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(addmodel));
         
         string IMigrationMetadata.Id
         {
-            get { return "202008060408287_update model"; }
+            get { return "202008070813264_add model"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return Resources.GetString("Source"); }
+            get { return null; }
         }
         
         string IMigrationMetadata.Target

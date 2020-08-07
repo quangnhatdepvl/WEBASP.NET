@@ -12,8 +12,8 @@ namespace WebApplication1.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaDonHang { get; set; }
 
-        public int MaKH { get; set; }
-        [ForeignKey("MaKH")]
+      
+        [Required]
         public KhachHang KhachHang { get; set; }
 
         public DateTime NgayDatHang { get; set; }

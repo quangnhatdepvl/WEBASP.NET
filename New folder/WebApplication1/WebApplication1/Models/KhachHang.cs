@@ -11,20 +11,16 @@ namespace WebApplication1.Models
 {
     public class KhachHang
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int MaKH { get; set; }
+        [Key, ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
 
-        [ForeignKey("UserId")]
-        public virtual ApplicationUser ApplicationUser { get; set; }
         public string FullName { get; set; }
      
         public Nullable<bool> Gender { get; set; }
         public string DiachiKH { get; set; }
 
         public string DienThoaiKH { get; set; }
-      
-        
+
+        public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }
