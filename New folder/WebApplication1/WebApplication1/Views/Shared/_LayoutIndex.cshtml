@@ -80,13 +80,14 @@
                         </a>
                     </h1>
                 </div>
+
                 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
                 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
                 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
                 <div class="navbar-search pull-left">
 
-                    <input type="text" placeholder="Search" class="search-query span2" style="width:463px; padding:14px 14px; margin: 16px" id="searchInput" />
+                    <input type="text" placeholder="Search" class="search-query span2 ui-autocomplete-input" style="width: 602px;height: 40px;padding:14px 14px;margin: 16px;" id="searchInput" autocomplete="off">
                 </div>
 
 
@@ -139,9 +140,9 @@
                     </a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class=""><a href="@Url.Action("Index","Shop")">TRANG CHỦ</a></li>
-                            <li class=""><a href="@Url.Action("DanhSach","Shop")">DANH SÁCH</a></li>
-                            <li class=""><a href="@Url.Action("LienHe","Shop")">LIÊN HỆ</a></li>
+                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("Index","Shop")">TRANG CHỦ</a></li>
+                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("DanhSach","Shop")">DANH SÁCH</a></li>
+                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("LienHe","Shop")">LIÊN HỆ</a></li>
                         </ul>
 
                     </div>
@@ -155,14 +156,15 @@
             <div id="sidebar" class="span3">
                 <div class="well well-small">
                     <ul class="nav nav-list">
-                        <p style="font-size: 20px; text-align:center"> CHỦ ĐỀ</p>
+                        <p style="font-size: 15px; text-align:center; font-weight:bold"> CHỦ ĐỀ</p>
                         <hr style="border-top:1px solid black">
                         @Html.Action("Chude", "Shop")
                         <br />
-                        <p style="font-size: 20px; text-align:center">NHÀ XUẤT BẢN</p>
+                        <p style="font-size: 15px; text-align:center; font-weight:bold">NHÀ XUẤT BẢN</p>
                         <hr style="border-top:1px solid black">
                         @Html.Action("Nhaxuatban", "Shop")
                         <li style="border:0"> &nbsp;</li>
+
 
                 </div>
 
@@ -183,4 +185,17 @@
     <script src="~/Scripts/shop.js"></script>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 </body>
+
+
+
+<div class="copyright">
+    <div class="container">
+       
+        <span> &copy; 2020 Cửa hàng mua bán sách uy tín chất lượng nhất Việt Nam</span>
+        <p>
+            Giấy chứng nhận Đăng ký Kinh doanh số 0309532909 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 06/01/2010
+        </p>
+    </div>
+</div>
+
 </html>

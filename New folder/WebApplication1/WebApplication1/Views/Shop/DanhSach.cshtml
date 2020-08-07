@@ -1,21 +1,19 @@
-﻿@using PagedList.Mvc
-@helper Truncate(String input, int length) { 
-if(input.Length < length)
+﻿
+@helper Truncate(String input, int length)
 {
+    if (input.Length < length)
+    {
         @input
-}
-else
-{
-        @input.Substring(0,length)<text>...</text>
-}
     }
-@model PagedList.IPagedList<WebApplication1.Models.Sach>
-@{
-    ViewBag.Title = "DanhSach";
-    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
 }
+@model PagedList.IPagedList<WebApplication1.Models.Sach>
+
 
 <div id="sach_area" style="display:inline">
     @{Html.RenderAction("GetPaging", "Shop", new { page = 1 });}
-  
+
 </div>

@@ -85,10 +85,46 @@
                         </a>
                     </h1>
                 </div>
-                <form action="#" class="navbar-search pull-left">
-                    <input type="text" placeholder="Search" class="search-query span2" style="width:463px; padding:14px 14px; margin: 16px">
-                    <button class="icon-search" type="submit" style="padding: 17px 13px; border: 0.5px solid white"> </button>
-                </form>
+                <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+                <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+                <div class="navbar-search pull-left">
+
+                    <input type="text" placeholder="Search" class="search-query span2 ui-autocomplete-input" style="width: 602px;height: 40px;padding:14px 14px;margin: 16px;" id="searchInput" autocomplete="off">
+                </div>
+
+
+                <script>
+    function onItemSelect(item){
+   var siteRootUrl = '@Url.Content("~/")';
+   window.location.href = siteRootUrl + 'Shop/ChiTietSanPham/' + item;
+}
+    $("#searchInput").autocomplete({
+        source: function (request, response)
+        {
+            $.ajax({
+                url: '@Url.Action("Search", "Shop")',
+                dataType: "json",
+                data: { search: $("#searchInput").val() },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return { label: item.TenSach, value: item.TenSach, MaSach: item.MaSach };
+                    }));
+                },
+                error: function (xhr, status, error) {
+                    alert("Error");
+                }
+
+            });
+        },
+        select: function (event, ui) {
+            onItemSelect(ui.item.MaSach);
+        }
+
+
+    });
+                </script>
 
             </div>
         </header>
@@ -106,10 +142,9 @@
                     </a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class=""><a href="@Url.Action("Index","Shop")">TRANG CHỦ</a></li>
-                            <li class=""><a href="@Url.Action("DanhSach","Shop")">DANH SÁCH</a></li>
-                            <li class=""><a href="@Url.Action("LienHe","Shop")">LIÊN HỆ</a></li>
-
+                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("Index","Shop")">TRANG CHỦ</a></li>
+                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("DanhSach","Shop")">DANH SÁCH</a></li>
+                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("LienHe","Shop")">LIÊN HỆ</a></li>
                         </ul>
 
                     </div>
@@ -124,32 +159,19 @@
         <!--
         Clients
         -->
-        <section class="our_client">
-
-            <div class="row">
-                <div class="span2">
-                    <a href="#"><img alt="" src="~/images/1.png"></a>
-                </div>
-                <div class="span2">
-                    <a href="#"><img alt="" src="~/images/2.png"></a>
-                </div>
-                <div class="span2">
-                    <a href="#"><img alt="" src="~/images/3.png"></a>
-                </div>
-                <div class="span2">
-                    <a href="#"><img alt="" src="~/images/4.png"></a>
-                </div>
-                <div class="span2">
-                    <a href="#"><img alt="" src="~/images/5.png"></a>
-                </div>
-                <div class="span2">
-                    <a href="#"><img alt="" src="~/images/6.png"></a>
-                </div>
-            </div>
-        </section>
 
     </div><!-- /container -->
 
+
+    <div class="copyright">
+        <div class="container">
+
+            <span> &copy; 2020 Cửa hàng mua bán sách uy tín chất lượng nhất Việt Nam</span>
+            <p>
+                Giấy chứng nhận Đăng ký Kinh doanh số 0309532909 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 06/01/2010
+            </p>
+        </div>
+    </div>
 
     <a href="#" class="gotop"><i class="icon-double-angle-up"></i></a>
     <!-- Placed at the end of the document so the pages load faster -->
