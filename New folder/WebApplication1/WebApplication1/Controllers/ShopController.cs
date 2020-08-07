@@ -258,13 +258,20 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public ActionResult ThongTinKhachHang(KhachHang kh)
+        public ActionResult ThongTinKhachHang(KhachHangViewModel kh)
         {
             if (ModelState.IsValid)
             {
-                kh.UserId = User.Identity.GetUserId();
-                applicationDbContext.Entry(kh).State = EntityState.Modified;
-             
+                KhachHang khachHang = new KhachHang
+                {
+                    UserId = User.Identity.GetUserId(),
+                    DiachiKH = kh.DiachiKH,
+                    DienThoaiKH = kh.DienThoaiKH,
+                    FullName = kh.Fullname,
+                    Gender = kh.Gender
+                };
+
+                applicationDbContext.Entry(khachHang).State = EntityState.Modified;
                 applicationDbContext.SaveChanges();
                 return RedirectToAction("Index","Shop");
             }

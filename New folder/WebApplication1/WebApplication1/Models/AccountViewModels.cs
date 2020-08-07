@@ -109,4 +109,22 @@ namespace WebApplication1.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class KhachHangViewModel
+    {
+        [Required]
+        [Display(Name = "Họ và tên")]
+        public string Fullname { get; set; }
+
+        [Required]
+        [Display(Name = "Địa chỉ")]
+        public string DiachiKH { get; set; }
+        [Required]
+        [Display(Name = "Họ và tên")]
+        public string DienThoaiKH { get; set; }
+
+        [Required]
+        [Display(Name = "Giới tính")]
+        public bool? Gender { get; set; }
+    }
 }
