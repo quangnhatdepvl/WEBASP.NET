@@ -222,10 +222,10 @@ namespace WebApplication1.Controllers
         public ActionResult DatHang(FormCollection collection)
         {
             DonDatHang ddh = new DonDatHang();
-            ApplicationUser kh = Session["TaiKhoan"] as ApplicationUser;
+            var userId = User.Identity.GetUserId();
+            var kh = applicationDbContext.khachHangs.FirstOrDefault(c => c.UserId == userId);
             List<Giohang> gh = Laygiohang();
-
-            //ddh.user = kh.us;
+            ddh.KhachHang = kh;
             ddh.NgayDatHang = DateTime.Now;
             var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["Ngaygiao"]);
             ddh.NgayGiaoHang = DateTime.Parse(ngaygiao);
@@ -254,8 +254,7 @@ namespace WebApplication1.Controllers
         public ActionResult ThongTinKhachHang()
           {
             var userId = User.Identity.GetUserId();
-            var kh = applicationDbContext.khachHangs.FirstOrDefault(c => c.UserId == userId );
-          
+            var kh = applicationDbContext.khachHangs.FirstOrDefault(c => c.UserId == userId);
             return View(kh);
 
         }

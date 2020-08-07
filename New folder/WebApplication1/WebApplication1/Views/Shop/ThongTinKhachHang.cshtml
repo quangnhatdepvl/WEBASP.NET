@@ -31,7 +31,9 @@
                     <tr>
                         <td><b>Giới tính :</b></td>
                         <td style="color: #00a157">
-                            @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
+                            @*@Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })*@
+                            Nam @Html.RadioButtonFor(m => m.Gender.Value, true, new { @checked = "checked" })
+                            Nữ @Html.RadioButtonFor(m => m.Gender.Value, false)
                             @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                         </td>
                     </tr>

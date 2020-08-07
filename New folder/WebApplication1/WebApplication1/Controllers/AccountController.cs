@@ -98,7 +98,11 @@ namespace WebApplication1.Controllers
             var user = UserManager.Find(model.Email, model.Password);
             if (user != null)
             {
-             
+                ApplicationDbContext applicationDbContext = new ApplicationDbContext();
+                var userId = User.Identity.GetUserId();
+                var kh = applicationDbContext.khachHangs.FirstOrDefault(c => c.UserId == userId);
+              
+               
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
