@@ -40,19 +40,17 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        public ActionResult DanhSach()
-        {
-            return View();
-        }
-
-        public PartialViewResult GetPaging(int? page)
+        public ActionResult DanhSach(int ? page)
         {
             List<Sach> lst = new List<Sach>();
             lst = applicationDbContext.saches.ToList();
             int pageNumber = (page ?? 1);
 
-            return PartialView("GetPaging", lst.ToPagedList(pageNumber, 10));
+            return PartialView("DanhSach", lst.ToPagedList(pageNumber, 10));
+        
         }
+
+        
         [HttpGet]
         public ActionResult ChiTietSanPham(int id)
         {

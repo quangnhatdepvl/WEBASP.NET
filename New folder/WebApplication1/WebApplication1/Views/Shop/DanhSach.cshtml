@@ -1,6 +1,10 @@
-﻿@{
+﻿@model PagedList.IPagedList<WebApplication1.Models.Sach>
+@using PagedList.Mvc
+
+
+@{
     ViewBag.Title = "DanhSach";
-    
+    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 @helper Truncate(String input, int length)
 {
@@ -13,10 +17,56 @@
         @input.Substring(0, length)<text>...</text>
     }
 }
-@model PagedList.IPagedList<WebApplication1.Models.Sach>
 
 
-<div id="sach_area" style="display:inline">
-    @{Html.RenderAction("GetPaging", "Shop", new { page = 1 });}
 
-</div>
+    <div class="span9">
+        <div class="well well-small">
+            @foreach (var item in Model)
+            {
+                <div class="row-fluid">
+                    <div class="span2">
+                        <img src="~/images/@item.Anhbia" alt="">
+                    </div>
+                    <div class="span6">
+                        <h5>@item.TenSach </h5>
+                        <p>
+                            @Truncate(item.Mota, 50)
+                        </p>
+                    </div>
+                    <div class="span4 alignR">
+                        <form class="form-horizontal qtyFrm">
+                            <h3 style="color:red; font-size:16px">Giá: @String.Format("{0:0,0}", item.price) VND</h3>
+
+                        </form>
+                        <br />
+                        <div class="btn-group" style="margin-left:-100px;margin-top:20px">
+                            <a href="@Url.Action("ThemGiohang","Shop",new { @gh_Masach = @item.MaSach, @strURl = Request.Url.ToString()})" class="defaultBtn" style=""><span class=" icon-shopping-cart"></span> Thêm vào giỏ hàng</a>
+                            <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.MaSach})" class="shopBtn">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="soften">
+            }
+
+
+        </div>
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+        <div class="sach_area">
+            @Html.PagedListPager(Model,page => Url.Action("DanhSach", new { page = page }),
+                PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions()
+                { HttpMethod = "GET", UpdateTargetId = "sach_area" }))
+
+        </div>
+        <style>
+            .sach_area li {
+                 
+                display: inline;
+                border: 10px solid white;
+                margin: 5px 5px 2px 2px;
+            }
+        </style>
+    </div>
+
+
+
