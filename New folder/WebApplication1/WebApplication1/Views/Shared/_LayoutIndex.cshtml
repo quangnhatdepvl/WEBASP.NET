@@ -35,7 +35,7 @@
                                 @Html.AntiForgeryToken()
 
 
-                                <a href="@Url.Action("Login","Account")"><span class="icon-user"></span>Welcome @User.Identity.GetUserName()</a>
+                                <a href="@Url.Action("Index","Shop")"><span class="icon-user"></span>Welcome @User.Identity.GetUserName()</a>
                                 @Html.Action("GioHangPartial", "Shop")
 
 
@@ -190,7 +190,7 @@
 
 <div class="copyright">
     <div class="container">
-       
+
         <span> &copy; 2020 Cửa hàng mua bán sách uy tín chất lượng nhất Việt Nam</span>
         <p>
             Giấy chứng nhận Đăng ký Kinh doanh số 0309532909 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 06/01/2010
