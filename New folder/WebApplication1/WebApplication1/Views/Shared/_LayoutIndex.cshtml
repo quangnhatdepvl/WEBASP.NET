@@ -88,6 +88,7 @@
                 <div class="navbar-search pull-left">
 
                     <input type="text" placeholder="Search" class="search-query span2 ui-autocomplete-input" style="width: 602px;height: 40px;padding:14px 14px;margin: 16px;" id="searchInput" autocomplete="off">
+                    
                 </div>
 
 
@@ -140,9 +141,9 @@
                     </a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("Index","Shop")">TRANG CHỦ</a></li>
-                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("DanhSach","Shop")">DANH SÁCH</a></li>
-                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("LienHe","Shop")">LIÊN HỆ</a></li>
+                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("Index","Shop")"><span class="icon-home"> TRANG CHỦ</span></a></li>
+                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("DanhSach","Shop")"><span class="icon-list"> DANH SÁCH</span></a></li>
+                            <li class="" style="font-size:16px; font-weight:bold"><a href="@Url.Action("LienHe","Shop")"><span class="icon-phone"> LIÊN HỆ</span></a></li>
                         </ul>
 
                     </div>
@@ -156,11 +157,11 @@
             <div id="sidebar" class="span3">
                 <div class="well well-small">
                     <ul class="nav nav-list">
-                        <p style="font-size: 15px; text-align:center; font-weight:bold"> CHỦ ĐỀ</p>
+                        <p style="font-size: 15px; text-align:center; font-weight:bold"><span class="icon-book"></span> CHỦ ĐỀ</p>
                         <hr style="border-top:1px solid black">
                         @Html.Action("Chude", "Shop")
                         <br />
-                        <p style="font-size: 15px; text-align:center; font-weight:bold">NHÀ XUẤT BẢN</p>
+                        <p style="font-size: 15px; text-align:center; font-weight:bold"><span class="icon-book"></span>NHÀ XUẤT BẢN</p>
                         <hr style="border-top:1px solid black">
                         @Html.Action("Nhaxuatban", "Shop")
                         <li style="border:0"> &nbsp;</li>

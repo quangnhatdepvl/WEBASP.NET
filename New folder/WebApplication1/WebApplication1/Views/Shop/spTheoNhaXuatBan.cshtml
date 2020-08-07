@@ -3,6 +3,17 @@
     ViewBag.Title = "spTheoNhaXuatBan";
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
+@helper Truncate(String input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
 
 <div class="span9">
 
@@ -31,7 +42,7 @@
                             <a class="zoomTool" href="@Url.Action("ChiTietSanPham","Shop", new { id = item.MaSach})" style="font-size:10px"><span class="icon-search"></span> XEM CHI TIẾT</a>
                             <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.MaSach})"><img src="~/images/@item.Anhbia" style="height:150px"></a>
                             <div class="caption cntr">
-                                <p>@item.TenSach</p>
+                                <p>@Truncate(item.TenSach, 30)</p>
                                 <p style="color: red"> Giá :<strong>@String.Format("{0:0,0}", item.price) VND</strong></p>
                                 <h4><a class="shopBtn" href="@Url.Action("ThemGiohang","Shop",new { @gh_Masach = @item.MaSach, @strURl = Request.Url.ToString()})" title="add to cart"> Add to cart </a></h4>
 
