@@ -267,6 +267,7 @@ namespace WebApplication1.Controllers
             {
                 kh.UserId = User.Identity.GetUserId();
                 applicationDbContext.Entry(kh).State = EntityState.Modified;
+             
                 applicationDbContext.SaveChanges();
                 return RedirectToAction("Index","Shop");
             }
