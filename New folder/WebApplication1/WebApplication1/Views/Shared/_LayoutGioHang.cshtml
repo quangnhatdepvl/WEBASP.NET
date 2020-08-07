@@ -42,7 +42,7 @@
                                 @Html.AntiForgeryToken()
 
 
-                                <a href="@Url.Action("Login","Account")"><span class="icon-user"></span>Welcome @User.Identity.GetUserName()</a>
+                                <a href="@Url.Action("Index","Shop")"><span class="icon-user"></span>Welcome @User.Identity.GetUserName()</a>
                                 @Html.Action("GioHangPartial", "Shop")
 
                                 <div class="w3-dropdown-hover">
