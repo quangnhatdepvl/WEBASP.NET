@@ -2,13 +2,12 @@
 @model IEnumerable<ApplicationUser>
 @{
     ViewBag.Title = "Quản lý thành viên";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutAdminHeader.cshtml";
 }
 
 <div class="row">
     <div class="col-sm-12">
-        <h2>@ViewBag.Title</h2>
-        <hr />
+     
         <table class="table table-borderer">
             <thead>
                 <tr>
@@ -23,10 +22,10 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.FullName</td>
+                     
                         <td>@item.Email</td>
-                        <td>@(item.Gender == true ? "Nam" : "Nữ")</td>
-                        <td>@item.Address</td>
+                        @*<td>@(item.Gender == true ? "Nam" : "Nữ")</td>*@
+                    
 
                         <td>
 

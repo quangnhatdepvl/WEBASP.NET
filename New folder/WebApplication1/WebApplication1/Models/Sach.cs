@@ -14,6 +14,7 @@ namespace WebApplication1.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        
         public int MaSach { get; set; }
 
         [Required]
