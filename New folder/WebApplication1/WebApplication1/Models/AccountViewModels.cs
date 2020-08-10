@@ -119,8 +119,10 @@ namespace WebApplication1.Models
         [Required]
         [Display(Name = "Địa chỉ")]
         public string DiachiKH { get; set; }
+
+        [DataType(DataType.PhoneNumber)]
         [Required]
-        [Display(Name = "Họ và tên")]
+        [Display(Name = "Điện thoại")]
         public string DienThoaiKH { get; set; }
 
         [Required]
