@@ -19,6 +19,8 @@ namespace WebApplication1.Areas.Admin.Controllers
         {
             return View();
         }
+      
+
         public ActionResult Sach(int? page)
         {
             List<Sach> lst = new List<Sach>();

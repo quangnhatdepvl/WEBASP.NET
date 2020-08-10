@@ -5,18 +5,20 @@
     Layout = "~/Views/Shared/_LayoutAdminHeader.cshtml";
 }
 
-<h2>Suasach</h2>
+
 
 @using (Html.BeginForm("Suasach", "Admin", new { area = "Admin" }, FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-
+    <br />
+    <br />
+    <h2 style="text-align:center;margin-left:300px">SỬA THÔNG TIN SÁCH</h2>
     <div class="form-horizontal">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.MaSach)
 
-        <div class="form-group">
+        <div class="form-group" style="margin-left:300px">
             @Html.LabelFor(model => model.TenSach, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TenSach, new { htmlAttributes = new { @class = "form-control" } })
@@ -24,7 +26,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-left:300px">
             @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
@@ -32,7 +34,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-left:300px">
             @Html.LabelFor(model => model.Mota, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <textarea name="Mota">Mô tả thông tin </textarea>
@@ -40,16 +42,16 @@
         </div>
 
 
-        <div class="form-group">
+        <div class="form-group" style="margin-left:300px">
             @Html.LabelFor(model => model.Anhbia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="file" name="fileupLoad" />
-                @*<img src="@Url.Content("~/images/" + Model.Anhbia)" width="120px"/>*@ 
+                @*<img src="@Url.Content("~/images/" + Model.Anhbia)" width="120px"/>*@
                 @ViewBag.Thongbao
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-left:300px">
             @Html.LabelFor(model => model.NgayCapNhat, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input type="date" name="Ngaycapnhat" />
@@ -57,7 +59,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-left:300px">
             @Html.LabelFor(model => model.SoLuongTon, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SoLuongTon, new { htmlAttributes = new { @class = "form-control" } })
@@ -65,29 +67,32 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-left:300px">
             @Html.LabelFor(model => model.MaCD, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("MaCD")
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-left:300px">
             @Html.LabelFor(model => model.MaNXB, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("MaNXB")
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-left:300px">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="LƯU" class="btn btn-dark" />
+                <button class="btn btn-dark">
+                    @Html.ActionLink("TRỞ VỀ ", "Sach")
+                </button>
+
+
             </div>
         </div>
     </div>
-    <div>
-        @Html.ActionLink("TRỞ VỀ ", "Sach")
-    </div>
+   
 }
 
 
