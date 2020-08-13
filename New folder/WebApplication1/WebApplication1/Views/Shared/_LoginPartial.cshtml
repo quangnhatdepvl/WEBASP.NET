@@ -26,6 +26,6 @@ else
 {
     <a href="@Url.Action("Login","Account")"><span class="icon-signin"></span> ĐĂNG NHẬP</a>
     <a href="@Url.Action("Register","Account")"><span class="icon-sign-blank"></span> ĐĂNG KÝ </a>
-    @Html.Action("GioHangPartial", "Shop")
+    @Html.Action("GioHangPartial", "Shop", new { area =""})
 
 }
