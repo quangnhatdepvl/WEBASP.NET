@@ -11,7 +11,7 @@
  Target Server Version : 100406
  File Encoding         : 65001
 
- Date: 07/08/2020 15:16:42
+ Date: 13/08/2020 13:02:43
 */
 
 SET NAMES utf8mb4;
@@ -44,6 +44,12 @@ CREATE TABLE `aspnetroles`  (
   PRIMARY KEY (`Id`) USING BTREE,
   UNIQUE INDEX `RoleNameIndex`(`Name`) USING HASH
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of aspnetroles
+-- ----------------------------
+INSERT INTO `aspnetroles` VALUES ('Ad', 'Admin');
+INSERT INTO `aspnetroles` VALUES ('KH', 'KhachHang');
 
 -- ----------------------------
 -- Table structure for aspnetuserclaims
@@ -87,6 +93,12 @@ CREATE TABLE `aspnetuserroles`  (
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of aspnetuserroles
+-- ----------------------------
+INSERT INTO `aspnetuserroles` VALUES ('35d1d8ea-e780-4e0a-9e01-4482c527d6ba', 'Ad');
+INSERT INTO `aspnetuserroles` VALUES ('b8b6003f-b93b-4bdb-a4b6-fc684b4689dc', 'KH');
+
+-- ----------------------------
 -- Table structure for aspnetusers
 -- ----------------------------
 DROP TABLE IF EXISTS `aspnetusers`;
@@ -106,6 +118,12 @@ CREATE TABLE `aspnetusers`  (
   PRIMARY KEY (`Id`) USING BTREE,
   UNIQUE INDEX `UserNameIndex`(`UserName`) USING HASH
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of aspnetusers
+-- ----------------------------
+INSERT INTO `aspnetusers` VALUES ('35d1d8ea-e780-4e0a-9e01-4482c527d6ba', 'gmail1@gmail.com', 1, 'AFyy/CFBZsv45XCDE8VZGM4l2b+/PiffoM9YbO+vP2m+dST+EO9cR7nghIobgeubNg==', 'a4dbfc81-56ed-4d06-a1f7-b43ee5a5068d', NULL, 0, 0, NULL, 1, 0, 'gmail1@gmail.com');
+INSERT INTO `aspnetusers` VALUES ('b8b6003f-b93b-4bdb-a4b6-fc684b4689dc', 'gmail2@gmail.com', 1, 'AHppKLnYaI8j72bpAwHbd0zolbgV62m6lDaJNpkIbuPBdI76OZbE7jnN6dDiQ17K1w==', '5eac44b1-f407-4e17-9047-ffed10b41f1d', NULL, 0, 0, NULL, 1, 0, 'gmail2@gmail.com');
 
 -- ----------------------------
 -- Table structure for chitietdonhangs
@@ -178,6 +196,12 @@ CREATE TABLE `khachhangs`  (
   INDEX `IX_UserId`(`UserId`) USING BTREE,
   CONSTRAINT `FK_KhachHangs_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `aspnetusers` (`Id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of khachhangs
+-- ----------------------------
+INSERT INTO `khachhangs` VALUES ('35d1d8ea-e780-4e0a-9e01-4482c527d6ba', 'asd', 1, '123', '1');
+INSERT INTO `khachhangs` VALUES ('b8b6003f-b93b-4bdb-a4b6-fc684b4689dc', NULL, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for nhaxuatbans
