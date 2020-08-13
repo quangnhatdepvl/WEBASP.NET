@@ -45,15 +45,16 @@
                         </div>
                     </li>
                 </ul>
+                @Html.Partial("_LoginPartial")
                 <ul class="navbar-nav navbar-nav-right">
-                
+
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="logo.png" alt="profile" />
                             <span class="nav-profile-name"> Admin</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                                   <a  href="@Url.Action("Logoff","Account",new { area = "root"})" class="dropdown-item">
+                            <a href="@Url.Action("Logoff","Account",new { area =""})" class="dropdown-item">
                                 <i class="mdi mdi-logout text-primary"></i>
                                 Đăng xuất
                             </a>

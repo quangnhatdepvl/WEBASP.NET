@@ -28,43 +28,7 @@
             <div class="topNav">
                 <div class="container">
                     <div class="alignR">
-                        @if (Request.IsAuthenticated)
-                        {
-                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                            {
-                                @Html.AntiForgeryToken()
-
-
-                                <a href="@Url.Action("Index","Shop")"><span class="icon-user"></span>Welcome @User.Identity.GetUserName()</a>
-                                @Html.Action("GioHangPartial", "Shop")
-
-
-                                <div class="w3-dropdown-hover">
-                                    <a href="#"><span class="icon-signout"></span>Cài đặt</a>
-
-                                    <div class="w3-dropdown-content w3-bar-block w3-border">
-                                        <a href="@Url.Action("ThongTinKhachHang","Shop")" class="w3-bar-item w3-button">Cài đặt tài khoản </a>
-                                        <a href="#" class="w3-bar-item w3-button">Đơn mua</a>
-                                        <a href="@Url.Action("ChangePassword","Manage")" class="w3-bar-item w3-button">Đổi mật khẩu </a>
-                                        <a href="javascript:document.getElementById('logoutForm').submit()" class="w3-bar-item w3-button">Đăng xuất</a>
-                                    </div>
-                                </div>
-
-
-
-                            }
-                        }
-                        else
-                        {
-
-                            <a href="@Url.Action("Login","Account")"><span class="icon-signin"></span> ĐĂNG NHẬP</a>
-                            <a href="@Url.Action("Register","Account")"><span class="icon-sign-blank"></span> ĐĂNG KÝ </a>
-                            @Html.Action("GioHangPartial", "Shop")
-
-                        }
-
-
-
+                       @Html.Partial("_LoginPartial")
 
                     </div>
                 </div>
