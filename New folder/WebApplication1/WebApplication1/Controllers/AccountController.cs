@@ -72,8 +72,9 @@ namespace WebApplication1.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-
+                
                 return RedirectToAction("Index", "Shop");
+           
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -98,11 +99,12 @@ namespace WebApplication1.Controllers
             var user = UserManager.Find(model.Email, model.Password);
             if (user != null)
             {
-                ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-                var userId = User.Identity.GetUserId();
-                var kh = applicationDbContext.khachHangs.FirstOrDefault(c => c.UserId == userId);
               
-               
+                if (UserManager.IsInRole(user.Id,"Admin"))
+                {
+                    return RedirectToAction("Sach", "Admin", new { area = "Admin" });
+                } else { 
+
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account-Resend");
@@ -113,7 +115,7 @@ namespace WebApplication1.Controllers
                                              + "The confirmation token has been resent to your email account.";
                     return View("Error");
                 }
-
+                }
 
             }
 
