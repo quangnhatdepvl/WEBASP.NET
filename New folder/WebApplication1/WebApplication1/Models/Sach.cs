@@ -33,11 +33,11 @@ namespace WebApplication1.Models
 
         public int MaCD { get; set; }
         [ForeignKey("MaCD")]
-        public ChuDe ChuDe { get; set; }
+        public virtual ChuDe  ChuDe { get; set; }
 
-        public int MaNXB { get; set; }
+        public  int MaNXB { get; set; }
         [ForeignKey("MaNXB")]
-        public NhaXuatBan NhaXuatBan { get; set; }
+        public virtual NhaXuatBan NhaXuatBan { get; set; }
 
 
 

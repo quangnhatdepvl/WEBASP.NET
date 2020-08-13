@@ -1,30 +1,31 @@
 ﻿@model WebApplication1.Models.Sach
-@helper Truncate(String input, int length) { 
-if(input.Length < length)
+@helper Truncate(String input, int length)
 {
+    if (input.Length < length)
+    {
         @input
-}
-else
-{
-        @input.Substring(0,length)<text>...</text>
-}
     }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
 @{
     ViewBag.Title = "ChiTietSanPham";
-    Layout = "~/Views/Shared/_LayoutIndex.cshtml";
+    Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
 }
 
-<div class="span9">
-    <ul class="breadcrumb">
+<div class="span12">
+    <ul class="breadcrumb" style="width:925px;">
         <li>THÔNG TIN CHI TIẾT<span class="divider">/</span></li>
-      
-        
+
+
         <li class="divider">@Model.TenSach</li>
     </ul>
     <div class="well well-small">
         <div class="row-fluid">
             <div>
-                <div class="span5">
+                <div class="span3">
                     <div id="myCarousel" class="carousel slide cntr">
                         <div class="carousel-inner">
                             <div class="item active">
@@ -38,42 +39,65 @@ else
                             </div>
                         </div>
                         <br />
-                        <a class="shopBtn" href="@Url.Action("ThemGiohang","Shop",new { @gh_Masach = Model.MaSach, @strURl = Request.Url.ToString()})" title="add to cart"> Thêm vào giỏ hàng </a>
+                        <a class="shopBtn" href="@Url.Action("ThemGiohang","Shop",new { @gh_Masach = Model.MaSach, @strURl = Request.Url.ToString()})"><span class=" icon-shopping-cart"></span>  Thêm vào giỏ hàng </a>
 
-                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
-                        <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+
                     </div>
 
                 </div>
-              
+
             </div>
-            <div class="span7">
-                <h3>@Model.TenSach</h3>
+            <div class="span9">
+                <h3 style="font-weight:550;text-align:center">@Model.TenSach</h3>
                 <hr class="soft" />
 
                 <form class="form-horizontal qtyFrm">
 
                     <div class="control-group">
-                        <label class="control-label">Giá cả:</label>
+                        <label class="control-label">Giá sản phẩm</label>
                         <div class="controls">
 
-                            <span>@String.Format("{0:0,0}", Model.price) VND</span>
+                            <span style="color: #f89406; font-weight:bold">@String.Format("{0:0,0}", Model.price) VND</span>
                         </div>
                     </div>
-                        <div class="control-group">
-                        <label class="control-label">Mô tả sản phẩm: </label>
+                    <div class="control-group">
+                        <label class="control-label">Chủ đề </label>
+                        <div class="controls">
+                            <span>@Model.ChuDe.TenChuDe</span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Nhà xuất bản </label>
+                        <div class="controls">
+                            <span>@Model.NhaXuatBan.TenNXB</span>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Mô tả sản phẩm </label>
                         <div class="controls">
                             <span>@Model.Mota</span>
                         </div>
                     </div>
 
 
-
                 </form>
             </div>
         </div>
         <hr class="softn clr" />
+        <ul id="productDetail" class="nav nav-tabs">
+            <li class="active"><a href="#home" data-toggle="tab">Bình luận của bạn đọc</a></li>
+            <li class=""><a href="#profile" data-toggle="tab">Bạn đọc quan tâm</a></li>
+
+        </ul>
+        <div id="myTabContent" class="tab-content tabWrapper">
+            <div class="tab-pane fade active in" id="home">
+
+
+            </div>
+            <div class="tab-pane fade" id="profile">
+            @Html.Action("BanDocQuanTam","Shop")   
+       </div>
     </div>
-
 </div>
-
+ </div>

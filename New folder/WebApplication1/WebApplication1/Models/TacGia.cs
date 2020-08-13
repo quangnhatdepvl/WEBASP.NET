@@ -16,7 +16,7 @@ namespace WebApplication1.Models
         public int MaTG { get; set; }
 
         [Required]
-        public string TenTg { get; set; }
+        public virtual string TenTg { get; set; }
 
         public string DiaChi { get; set; }
 

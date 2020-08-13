@@ -21,6 +21,11 @@ namespace WebApplication1.Controllers
             var sanphammoi = sanPhamMoi(4);
             return View(sanphammoi);
         }
+        public ActionResult BanDocQuanTam()
+        {
+            var sanphammoi = sanPhamMoi(4);
+            return View(sanphammoi);
+        }
         public ActionResult GiaCao()
         {
             var giacao = spgiacao(6);

@@ -13,15 +13,9 @@ namespace WebApplication1.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-
-        // GET: Admin/Admin
-        public ActionResult Index()
-        {
-            return View();
-        }
        
      
-
+    
         public ActionResult Sach(int? page)
         {
             List<Sach> lst = new List<Sach>();
@@ -153,6 +147,14 @@ namespace WebApplication1.Areas.Admin.Controllers
                 return RedirectToAction("Sach");
             }
         }
-
+        public ActionResult SanPhamDaBan()
+        {
+            return View();
+            
+        }
+        public ActionResult SanPhamConLai()
+        {
+            return View();
+        }
     }
 }

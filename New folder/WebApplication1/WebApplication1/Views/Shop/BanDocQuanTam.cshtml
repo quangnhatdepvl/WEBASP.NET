@@ -1,0 +1,42 @@
+﻿@model IEnumerable<WebApplication1.Models.Sach>
+@{
+    Layout = null;
+}
+@helper Truncate(String input, int length)
+{
+    if (input.Length < length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+@foreach (var item in Model)
+{
+    <div class="row-fluid">
+        <div class="span2">
+            <img src="~/images/@item.Anhbia">
+        </div>
+        <div class="span6">
+            <h5>@item.TenSach </h5>
+            <p>
+                @Truncate(item.Mota, 50)
+            </p>
+        </div>
+        <div class="span4 alignR">
+            <form class="form-horizontal qtyFrm">
+                <h4 style="color: #f89406; font-weight:400px">Giá: @String.Format("{0:0,0}", item.price) VND</h4>
+
+            </form>
+            <br />
+            <div class="btn-group" style="margin-left:-100px;margin-top:20px">
+                <a href="@Url.Action("ThemGiohang","Shop",new { @gh_Masach = @item.MaSach, @strURl = Request.Url.ToString()})" class="defaultBtn" style=""><span class=" icon-shopping-cart"></span> Thêm vào giỏ hàng</a>
+                <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.MaSach})" class="shopBtn">Xem chi tiết</a>
+            </div>
+        </div>
+    </div>
+    <hr class="soften">
+}
