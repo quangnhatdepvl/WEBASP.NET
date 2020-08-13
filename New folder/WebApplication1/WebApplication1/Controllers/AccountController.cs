@@ -98,12 +98,7 @@ namespace WebApplication1.Controllers
             // var user = await UserManager.FindByNameAsync(model.Email);
             var user = UserManager.Find(model.Email, model.Password);
             if (user != null)
-            {
-              
-                if (UserManager.IsInRole(user.Id,"Admin"))
-                {
-                    return RedirectToAction("Sach", "Admin", new { area = "Admin" });
-                } else { 
+            {  
 
                 if (!await UserManager.IsEmailConfirmedAsync(user.Id))
                 {
@@ -115,7 +110,7 @@ namespace WebApplication1.Controllers
                                              + "The confirmation token has been resent to your email account.";
                     return View("Error");
                 }
-                }
+               
 
             }
 
@@ -133,7 +128,14 @@ namespace WebApplication1.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    if (UserManager.IsInRole(user.Id, "Admin"))
+                    {
+                        return RedirectToAction("Sach", "Admin", new { area = "Admin" });
+                    }
+                    else
+                    {
+                        return View(model);
+                    }
             }
         }
 
