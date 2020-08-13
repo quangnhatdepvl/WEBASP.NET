@@ -27,33 +27,44 @@
             <th>
                 @Html.DisplayNameFor(model => model.ThanhToan)
             </th>
-            <th></th>
+            <th>Thao tác</th>
         </tr>
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaDonHang)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NgayDatHang)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NgayGiaoHang)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TinhTrang)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ThanhToan)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.MaDonHang }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.MaDonHang }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.MaDonHang })
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaDonHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDatHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayGiaoHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhTrang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThanhToan)
+            </td>
+        
+          
+            <td>
+                <a data-toggle="modal" data-target="#myModal1" style="display: inline-block">
+                    <button title="Xác nhận" type="button" class="btn btn-xs btn-danger btn-round text-center">
+                        xác nhận
+
+                    </button>
+                </a>
+                <a href="">
+                    <button title="Hủy" class="btn btn-xs btn-info btn-round text-center">
+                        Hủy
+                    </button>
+                </a>
+            </td>
+            
+        </tr>
         }
 
     </table>

@@ -552,7 +552,6 @@
     <Content Include="Areas\Admin\Views\Admin\DonHang.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\ThemMoiSach.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Chitietsach.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Xoasach.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Suasach.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

@@ -46,39 +46,14 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item dropdown mr-1">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center" id="messageDropdown" href="#" data-toggle="dropdown">
-                            <i class="mdi mdi-message-text mx-0"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="messageDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Tin nhắn</p>
-
-
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown mr-4">
-                        <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown" id="notificationDropdown" href="#" data-toggle="dropdown">
-                            <i class="mdi mdi-bell mx-0"></i>
-                            <span class="count"></span>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Thông báo</p>
-
-
-                        </div>
-                    </li>
+                
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="logo.png" alt="profile" />
                             <span class="nav-profile-name"> Admin</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item">
-                                <i class="mdi mdi-settings text-primary"></i>
-                                Cài đặt tài khoản
-                            </a>
-                            <a class="dropdown-item">
+                                   <a  href="@Url.Action("Logoff","Account",new { area = "root"})" class="dropdown-item">
                                 <i class="mdi mdi-logout text-primary"></i>
                                 Đăng xuất
                             </a>
@@ -95,12 +70,7 @@
             <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("AdminIndex","Admin")">
-                            <i class="mdi mdi-home menu-icon"></i>
-                            <span class="menu-title">Trang quản lý</span>
-                        </a>
-                    </li>
+                 
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <i class="mdi mdi-circle-outline menu-icon"></i>
@@ -115,19 +85,19 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("QuanlyDienThoai","Admin")">
+                        <a class="nav-link" href="@Url.Action("Sach","Admin")">
                             <i class="mdi mdi-view-headline menu-icon"></i>
-                            <span class="menu-title">Quản lý điện thoại</span>
+                            <span class="menu-title">Quản lý sách</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("QuanLyDonHang","Admin")">
+                        <a class="nav-link" href="@Url.Action("DonHang","Admin")">
                             <i class="mdi mdi-chart-pie menu-icon"></i>
                             <span class="menu-title">Quản lý đơn hàng</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("QuanLyKhachHang","Admin")">
+                        <a class="nav-link" href="@Url.Action("Index","ManageUse")">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">Quản lý khách hàng</span>
                         </a>

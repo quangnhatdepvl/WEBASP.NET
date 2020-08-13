@@ -17,7 +17,7 @@
         @input.Substring(0, length)<text>...</text>
     }
 }
-   
+
 
 
 <div class="container">
@@ -31,7 +31,7 @@
     <br />
     <h3 style="text-align:center">QUẢN LÝ SÁCH</h3>
 
-   
+
     <table class="table table-striped table-bordered dataTable no-footer" role="grid"
            aria-describedby="datatable-buttons_info">
         <tr>
@@ -102,11 +102,8 @@
 
                     </button>
 
-                    <button title="Xóa" class="btn btn-xs btn-light btn-round text-center">
+                    <button type="button" class="btn btn-xs btn-light btn-round text-center">@Html.ActionLink("Xóa", "Xacnhanxoa", new { id = item.MaSach })</button>
 
-
-                        @Html.ActionLink("Xóa", "Xoasach", new { id = item.MaSach })
-                    </button>
                 </td>
             </tr>
         }

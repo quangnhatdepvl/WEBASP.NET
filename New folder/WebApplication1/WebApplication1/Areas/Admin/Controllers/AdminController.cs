@@ -19,7 +19,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         {
             return View();
         }
-      
+     
 
         public ActionResult Sach(int? page)
         {
@@ -48,17 +48,7 @@ namespace WebApplication1.Areas.Admin.Controllers
             int pageNumber = (page ?? 1);
             return PartialView("DonHang", ddh.ToPagedList(pageNumber, 10));
         }
-        public ActionResult Xoasach(int id)
-        {
-            Sach sach = applicationDbContext.saches.SingleOrDefault(n => n.MaSach == id);
-            ViewBag.Masach = sach.MaSach;
-            if(sach == null)
-            {
-                Response.StatusCode = 404;
-                return null; 
-            }
-            return View(sach);
-        }
+     
         [HttpGet]
         public ActionResult ThemMoiSach()
         {
@@ -66,7 +56,7 @@ namespace WebApplication1.Areas.Admin.Controllers
             ViewBag.MaNXB = new SelectList(applicationDbContext.nhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
             return View();
         }
-        [HttpPost,ActionName("Xoasach")]
+ 
         public ActionResult Xacnhanxoa(int id)
         {
             Sach sach = applicationDbContext.saches.SingleOrDefault(n => n.MaSach == id);
