@@ -257,6 +257,11 @@
       <DependentUpon>202008280640581_update_model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChuDe.cs" />
@@ -307,6 +312,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\w3.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\css\font-awesome-ie7.css" />
     <Content Include="fonts\css\font-awesome-ie7.min.css" />
@@ -563,6 +569,10 @@
     <Content Include="Areas\Admin\Views\Admin\ThemMoiSach.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Chitietsach.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Suasach.cshtml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
