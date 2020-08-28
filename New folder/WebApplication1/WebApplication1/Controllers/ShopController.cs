@@ -21,6 +21,12 @@ namespace WebApplication1.Controllers
             var sanphammoi = sanPhamMoi(4);
             return View(sanphammoi);
         }
+        public ActionResult Comment()
+        {
+            var cm = applicationDbContext.Comments.ToList();
+            return View(cm);
+
+        }
         public ActionResult BanDocQuanTam()
         {
             var sanphammoi = sanPhamMoi(4);

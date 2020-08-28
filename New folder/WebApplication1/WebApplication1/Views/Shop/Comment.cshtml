@@ -1,0 +1,22 @@
+﻿@model IEnumerable<WebApplication1.Models.Comments>
+@{
+    Layout = null;
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="row-fluid">
+    <div class="span2">
+        <img src="~/images/01.jpg" alt="">
+    </div>
+    <div class="span6">
+               <p>
+       @item.Message
+        </p>
+        <p>@item.ApplicationUser.UserName</p>
+    </div>
+    
+</div>
+
+        }
