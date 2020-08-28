@@ -491,10 +491,9 @@ namespace WebApplication1.Controllers
         {
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userID);
             var callbackUrl = Url.Action("ConfirmEmail", "Account",
-               new { userId = userID, code = code }, protocol: Request.Url.Scheme);
+               new { userId = userID, code = code }, protocol: System.Web.HttpContext.Current.Request.Url.Scheme);
             await UserManager.SendEmailAsync(userID, subject,
                "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
             return callbackUrl;
         }
         private IAuthenticationManager AuthenticationManager
