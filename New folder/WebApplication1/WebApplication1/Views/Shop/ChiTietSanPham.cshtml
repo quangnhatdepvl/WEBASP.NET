@@ -15,7 +15,14 @@
     ViewBag.Title = "ChiTietSanPham";
     Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
 }
-
+<style>
+    .avatar {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+</style>
 <div class="span12">
     <ul class="breadcrumb" style="width:925px;">
         <li>THÔNG TIN CHI TIẾT<span class="divider">/</span></li>
@@ -95,13 +102,21 @@
             <div class="tab-pane fade active in" id="home">
                 @using (Html.BeginForm("Comments", "Shop", FormMethod.Post))
                 {
-                <label>@User.Identity.GetUserName()</label>
-                <input type="hidden" name="CmtId" value="" />
-                <input type="hidden" value="@User.Identity.GetUserId()" name="UserId" />
-                <input type="hidden" value="@Model.MaSach" name="SachId" />
-                <input type="text" name="Message" />
-                <input type="submit" value="Đăng" />
+                    <div class="">
+                        <img src="~/images/01.jpg" alt="Avatar" class="avatar">
+                        <label>@User.Identity.GetUserName()</label>
+                    </div>
+                    <input type="hidden" name="CmtId" value="" />
+                    <input type="hidden" value="@User.Identity.GetUserId()" name="UserId" />
+                    <input type="hidden" value="@Model.MaSach" name="SachId" />
+                    <div>
+                        <input type="text" name="Message" />
+                        <input type="submit" value="Đăng" />
+
+                    </div>
                 }
+                <hr />
+                @Html.Action("Comment", "Shop")
             </div>
             <div class="tab-pane fade" id="profile">
             @Html.Action("BanDocQuanTam", "Shop")   

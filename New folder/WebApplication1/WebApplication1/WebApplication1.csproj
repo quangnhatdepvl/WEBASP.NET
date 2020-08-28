@@ -1211,6 +1211,7 @@
     <Content Include="tinymce\tests\.jshintrc" />
     <Content Include="tinymce\tests\js\qunit\QUnit.LICENSE" />
     <Content Include="Views\Shop\BanDocQuanTam.cshtml" />
+    <Content Include="Views\Shop\Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
