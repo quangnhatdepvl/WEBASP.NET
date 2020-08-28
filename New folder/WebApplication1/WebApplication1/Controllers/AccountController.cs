@@ -72,11 +72,15 @@ namespace WebApplication1.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                
                 return RedirectToAction("Index", "Shop");
-           
             }
-            ViewBag.ReturnUrl = returnUrl;
+            if (string.IsNullOrEmpty(returnUrl) && Request.UrlReferrer != null)
+                returnUrl = Server.UrlEncode(Request.UrlReferrer.PathAndQuery);
+
+            if (Url.IsLocalUrl(returnUrl) && !string.IsNullOrEmpty(returnUrl))
+            {
+                ViewBag.ReturnURL = returnUrl;
+            }
             return View();
         }
 
@@ -84,7 +88,6 @@ namespace WebApplication1.Controllers
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
 
@@ -109,14 +112,11 @@ namespace WebApplication1.Controllers
                                              + "The confirmation token has been resent to your email account.";
                     return View("Error");
                 }
-               
-
             }
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
-           
             switch (result)
             {
                 case SignInStatus.Success:
@@ -133,8 +133,6 @@ namespace WebApplication1.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                   
-                  
                         return View(model);
                     
             }

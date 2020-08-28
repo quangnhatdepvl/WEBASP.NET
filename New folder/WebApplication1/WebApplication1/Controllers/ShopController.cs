@@ -211,13 +211,11 @@ namespace WebApplication1.Controllers
             return RedirectToAction("GioHang");
         }
         [HttpGet]
+        [Authorize]
         public ActionResult DatHang()
         {
             var userId = User.Identity.GetUserId();
-            if (string.IsNullOrEmpty(userId))
-            {
-                return RedirectToAction("Login", "Account");
-            }
+          
             if (Session["Giohang"] == null)
             {
                 return RedirectToAction("Index", "Shop");
@@ -227,7 +225,7 @@ namespace WebApplication1.Controllers
             ViewBag.Tongtien = TongTien();
             return View(lstGioHang);
         }
-
+        [HttpPost]
         public ActionResult DatHang(FormCollection collection)
         {
             DonDatHang ddh = new DonDatHang();
@@ -260,6 +258,7 @@ namespace WebApplication1.Controllers
             return View();
         }
         [HttpGet]
+        [Authorize]
         public ActionResult ThongTinKhachHang()
           {
             var userId = User.Identity.GetUserId();
@@ -290,12 +289,9 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Comments(CommentView comment)
         {
-            if (!User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Login","Account");
-            }
             Comments cmt = new Comments();
             cmt.Message = comment.Message;
             cmt.CmtId = comment.CmtId;
