@@ -21,10 +21,13 @@ namespace WebApplication1.Controllers
             var sanphammoi = sanPhamMoi(4);
             return View(sanphammoi);
         }
-        public ActionResult Comment()
+        public ActionResult Comment(int id)
         {
-            var cm = applicationDbContext.Comments.ToList();
-            return View(cm);
+
+            var sp = from s in applicationDbContext.Comments where s.SachId == id select s;
+
+            return PartialView(sp);
+         
 
         }
         public ActionResult BanDocQuanTam()
