@@ -11,6 +11,7 @@
 
 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
+    @Html.Hidden("returnUrl", @Request.QueryString)
     @Html.AntiForgeryToken()
     <span class="login100-form-title p-b-49">
         ĐĂNG NHẬP
