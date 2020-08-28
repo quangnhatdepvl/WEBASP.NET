@@ -7,19 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- Bootstrap styles -->
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <!-- Customize styles -->
-    <link href="~/Content/style.css" rel="stylesheet" />
-
-    <!-- font awesome styles -->
-    <link href="~/fonts/css/font-awesome-ie7.min.css" rel="stylesheet">
-    <link href="~/fonts/css/font-awesome.css" rel="stylesheet">
-
-    <!-- Favicons -->
-    <link rel="shortcut icon" href="~/fonts/ico/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    @Styles.Render("~/Layout/css")
 </head>
 
 <body>
@@ -28,7 +17,7 @@
             <div class="topNav">
                 <div class="container">
                     <div class="alignR">
-                       @Html.Partial("_LoginPartial")
+                        @Html.Partial("_LoginPartial")
 
                     </div>
                 </div>
@@ -53,7 +42,7 @@
                 <div class="navbar-search pull-left">
 
                     <input type="text" placeholder="Search" class="search-query span2 ui-autocomplete-input" style="width: 602px;height: 40px;padding:14px 14px;margin: 16px;" id="searchInput" autocomplete="off">
-                    
+
                 </div>
 
 
@@ -134,13 +123,13 @@
                     </ul>
                 </div>
 
-               
+
 
             </div>
             @RenderBody()
         </div>
     </div>
-   
+
     <!--
     Footer
     -->
@@ -153,21 +142,11 @@
                     Giấy chứng nhận Đăng ký Kinh doanh số 0309532909 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 06/01/2010
                 </p>
             </div>
-            </div>
+        </div>
     </footer>
 
-    
+
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="~/Scripts/jquery.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.easing-1.3.min.js"></script>
-    <script src="~/Scripts/jquery.scrollTo-1.4.3.1-min.js"></script>
-    <script src="~/Scripts/shop.js"></script>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    @Scripts.Render("~/Layout/js")
 </body>
-
-
-
-
-
 </html>
