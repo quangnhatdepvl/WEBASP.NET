@@ -37,7 +37,7 @@ namespace WebApplication1.Models
         public virtual DbSet<ChuDe> chuDes { get; set; }
         public virtual DbSet<DonDatHang> donDatHangs { get; set; }
         public virtual DbSet<ChiTietDonHang> chiTietDonHangs { get; set; }
-        
+        public virtual DbSet<Comments> Comments { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

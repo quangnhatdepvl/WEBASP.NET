@@ -282,5 +282,22 @@ namespace WebApplication1.Controllers
             }
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Comments(CommentView comment)
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login","Account");
+            }
+            Comments cmt = new Comments();
+            cmt.Message = comment.Message;
+            cmt.CmtId = comment.CmtId;
+            cmt.SachId = comment.SachId;
+            cmt.UserId = comment.UserId;
+            applicationDbContext.Comments.Add(cmt);
+            applicationDbContext.SaveChanges();
+            return Redirect(Request.UrlReferrer.ToString());
+        }
     }
 }

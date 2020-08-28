@@ -252,21 +252,27 @@
     <Compile Include="Migrations\202008070813264_add model.Designer.cs">
       <DependentUpon>202008070813264_add model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008280640581_update_model.cs" />
+    <Compile Include="Migrations\202008280640581_update_model.Designer.cs">
+      <DependentUpon>202008280640581_update_model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChuDe.cs" />
+    <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\DonDatHang.cs" />
     <Compile Include="Models\Giohang.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\KhachHang.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="Models\NhaXuatBan.cs" />
     <Compile Include="Models\Sach.cs" />
     <Compile Include="Models\TacGia.cs" />
     <Compile Include="Models\VietSach.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\ShopView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin\css\style.css" />
@@ -1226,6 +1232,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202008070813264_add model.resx">
       <DependentUpon>202008070813264_add model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008280640581_update_model.resx">
+      <DependentUpon>202008280640581_update_model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
