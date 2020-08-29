@@ -18,7 +18,7 @@ namespace WebApplication1.Controllers
         // GET: Shop
         public ActionResult Index()
         {
-            var sanphammoi = sanPhamMoi(4);
+            var sanphammoi = SanPhamMoi(4);
             return View(sanphammoi);
         }
         public ActionResult Comment(int id)
@@ -32,12 +32,12 @@ namespace WebApplication1.Controllers
         }
         public ActionResult BanDocQuanTam()
         {
-            var sanphammoi = sanPhamMoi(4);
+            var sanphammoi = SanPhamMoi(4);
             return View(sanphammoi);
         }
         public ActionResult GiaCao()
         {
-            var giacao = spgiacao(6);
+            var giacao = Spgiacao(6);
             return PartialView(giacao);
 
         }
@@ -79,11 +79,11 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-        private List<Sach> sanPhamMoi(int count)
+        private List<Sach> SanPhamMoi(int count)
         {
             return applicationDbContext.saches.OrderByDescending(a => a.NgayCapNhat).Take(count).ToList();
         }
-        private List<Sach> spgiacao(int count)
+        private List<Sach> Spgiacao(int count)
         {
             return applicationDbContext.saches.OrderByDescending(a => a.price).Take(count).ToList();
         }
@@ -99,7 +99,7 @@ namespace WebApplication1.Controllers
             var nxb = from NhaXuatBan in applicationDbContext.nhaXuatBans select NhaXuatBan;
             return PartialView(nxb);
         }
-        public ActionResult spTheoNhaXuatBan(int id)
+        public ActionResult SpTheoNhaXuatBan(int id)
         {
             var sp = from s in applicationDbContext.saches where s.MaNXB == id select s;
 
@@ -107,7 +107,7 @@ namespace WebApplication1.Controllers
         }
 
 
-        public ActionResult spTheoChuDe(int id)
+        public ActionResult SpTheoChuDe(int id)
         {
             var sp = from s in applicationDbContext.saches where s.MaCD == id select s;
 
