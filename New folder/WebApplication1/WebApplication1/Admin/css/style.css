@@ -75,7 +75,15 @@
     opacity: 1;
   }
 }
+.btn.btn-xs {
 
+    font-size: 0.8rem;
+    width: 100%;
+}
+.table td {
+    font-size: 0.875rem;
+    line-height: 35px;
+}
 @-webkit-keyframes flash {
   0% {
     opacity: 1;
