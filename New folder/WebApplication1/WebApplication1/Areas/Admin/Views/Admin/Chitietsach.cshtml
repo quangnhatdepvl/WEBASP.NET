@@ -78,12 +78,11 @@
     </dl>
     <div class="form-group" style="margin: 2% 25%;">
         <div class="col-md-offset-2 col-md-10">
-            <button class="btn btn-dark">
-                @Html.ActionLink("ĐIỀU CHỈNH", "Suasach", new { id = Model.MaSach }) 
-            </button>
-            <button class="btn btn-dark">
-                @Html.ActionLink("TRỞ VỀ", "Sach")
-            </button>
+
+            @Html.ActionLink("ĐIỀU CHỈNH", "Suasach", new { id = Model.MaSach }, new { @class = "btn btn-dark" })
+
+            @Html.ActionLink("TRỞ VỀ", "Sach", null , new { @class = "btn btn-dark" })
+
         </div>
     </div>
 
