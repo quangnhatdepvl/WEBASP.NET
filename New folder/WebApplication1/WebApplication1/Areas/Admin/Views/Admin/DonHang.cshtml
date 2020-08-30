@@ -5,13 +5,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminHeader.cshtml";
 }
 
-<div class="container">
+<div class="container" style="max-width: 100%;">
     <br />
 
     <h3 style="text-align:center">QUẢN LÝ ĐƠN HÀNG</h3>
-    <table class="table table-striped table-bordered dataTable no-footer">
+    <table class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable-buttons_info">
 
-        <tr>
+        <tr style="background-color: gray;font-size: 14px">
             <th>
                 @Html.DisplayNameFor(model => model.MaDonHang)
             </th>
@@ -32,40 +32,38 @@
 
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaDonHang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayDatHang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayGiaoHang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TinhTrang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThanhToan)
-            </td>
-        
-          
-            <td>
-                <a data-toggle="modal" data-target="#myModal1" style="display: inline-block">
-                    <button title="Xác nhận" type="button" class="btn btn-xs btn-danger btn-round text-center">
-                        xác nhận
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDonHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDatHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayGiaoHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TinhTrang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ThanhToan)
+                </td>
+
+
+                <td style="line-height: 3;padding: 0.1rem 0.2rem;">
+                    <button type="button" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;">
+                        XÁC NHẬN
 
                     </button>
-                </a>
-                <a href="">
-                    <button title="Hủy" class="btn btn-xs btn-info btn-round text-center">
-                        Hủy
-                    </button>
-                </a>
-            </td>
-            
-        </tr>
+                    <button class="btn btn-xs btn-info btn-round text-center" style="font-size: 12px;">HỦY</button>
+
+
+
+                </td>
+
+
+            </tr>
         }
 
     </table>
-    </div>
+</div>
