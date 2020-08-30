@@ -7,9 +7,10 @@
 
 
 
-<div>
-
-    <dl class="dl-horizontal">
+<div class="form-horizontal">
+    <br />
+    <h2 style="text-align:center;margin-left:10px">CHI TIẾT SÁCH</h2>
+    <dl class="form-group" style="margin: 2% 25%;">
         <dt>
             @Html.DisplayNameFor(model => model.TenSach)
         </dt>
@@ -39,7 +40,7 @@
         </dt>
 
         <dd>
-            <img src="@Url.Content("~/images/" + Model.Anhbia)" width="120px" /> 
+            <img src="@Url.Content("~/images/" + Model.Anhbia)" width="120px" />
         </dd>
 
         <dt>
@@ -75,9 +76,16 @@
         </dd>
 
     </dl>
-    <p>
-        @Html.ActionLink("ĐIỀU CHỈNH", "Suasach", new { id = Model.MaSach }) |
-        @Html.ActionLink("TRỞ VỀ", "Sach")
-    </p>
+    <div class="form-group" style="margin: 2% 25%;">
+        <div class="col-md-offset-2 col-md-10">
+            <button class="btn btn-dark">
+                @Html.ActionLink("ĐIỀU CHỈNH", "Suasach", new { id = Model.MaSach }) |
+            </button>
+            <button class="btn btn-dark">
+                @Html.ActionLink("TRỞ VỀ", "Sach")
+            </button>
+        </div>
+    </div>
+
 </div>
 
