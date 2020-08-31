@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>BackEnd</title>
     <!-- plugins:css -->
@@ -18,11 +19,11 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="~/Admin/logo.png" />
     <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
-    <script>tinymce.init({ selector: 'textarea' });</script>
+    <script>tinymce.init({ selector: 'textarea', entity_encoding: "raw" });</script>
 </head>
 <body>
    
-        @Html.AntiForgeryToken()
+       
         <div class="container-scroller">
             <!-- partial:partials/_navbar.html -->
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">

@@ -5,7 +5,7 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminHeader.cshtml";
 }
 
-@using (Html.BeginForm("ThemMoiSach", "Admin", new { area = "Admin" }, FormMethod.Post, new { @enctype = "multipart/form-data" }))
+@using (Html.BeginForm("ThemMoiSach", "Admin", new { area = "Admin" }, FormMethod.Post, new { @enctype = "multipart/form-data", @accept_charset = "utf-8" }))
 {
     @Html.AntiForgeryToken()
    

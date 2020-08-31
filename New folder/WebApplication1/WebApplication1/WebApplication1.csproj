@@ -18,7 +18,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44346</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -747,6 +748,7 @@
     <Content Include="Content\fonts\scss\_mixins.scss" />
     <Content Include="Content\fonts\scss\_path.scss" />
     <Content Include="Content\fonts\scss\_variables.scss" />
+    <Content Include="Areas\Admin\Views\Admin\Test.cshtml" />
     <None Include="Properties\PublishProfiles\testprojectaspnet - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

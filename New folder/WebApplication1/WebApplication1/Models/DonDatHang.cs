@@ -12,7 +12,8 @@ namespace WebApplication1.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MaDonHang { get; set; }
         [Required]
-        public KhachHang KhachHang { get; set; }
+
+        public virtual KhachHang KhachHang { get; set; }
         public DateTime NgayDatHang { get; set; }
 
         public Nullable<bool> TinhTrang { get; set; }

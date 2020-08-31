@@ -23,13 +23,13 @@
                 {
                     <tr style="text-align:center;">
 
-                        <td> @item.gh_Tensach</td>
-                        <td><img width="100" src="~/images/@item.gh_anhBia" alt=""></td>
-                        @using (Html.BeginForm("CapNhatGioHang", "Shop", new { gh_Masach = item.gh_Masach }))
+                        <td> @item.Gh_Tensach</td>
+                        <td><img width="100" src="~/images/@item.Gh_anhBia" alt=""></td>
+                        @using (Html.BeginForm("CapNhatGioHang", "Shop", new { Gh_Masach = item.Gh_Masach }))
                         {
-                            <td style="text-align:center">@item.gh_soLuong</td>
-                            <td>@String.Format("{0:0,0}", item.gh_Dongia)</td>
-                            <td>@String.Format("{0:0,0}", item.gh_ThanhTien)</td>
+                            <td style="text-align:center">@item.Gh_soLuong</td>
+                            <td>@String.Format("{0:0,0}", item.Gh_Dongia)</td>
+                            <td>@String.Format("{0:0,0}", item.Gh_ThanhTien)</td>
 
                         }
                     </tr>
@@ -59,7 +59,7 @@
             @{
                 ApplicationDbContext applicationDbContext = new ApplicationDbContext();
                 var userId = User.Identity.GetUserId();
-                var kh = applicationDbContext.khachHangs.FirstOrDefault(c => c.UserId == userId);
+                var kh = applicationDbContext.KhachHangs.FirstOrDefault(c => c.UserId == userId);
             }
 
             <table align="center">

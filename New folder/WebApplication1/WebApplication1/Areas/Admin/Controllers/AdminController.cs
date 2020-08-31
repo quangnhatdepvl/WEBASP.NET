@@ -7,15 +7,16 @@ using WebApplication1.Models;
 using PagedList;
 using System.IO;
 using System.Data.Entity;
+using System.Text.RegularExpressions;
 
 namespace WebApplication1.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-       
-     
-    
+
+
+
         public ActionResult Sach(int? page)
         {
             List<Sach> lst = new List<Sach>();
@@ -38,16 +39,21 @@ namespace WebApplication1.Areas.Admin.Controllers
         }
         public ActionResult DonHang(int? page)
         {
-    
-            var dh = (from ct in  applicationDbContext.ChiTietDonHangs
-                      join a in applicationDbContext.DonDatHangs  on ct.MaDonHang equals a.MaDonHang
-                      join ss in applicationDbContext.Saches on ct.MaSach equals ss.MaSach
-                      select new {maDh = a.MaDonHang,ngayDh = a.NgayDatHang,tenKh = a.KhachHang.FullName,dtKH = a.KhachHang.DienThoaiKH,dcKh = a.KhachHang.DiachiKH, 
-                           tenSach = ss.TenSach, sLSach = ct.SoLuong,  donGia = ct.DonGia, thanhTien = ct.Price}).ToList();
+
+
+
+
+            var dh = applicationDbContext.ChiTietDonHangs.ToList();
+            //var dh = (from ct in  applicationDbContext.chiTietDonHangs
+            //          join a in applicationDbContext.donDatHangs  on ct.MaDonHang equals a.MaDonHang
+            //          join ss in applicationDbContext.saches on ct.MaSach equals ss.MaSach
+            //          select new {maDh = a.MaDonHang,ngayDh = a.NgayDatHang,tenKh = a.KhachHang.FullName,dtKH = a.KhachHang.DienThoaiKH,dcKh = a.KhachHang.DiachiKH, 
+            //               tenSach = ss.TenSach, sLSach = ct.soLuong,  donGia = ct.DonGia, thanhTien = ct.price}).ToList();
+
             int pageNumber = (page ?? 1);
             return PartialView("DonHang", dh.ToPagedList(pageNumber, 10));
         }
-     
+
         [HttpGet]
         public ActionResult ThemMoiSach()
         {
@@ -55,12 +61,12 @@ namespace WebApplication1.Areas.Admin.Controllers
             ViewBag.MaNXB = new SelectList(applicationDbContext.NhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
             return View();
         }
- 
+
         public ActionResult Xacnhanxoa(int id)
         {
             Sach sach = applicationDbContext.Saches.SingleOrDefault(n => n.MaSach == id);
             ViewBag.Masach = sach.MaSach;
-            if(sach == null)
+            if (sach == null)
             {
                 Response.StatusCode = 404;
                 return null;
@@ -87,7 +93,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         public ActionResult Suasach(Sach sach, HttpPostedFileBase fileupLoad)
         {
 
-           
+
             ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
             ViewBag.MaNXB = new SelectList(applicationDbContext.NhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
             if (fileupLoad == null)
@@ -114,14 +120,14 @@ namespace WebApplication1.Areas.Admin.Controllers
                     applicationDbContext.Entry(sach).State = EntityState.Modified;
                     applicationDbContext.SaveChanges();
                 }
-                    return RedirectToAction("Sach");
+                return RedirectToAction("Sach");
             }
         }
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult ThemMoiSach(Sach sach, HttpPostedFileBase fileupLoad)
         {
-           
+
             ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
             ViewBag.MaNXB = new SelectList(applicationDbContext.NhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
             if (fileupLoad == null)
@@ -134,7 +140,7 @@ namespace WebApplication1.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     var fileName = Path.GetFileName(fileupLoad.FileName);
-                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
                     if (System.IO.File.Exists(path))
                     {
                         ViewBag.Thongbao = "Hình ảnh đã tồn tại";
@@ -144,7 +150,8 @@ namespace WebApplication1.Areas.Admin.Controllers
                         fileupLoad.SaveAs(path);
                     }
                     sach.Anhbia = fileName;
-                   
+
+
                     applicationDbContext.Saches.Add(sach);
                     applicationDbContext.SaveChanges();
                 }
@@ -154,24 +161,27 @@ namespace WebApplication1.Areas.Admin.Controllers
         public ActionResult SanPhamDaBan()
         {
             return View();
-            
+
         }
         public ActionResult SanPhamConLai()
         {
             return View();
         }
-          public ActionResult DonDatHangs(DonHangView donHang)
+        [HttpPost]
+        public ActionResult ConfirmDonDatHang()
         {
-            DonDatHang dh = new DonDatHang();
-            dh.MaDonHang = donHang.MaDonHang;
-            dh.NgayDatHang = donHang.NgayDatHang;
-            
-            // dat thanh cong la true
-            dh.TinhTrang = true;
-            dh.ThanhToan = donHang.ThanhToan;
-            applicationDbContext.DonDatHangs.Add(dh);
+
+            DonDatHang kh = applicationDbContext.DonDatHangs.Find(7);
+            kh.TinhTrang = true;
+            applicationDbContext.DonDatHangs.Attach(kh);
+            applicationDbContext.Entry(kh).State = EntityState.Modified;
             applicationDbContext.SaveChanges();
-            return Redirect(Request.UrlReferrer.ToString());
+            return RedirectToAction("Sach", "Admin", new { area = "Admin" });
+        }
+
+        public ActionResult Test()
+        {
+            return View();
         }
     }
 }

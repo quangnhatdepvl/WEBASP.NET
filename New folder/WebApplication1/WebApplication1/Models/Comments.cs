@@ -22,7 +22,7 @@ namespace WebApplication1.Models
         public int SachId { get; set; }
 
         public virtual Sach Sach { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual KhachHang ApplicationUser { get; set; }
 
     }
 }
