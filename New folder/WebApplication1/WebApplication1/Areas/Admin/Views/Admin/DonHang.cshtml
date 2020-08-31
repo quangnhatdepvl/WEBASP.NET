@@ -46,56 +46,56 @@
 
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @item.MaDonHang
-            </td>
-            <td>
-                @item.DonDatHang.NgayDatHang
-            </td>
-            <td>
-                @item.DonDatHang.KhachHang.FullName
-            </td>
-            <td>
-                @item.DonDatHang.KhachHang.DienThoaiKH
-            </td>
-            <td>
-                @item.DonDatHang.KhachHang.DiachiKH
-            </td>
-            <td>
-                @item.Sach.TenSach
-            </td>
-            <td>
-                @item.SoLuong
-            </td>
-            <td>
-                @item.Sach.price
-            </td>
-            <td>
-                @item.Price
-            </td>
-            @using (Html.BeginForm("ConfirmDonDatHang", "Admin", new { area = "Admin" }, FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
-                <input type="hidden" value="@item.MaDonHang" name="MaDonHang" />
-
-
-                <td style="line-height: 3;padding: 0.1rem 0.2rem;">
-                    <input type="submit" value="XÁC NHẬN" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
-
-
-                    <button class="btn btn-xs btn-info btn-round text-center" style="font-size: 12px;">HỦY</button>
-
-
-
+            <tr>
+                <td rowspan="3">
+                    @item.MaDonHang
                 </td>
-            }
+                <td>
+                    @item.DonDatHang.NgayDatHang
+                </td>
+                <td>
+                    @item.DonDatHang.KhachHang.FullName
+                </td>
+                <td>
+                    @item.DonDatHang.KhachHang.DienThoaiKH
+                </td>
+                <td>
+                    @item.DonDatHang.KhachHang.DiachiKH
+                </td>
+                <td>
+                    @item.Sach.TenSach
+                </td>
+                <td>
+                    @item.SoLuong
+                </td>
+                <td>
+                    @item.Sach.price
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                @using (Html.BeginForm("ConfirmDonDatHang", "Admin", new { area = "Admin" }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" value="@item.MaDonHang" name="MaDonHang" />
+
+
+                    <td style="line-height: 3;padding: 0.1rem 0.2rem;">
+                        <input type="submit" value="XÁC NHẬN" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
+
+
+                        <button class="btn btn-xs btn-info btn-round text-center" style="font-size: 12px;">HỦY</button>
+
+
+
+                    </td>
+                }
 
 
 
 
 
-        </tr>
+            </tr>
         }
 
     </table>
