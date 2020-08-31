@@ -31,30 +31,30 @@
 
 
     <table class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable-buttons_info">
-        <tr style="background-color:gray; font-size: 14px">
+        <tr style="background-color:gray; font-size: 12px">
             <th style="width: 15%;">
-                @Html.DisplayNameFor(model => model.First().TenSach)
+             Tên sách
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().price)
+               Giá
+            </th>
+            <th style="width: 15%;">
+                Mô tả
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().Mota)
+                Ảnh
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().Anhbia)
+               Ngày cập nhật
+            </th>
+            <th style="width: 10%;">
+                Số lượng 
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().NgayCapNhat)
+               Chủ đề
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.First().SoLuongTon)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().MaCD)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.First().MaNXB)
+               Nhà xuất bản
             </th>
             <th>Thao tác</th>
         </tr>
@@ -90,10 +90,10 @@
                 <td style="line-height: 3;padding: 0.2rem 0.2rem;">
 
 
-                     @Html.ActionLink("Sửa", "Suasach", new { id = item.MaSach }, new { @class = "btn btn-xs btn-dark btn-round" })
+                     @Html.ActionLink("Sửa", "Suasach", new { id = item.MaSach }, new { @class = "btn btn-xs btn-outline-danger btn-round" })
                     @Html.ActionLink("Chi Tiết", "Chitietsach", new { id = item.MaSach }, new { @class = "btn btn-xs btn-outline-danger btn-round" })
 
-                    @Html.ActionLink("Xóa", "Xacnhanxoa", new { id = item.MaSach }, new { @class = "btn btn-xs btn-danger btn-round" })
+                    @Html.ActionLink("Xóa", "Xacnhanxoa", new { id = item.MaSach }, new { @class = "btn btn-xs btn-outline-danger btn-round" })
 
 
                 </td>
