@@ -38,10 +38,14 @@ namespace WebApplication1.Areas.Admin.Controllers
         }
         public ActionResult DonHang(int? page)
         {
-            List<DonDatHang> ddh = new List<DonDatHang>();
-            ddh = applicationDbContext.donDatHangs.ToList();
+    
+            var dh = (from ct in  applicationDbContext.chiTietDonHangs
+                      join a in applicationDbContext.donDatHangs  on ct.MaDonHang equals a.MaDonHang
+                      join ss in applicationDbContext.saches on ct.MaSach equals ss.MaSach
+                      select new {maDh = a.MaDonHang,ngayDh = a.NgayDatHang,tenKh = a.KhachHang.FullName,dtKH = a.KhachHang.DienThoaiKH,dcKh = a.KhachHang.DiachiKH, 
+                           tenSach = ss.TenSach, sLSach = ct.soLuong,  donGia = ct.DonGia, thanhTien = ct.price}).ToList();
             int pageNumber = (page ?? 1);
-            return PartialView("DonHang", ddh.ToPagedList(pageNumber, 10));
+            return PartialView("DonHang", dh.ToPagedList(pageNumber, 10));
         }
      
         [HttpGet]
@@ -155,6 +159,19 @@ namespace WebApplication1.Areas.Admin.Controllers
         public ActionResult SanPhamConLai()
         {
             return View();
+        }
+          public ActionResult DonDatHangs(DonHangView donHang)
+        {
+            DonDatHang dh = new DonDatHang();
+            dh.MaDonHang = donHang.MaDonHang;
+            dh.NgayDatHang = donHang.NgayDatHang;
+            
+            // dat thanh cong la true
+            dh.TinhTrang = true;
+            dh.ThanhToan = donHang.ThanhToan;
+            applicationDbContext.donDatHangs.Add(dh);
+            applicationDbContext.SaveChanges();
+            return Redirect(Request.UrlReferrer.ToString());
         }
     }
 }

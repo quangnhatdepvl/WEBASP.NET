@@ -237,9 +237,7 @@ namespace WebApplication1.Controllers
             List<Giohang> gh = Laygiohang();
             ddh.KhachHang = kh;
             ddh.NgayDatHang = DateTime.Now;
-            var ngaygiao = String.Format("{0:MM/dd/yyyy}", collection["Ngaygiao"]);
-            ddh.NgayGiaoHang = DateTime.Parse(ngaygiao);
-            ddh.TinhTrang = false;
+             ddh.TinhTrang = false;
             ddh.ThanhToan = false;
             applicationDbContext.donDatHangs.Add(ddh);
             applicationDbContext.SaveChanges();
@@ -248,7 +246,9 @@ namespace WebApplication1.Controllers
                 ChiTietDonHang ctdh = new ChiTietDonHang();
                 ctdh.MaDonHang = ddh.MaDonHang;
                 ctdh.MaSach = item.gh_Masach;
-                ctdh.price = item.gh_Dongia;
+                ctdh.price = item.gh_ThanhTien;
+                ctdh.DonGia = item.gh_Dongia;
+                ctdh.soLuong = item.gh_soLuong;
                 applicationDbContext.chiTietDonHangs.Add(ctdh);
 
             }

@@ -1,9 +1,9 @@
 ﻿@using WebApplication1.Models
 @model List<Giohang>
 @{
- 
-                ViewBag.Title = "GioHang";
-                Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
+
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
 }
 
 <div class="row">
@@ -46,7 +46,7 @@
                                 </td>
                                 <td>@String.Format("{0:0,0}", item.gh_Dongia)</td>
                                 <td>@String.Format("{0:0,0}", item.gh_ThanhTien)</td>
-                                <td><button type="button" class="btn btn-outline-success">@Html.ActionLink("Xóa", "XoaGioHang", new { gh_Masach = item.gh_Masach })</button></td>
+                                <td>@Html.ActionLink("Xóa", "XoaGioHang", new { gh_Masach = item.gh_Masach }, new { @class = "btn btn-outline-success" })</td>
                                 <td><button type="submit" class="btn btn-outline-success" style="width: 100px">Cập nhật</button></td>
                             }
                         </tr>
@@ -57,11 +57,13 @@
                         <td colspan="4">Tổng tiền :@String.Format("{0:0,0}", ViewBag.Tongtien) VND</td>
                     </tr>
                     <tr>
-                        <td colspan="10" style="font-weight: bold; text-align: right; text-decoration: none"><button type="button" class="btn btn-outline-success"> @Html.ActionLink("XÓA GIỎ HÀNG", "XoaTatCaGioHang")</button></td>
+                        <td colspan="10" style="font-weight: bold; text-align: right; text-decoration: none">
+                            @Html.ActionLink("XÓA GIỎ HÀNG", "XoaTatCaGioHang", null, new { @class = "btn btn-outline-success" })
+                        </td>
 
                     </tr>
                     <tr>
-                        <td colspan="10" style="font-weight: bold; text-align: center; text-decoration: none"><button type="button" class="btn btn-outline-success"> @Html.ActionLink("ĐẶT HÀNG", "DatHang", "Shop")</button></td>
+                        <td colspan="10" style="font-weight: bold; text-align: center; text-decoration: none"> @Html.ActionLink("ĐẶT HÀNG", "DatHang", "Shop", new { @class = "shopBtn btn-large" })</td>
 
                     </tr>
 

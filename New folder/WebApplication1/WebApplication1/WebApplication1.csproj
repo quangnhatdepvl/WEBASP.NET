@@ -18,7 +18,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44346</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -255,6 +256,14 @@
     <Compile Include="Migrations\202008280640581_update_model.cs" />
     <Compile Include="Migrations\202008280640581_update_model.Designer.cs">
       <DependentUpon>202008280640581_update_model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008310439565_update.cs" />
+    <Compile Include="Migrations\202008310439565_update.Designer.cs">
+      <DependentUpon>202008310439565_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008310450587_update1.cs" />
+    <Compile Include="Migrations\202008310450587_update1.Designer.cs">
+      <DependentUpon>202008310450587_update1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -506,39 +515,10 @@
     <Content Include="Content\vendor\select2\select2.min.js" />
     <Content Include="Content\css\w3.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\css\font-awesome-ie7.css" />
-    <Content Include="fonts\css\font-awesome-ie7.min.css" />
-    <Content Include="fonts\css\font-awesome.css" />
-    <Content Include="fonts\css\font-awesome.min.css" />
-    <Content Include="fonts\font\fontawesome-webfont.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\ico\favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\css\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="fonts\font\fontawesome-webfont.eot" />
-    <Content Include="fonts\font\fontawesome-webfont.ttf" />
-    <Content Include="fonts\font\fontawesome-webfont.woff" />
-    <Content Include="fonts\font\FontAwesome.otf" />
-    <Content Include="fonts\less\bootstrap.less" />
-    <Content Include="fonts\less\core.less" />
-    <Content Include="fonts\less\extras.less" />
-    <Content Include="fonts\less\font-awesome-ie7.less" />
-    <Content Include="fonts\less\font-awesome.less" />
-    <Content Include="fonts\less\icons.less" />
-    <Content Include="fonts\less\mixins.less" />
-    <Content Include="fonts\less\path.less" />
-    <Content Include="fonts\less\variables.less" />
-    <Content Include="fonts\scss\font-awesome-ie7.scss" />
-    <Content Include="fonts\scss\font-awesome.scss" />
-    <Content Include="fonts\scss\_bootstrap.scss" />
-    <Content Include="fonts\scss\_core.scss" />
-    <Content Include="fonts\scss\_extras.scss" />
-    <Content Include="fonts\scss\_icons.scss" />
-    <Content Include="fonts\scss\_mixins.scss" />
-    <Content Include="fonts\scss\_path.scss" />
-    <Content Include="fonts\scss\_variables.scss" />
     <Content Include="Admin\css\maps\style.css.map" />
     <Content Include="Admin\fonts\.DS_Store" />
     <Content Include="Admin\fonts\Roboto\.DS_Store" />
@@ -1429,10 +1409,6 @@
     <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\css\bootstrap.min.css.map" />
     <Content Include="Content\css\bootstrap.css.map" />
     <Content Include="Content\css\bootstrap-theme.min.css.map" />
@@ -1447,6 +1423,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008280640581_update_model.resx">
       <DependentUpon>202008280640581_update_model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008310439565_update.resx">
+      <DependentUpon>202008310439565_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008310450587_update1.resx">
+      <DependentUpon>202008310450587_update1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -36,4 +36,21 @@ namespace WebApplication1.Models
         public int SachId { get; set; }
 
     }
+    public class DonHangView
+    {
+        public int MaDonHang { get; set; }
+        [Required]
+        [Display(Name = "Khách hàng")]
+        public string UserId { get; set; }
+        [Display(Name = "Ngày đặt hàng")]
+        public DateTime NgayDatHang { get; set; }
+        [Display(Name = "Ngày giao hàng")]
+        public DateTime NgayGiaoHang { get; set; }
+        [Display(Name = "Tình trạng")]
+        public Nullable<bool> TinhTrang { get; set; }
+        [Display(Name = "Thanh toán")]
+        public Nullable<bool> ThanhToan { get; set; }
+
+        
+    }
 }

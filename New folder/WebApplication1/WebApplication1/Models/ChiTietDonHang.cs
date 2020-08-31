@@ -23,5 +23,6 @@ namespace WebApplication1.Models
 
         [Range(0, double.MaxValue, ErrorMessage = "Please enter valid number")]
         public double DonGia { get; set; }
+        public int soLuong { get; set; }
     }
 }

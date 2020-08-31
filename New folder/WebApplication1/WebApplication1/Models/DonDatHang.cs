@@ -14,7 +14,7 @@ namespace WebApplication1.Models
         [Required]
         public KhachHang KhachHang { get; set; }
         public DateTime NgayDatHang { get; set; }
-        public DateTime NgayGiaoHang { get; set; }
+
         public Nullable<bool> TinhTrang { get; set; }
         public Nullable<bool> ThanhToan { get; set; }
     }

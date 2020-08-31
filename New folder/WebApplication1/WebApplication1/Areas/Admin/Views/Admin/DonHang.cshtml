@@ -13,20 +13,34 @@
 
         <tr style="background-color: gray;font-size: 14px">
             <th>
-                @Html.DisplayNameFor(model => model.MaDonHang)
+                Mã đơn hàng
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NgayDatHang)
+                Ngày đặt hàng
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NgayGiaoHang)
+                Tên khách hàng
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TinhTrang)
+                Số điện thoại
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ThanhToan)
+                Địa chỉ
             </th>
+
+            <th>
+                Tên sách
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+               Đơn giá
+            </th>
+            <th>
+                Thành tiền
+            </th>
+
             <th>Thao tác</th>
         </tr>
 
@@ -34,16 +48,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MaDonHang)
+                   
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NgayDatHang)
+                    @item.MaDonHang
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NgayGiaoHang)
+                    @item.KhachHang.FullName
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TinhTrang)
+                    @item.
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.ThanhToan)
