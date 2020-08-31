@@ -26,7 +26,7 @@
                 <li class="span4" style="margin-left:0;">
                     <div class="thumbnail">
                         <a class="zoomTool" href="@Url.Action("ChiTietSanPham","Shop", new { id = item.MaSach})" style="font-size:10px"><span class="icon-search"></span> XEM CHI TIẾT</a>
-                        <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.MaSach})"><img src="~/images/@item.Anhbia" style="height:120px" alt=""></a>
+                        <a href="@Url.Action("ChiTietSanPham","Shop", new { id = item.MaSach})"><img src="~/Content/images/@item.Anhbia" style="height:120px" alt=""></a>
                         <div class="caption cntr">
                             <h5>@Truncate(item.TenSach, 30)</h5>
                             <p style="color: red">
