@@ -217,7 +217,7 @@ namespace WebApplication1.Controllers
                         UserId = user.Id,
 
                     };
-                    applicationDbContext.khachHangs.Add(kh);
+                    applicationDbContext.KhachHangs.Add(kh);
                     applicationDbContext.SaveChanges();
 
                     string callbackUrl = await SendEmailConfirmationTokenAsync(user.Id, "Confirm your account");

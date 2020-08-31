@@ -19,7 +19,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         public ActionResult Sach(int? page)
         {
             List<Sach> lst = new List<Sach>();
-            lst = applicationDbContext.saches.ToList();
+            lst = applicationDbContext.Saches.ToList();
             int pageNumber = (page ?? 1);
 
             return PartialView("Sach", lst.ToPagedList(pageNumber, 10));
@@ -27,7 +27,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         }
         public ActionResult Chitietsach(int id)
         {
-            Sach sach = applicationDbContext.saches.SingleOrDefault(n => n.MaSach == id);
+            Sach sach = applicationDbContext.Saches.SingleOrDefault(n => n.MaSach == id);
             ViewBag.Masach = sach.MaSach;
             if (sach == null)
             {
@@ -39,11 +39,11 @@ namespace WebApplication1.Areas.Admin.Controllers
         public ActionResult DonHang(int? page)
         {
     
-            var dh = (from ct in  applicationDbContext.chiTietDonHangs
-                      join a in applicationDbContext.donDatHangs  on ct.MaDonHang equals a.MaDonHang
-                      join ss in applicationDbContext.saches on ct.MaSach equals ss.MaSach
+            var dh = (from ct in  applicationDbContext.ChiTietDonHangs
+                      join a in applicationDbContext.DonDatHangs  on ct.MaDonHang equals a.MaDonHang
+                      join ss in applicationDbContext.Saches on ct.MaSach equals ss.MaSach
                       select new {maDh = a.MaDonHang,ngayDh = a.NgayDatHang,tenKh = a.KhachHang.FullName,dtKH = a.KhachHang.DienThoaiKH,dcKh = a.KhachHang.DiachiKH, 
-                           tenSach = ss.TenSach, sLSach = ct.soLuong,  donGia = ct.DonGia, thanhTien = ct.price}).ToList();
+                           tenSach = ss.TenSach, sLSach = ct.SoLuong,  donGia = ct.DonGia, thanhTien = ct.Price}).ToList();
             int pageNumber = (page ?? 1);
             return PartialView("DonHang", dh.ToPagedList(pageNumber, 10));
         }
@@ -51,35 +51,35 @@ namespace WebApplication1.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult ThemMoiSach()
         {
-            ViewBag.MaCD = new SelectList(applicationDbContext.chuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
-            ViewBag.MaNXB = new SelectList(applicationDbContext.nhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
+            ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
+            ViewBag.MaNXB = new SelectList(applicationDbContext.NhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
             return View();
         }
  
         public ActionResult Xacnhanxoa(int id)
         {
-            Sach sach = applicationDbContext.saches.SingleOrDefault(n => n.MaSach == id);
+            Sach sach = applicationDbContext.Saches.SingleOrDefault(n => n.MaSach == id);
             ViewBag.Masach = sach.MaSach;
             if(sach == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            applicationDbContext.saches.Remove(sach);
+            applicationDbContext.Saches.Remove(sach);
             applicationDbContext.SaveChanges();
             return RedirectToAction("Sach");
         }
         [HttpGet]
         public ActionResult Suasach(int id)
         {
-            Sach sach = applicationDbContext.saches.SingleOrDefault(n => n.MaSach == id);
+            Sach sach = applicationDbContext.Saches.SingleOrDefault(n => n.MaSach == id);
             if (sach == null)
             {
                 Response.StatusCode = 404;
                 return null;
             }
-            ViewBag.MaCD = new SelectList(applicationDbContext.chuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
-            ViewBag.MaNXB = new SelectList(applicationDbContext.nhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
+            ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
+            ViewBag.MaNXB = new SelectList(applicationDbContext.NhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
             return View(sach);
         }
         [HttpPost]
@@ -88,8 +88,8 @@ namespace WebApplication1.Areas.Admin.Controllers
         {
 
            
-            ViewBag.MaCD = new SelectList(applicationDbContext.chuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
-            ViewBag.MaNXB = new SelectList(applicationDbContext.nhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
+            ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
+            ViewBag.MaNXB = new SelectList(applicationDbContext.NhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
             if (fileupLoad == null)
             {
                 ViewBag.Thongbao = "Vui lòng chọn ảnh bìa";
@@ -122,8 +122,8 @@ namespace WebApplication1.Areas.Admin.Controllers
         public ActionResult ThemMoiSach(Sach sach, HttpPostedFileBase fileupLoad)
         {
            
-            ViewBag.MaCD = new SelectList(applicationDbContext.chuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
-            ViewBag.MaNXB = new SelectList(applicationDbContext.nhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
+            ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
+            ViewBag.MaNXB = new SelectList(applicationDbContext.NhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
             if (fileupLoad == null)
             {
                 ViewBag.Thongbao = "Vui lòng chọn ảnh bìa";
@@ -145,7 +145,7 @@ namespace WebApplication1.Areas.Admin.Controllers
                     }
                     sach.Anhbia = fileName;
                    
-                    applicationDbContext.saches.Add(sach);
+                    applicationDbContext.Saches.Add(sach);
                     applicationDbContext.SaveChanges();
                 }
                 return RedirectToAction("Sach");
@@ -169,7 +169,7 @@ namespace WebApplication1.Areas.Admin.Controllers
             // dat thanh cong la true
             dh.TinhTrang = true;
             dh.ThanhToan = donHang.ThanhToan;
-            applicationDbContext.donDatHangs.Add(dh);
+            applicationDbContext.DonDatHangs.Add(dh);
             applicationDbContext.SaveChanges();
             return Redirect(Request.UrlReferrer.ToString());
         }

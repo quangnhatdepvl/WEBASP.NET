@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
         {
           
             using (ApplicationDbContext applicationDbContext = new ApplicationDbContext()) {
-           var   kh1 = applicationDbContext.khachHangs.FirstOrDefault();
+           var   kh1 = applicationDbContext.KhachHangs.FirstOrDefault();
                 return View(kh1);
             }
           
@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
         public JsonResult GetSearchValue(string search)
         {
             ApplicationDbContext db = new ApplicationDbContext();
-            IEnumerable<object> allsearch = db.saches.Where(x => x.TenSach.Contains(search)).Select(x => new 
+            IEnumerable<object> allsearch = db.Saches.Where(x => x.TenSach.Contains(search)).Select(x => new 
             {
                 MaSach = x.MaSach,
                 TenSach = x.TenSach

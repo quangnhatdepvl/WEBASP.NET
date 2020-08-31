@@ -29,14 +29,14 @@ namespace WebApplication1.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
 
-        public virtual DbSet<KhachHang> khachHangs { get; set; }
-        public virtual DbSet<NhaXuatBan> nhaXuatBans { get; set; }
-        public virtual DbSet<Sach> saches { get; set; }
-        public virtual DbSet<TacGia> tacGias { get; set; }
-        public virtual DbSet<VietSach> vietSaches { get; set; }
-        public virtual DbSet<ChuDe> chuDes { get; set; }
-        public virtual DbSet<DonDatHang> donDatHangs { get; set; }
-        public virtual DbSet<ChiTietDonHang> chiTietDonHangs { get; set; }
+        public virtual DbSet<KhachHang> KhachHangs { get; set; }
+        public virtual DbSet<NhaXuatBan> NhaXuatBans { get; set; }
+        public virtual DbSet<Sach> Saches { get; set; }
+        public virtual DbSet<TacGia> TacGias { get; set; }
+        public virtual DbSet<VietSach> VietSaches { get; set; }
+        public virtual DbSet<ChuDe> ChuDes { get; set; }
+        public virtual DbSet<DonDatHang> DonDatHangs { get; set; }
+        public virtual DbSet<ChiTietDonHang> ChiTietDonHangs { get; set; }
         public virtual DbSet<Comments> Comments { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

@@ -11,7 +11,7 @@ namespace WebApplication1.Models
         [Key, Column(Order = 0)]
         public int MaDonHang { get; set; }
         [ForeignKey("MaDonHang")]
-            public DonDatHang DonDatHang { get; set; }
+        public virtual DonDatHang DonDatHang { get; set; }
 
         [Key, Column(Order = 1)]
         public int MaSach { get; set; }
@@ -19,10 +19,10 @@ namespace WebApplication1.Models
         public Sach Sach { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "Please enter valid number")]
-        public double price { get; set; }
+        public double Price { get; set; }
 
         [Range(0, double.MaxValue, ErrorMessage = "Please enter valid number")]
         public double DonGia { get; set; }
-        public int soLuong { get; set; }
+        public int SoLuong { get; set; }
     }
 }

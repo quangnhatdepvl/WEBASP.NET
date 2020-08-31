@@ -45,7 +45,7 @@ namespace WebApplication1.Controllers
         public JsonResult Search(string search)
         {
 
-            IEnumerable<object> allsearch = applicationDbContext.saches.Where(x => x.TenSach.Contains(search)).Select(x => new
+            IEnumerable<object> allsearch = applicationDbContext.Saches.Where(x => x.TenSach.Contains(search)).Select(x => new
             {
                 MaSach = x.MaSach,
                 TenSach = x.TenSach
@@ -57,7 +57,7 @@ namespace WebApplication1.Controllers
         public ActionResult DanhSach(int ? page)
         {
             List<Sach> lst = new List<Sach>();
-            lst = applicationDbContext.saches.ToList();
+            lst = applicationDbContext.Saches.ToList();
             int pageNumber = (page ?? 1);
 
             return PartialView("DanhSach", lst.ToPagedList(pageNumber, 10));
@@ -69,7 +69,7 @@ namespace WebApplication1.Controllers
         public ActionResult ChiTietSanPham(int id)
         {
             Sach asach = new Sach();
-            asach = applicationDbContext.saches.Find(id);
+            asach = applicationDbContext.Saches.Find(id);
 
 
             return View(asach);
@@ -81,27 +81,27 @@ namespace WebApplication1.Controllers
         }
         private List<Sach> SanPhamMoi(int count)
         {
-            return applicationDbContext.saches.OrderByDescending(a => a.NgayCapNhat).Take(count).ToList();
+            return applicationDbContext.Saches.OrderByDescending(a => a.NgayCapNhat).Take(count).ToList();
         }
         private List<Sach> Spgiacao(int count)
         {
-            return applicationDbContext.saches.OrderByDescending(a => a.price).Take(count).ToList();
+            return applicationDbContext.Saches.OrderByDescending(a => a.price).Take(count).ToList();
         }
 
 
         public ActionResult Chude()
         {
-            var chude = from ChuDe in applicationDbContext.chuDes select ChuDe;
+            var chude = from ChuDe in applicationDbContext.ChuDes select ChuDe;
             return PartialView(chude);
         }
         public ActionResult Nhaxuatban()
         {
-            var nxb = from NhaXuatBan in applicationDbContext.nhaXuatBans select NhaXuatBan;
+            var nxb = from NhaXuatBan in applicationDbContext.NhaXuatBans select NhaXuatBan;
             return PartialView(nxb);
         }
         public ActionResult SpTheoNhaXuatBan(int id)
         {
-            var sp = from s in applicationDbContext.saches where s.MaNXB == id select s;
+            var sp = from s in applicationDbContext.Saches where s.MaNXB == id select s;
 
             return PartialView(sp);
         }
@@ -109,7 +109,7 @@ namespace WebApplication1.Controllers
 
         public ActionResult SpTheoChuDe(int id)
         {
-            var sp = from s in applicationDbContext.saches where s.MaCD == id select s;
+            var sp = from s in applicationDbContext.Saches where s.MaCD == id select s;
 
             return PartialView(sp);
         }
@@ -127,7 +127,7 @@ namespace WebApplication1.Controllers
         public ActionResult ThemGiohang(int gh_Masach, string strURL)
         {
             List<Giohang> lstGioHang = Laygiohang();
-            Giohang sanpham = lstGioHang.Find(rs => rs.gh_Masach == gh_Masach);
+            Giohang sanpham = lstGioHang.Find(rs => rs.Gh_Masach == gh_Masach);
             if (sanpham == null)
             {
                 sanpham = new Giohang(gh_Masach);
@@ -136,7 +136,7 @@ namespace WebApplication1.Controllers
             }
             else
             {
-                sanpham.gh_soLuong++;
+                sanpham.Gh_soLuong++;
                 return Redirect(strURL);
             }
         }
@@ -146,7 +146,7 @@ namespace WebApplication1.Controllers
             List<Giohang> lstGiohang = Session["Giohang"] as List<Giohang>;
             if (lstGiohang != null)
             {
-                gh_TongSoLuong = lstGiohang.Sum(n => n.gh_soLuong);
+                gh_TongSoLuong = lstGiohang.Sum(n => n.Gh_soLuong);
             }
             return gh_TongSoLuong;
         }
@@ -157,7 +157,7 @@ namespace WebApplication1.Controllers
             List<Giohang> lstGiohang = Session["Giohang"] as List<Giohang>;
             if (lstGiohang != null)
             {
-                gh_TongTien = lstGiohang.Sum(n => n.gh_ThanhTien);
+                gh_TongTien = lstGiohang.Sum(n => n.Gh_ThanhTien);
 
             }
             return gh_TongTien;
@@ -184,10 +184,10 @@ namespace WebApplication1.Controllers
         public ActionResult XoaGiohang(int gh_Masach)
         {
             List<Giohang> lstGioHang = Laygiohang();
-            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_Masach == gh_Masach);
+            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.Gh_Masach == gh_Masach);
             if (sanPham != null)
             {
-                lstGioHang.RemoveAll(sp => sp.gh_Masach == gh_Masach);
+                lstGioHang.RemoveAll(sp => sp.Gh_Masach == gh_Masach);
                 return RedirectToAction("GioHang");
             }
             if (lstGioHang.Count == 0)
@@ -199,10 +199,10 @@ namespace WebApplication1.Controllers
         public ActionResult CapNhatGioHang(int gh_Masach, FormCollection f)
         {
             List<Giohang> lstGioHang = Laygiohang();
-            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.gh_Masach == gh_Masach);
+            Giohang sanPham = lstGioHang.SingleOrDefault(sp => sp.Gh_Masach == gh_Masach);
             if (sanPham != null)
             {
-                sanPham.gh_soLuong = int.Parse(f["txtSoluong"].ToString());
+                sanPham.Gh_soLuong = int.Parse(f["txtSoluong"].ToString());
             }
             return RedirectToAction("GioHang");
         }
@@ -233,23 +233,23 @@ namespace WebApplication1.Controllers
         {
             DonDatHang ddh = new DonDatHang();
             var userId = User.Identity.GetUserId();
-            var kh = applicationDbContext.khachHangs.FirstOrDefault(c => c.UserId == userId);
+            var kh = applicationDbContext.KhachHangs.FirstOrDefault(c => c.UserId == userId);
             List<Giohang> gh = Laygiohang();
             ddh.KhachHang = kh;
             ddh.NgayDatHang = DateTime.Now;
              ddh.TinhTrang = false;
             ddh.ThanhToan = false;
-            applicationDbContext.donDatHangs.Add(ddh);
+            applicationDbContext.DonDatHangs.Add(ddh);
             applicationDbContext.SaveChanges();
             foreach (var item in gh)
             {
                 ChiTietDonHang ctdh = new ChiTietDonHang();
                 ctdh.MaDonHang = ddh.MaDonHang;
-                ctdh.MaSach = item.gh_Masach;
-                ctdh.price = item.gh_ThanhTien;
-                ctdh.DonGia = item.gh_Dongia;
-                ctdh.soLuong = item.gh_soLuong;
-                applicationDbContext.chiTietDonHangs.Add(ctdh);
+                ctdh.MaSach = item.Gh_Masach;
+                ctdh.Price = item.Gh_ThanhTien;
+                ctdh.DonGia = item.Gh_Dongia;
+                ctdh.SoLuong = item.Gh_soLuong;
+                applicationDbContext.ChiTietDonHangs.Add(ctdh);
 
             }
             applicationDbContext.SaveChanges();
@@ -265,7 +265,7 @@ namespace WebApplication1.Controllers
         public ActionResult ThongTinKhachHang()
           {
             var userId = User.Identity.GetUserId();
-            var kh = applicationDbContext.khachHangs.FirstOrDefault(c => c.UserId == userId);
+            var kh = applicationDbContext.KhachHangs.FirstOrDefault(c => c.UserId == userId);
             return View(kh);
 
         }
