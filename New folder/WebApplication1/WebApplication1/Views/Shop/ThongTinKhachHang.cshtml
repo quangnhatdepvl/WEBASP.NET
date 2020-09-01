@@ -25,8 +25,13 @@
                     <tr>
                         <td><b>Giới tính :</b></td>
                         <td style="color: #00a157">
-                            @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })
-                           
+                         @*   @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.RadioButtonFor(model => model.Gender, true)
+                            <span>Male</span>
+
+                            @Html.RadioButtonFor(model => model.Gender, false)
+                            <span>FeMale</span>
+
                             @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                         </td>
                     </tr>
