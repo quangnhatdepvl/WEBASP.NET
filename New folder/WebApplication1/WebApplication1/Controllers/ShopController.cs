@@ -218,10 +218,15 @@ namespace WebApplication1.Controllers
         public ActionResult DatHang()
         {
             var userId = User.Identity.GetUserId();
-          
+            var kh = applicationDbContext.KhachHangs.FirstOrDefault(c => c.UserId == userId);
+
             if (Session["Giohang"] == null)
             {
                 return RedirectToAction("Index", "Shop");
+            }
+            if(kh.FullName==null && kh.DiachiKH==null && kh.DienThoaiKH==null)
+            {
+                return RedirectToAction("ThongTinKhachHang" , "Shop");
             }
             List<Giohang> lstGioHang = Laygiohang();
             ViewBag.Tongsoluong = TongSoLuong();
