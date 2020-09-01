@@ -157,15 +157,15 @@ namespace WebApplication1.Areas.Admin.Controllers
 
         public ActionResult DonHang(int? page)
         {
+            
             var dh = applicationDbContext.ChiTietDonHangs.Where(p => p.DonDatHang.TinhTrang == false).ToList();
          int pageNumber = (page ?? 1);
             return PartialView("DonHang", dh.ToPagedList(pageNumber, 10));
         }
         [HttpPost]
-        public ActionResult ConfirmDonDatHang()
+        public ActionResult ConfirmDonDatHang(int MaDonHang)
         {
-
-            DonDatHang kh = applicationDbContext.DonDatHangs.Find(7);
+            DonDatHang kh = applicationDbContext.DonDatHangs.Find(MaDonHang);
             kh.TinhTrang = true;
             applicationDbContext.DonDatHangs.Attach(kh);
             applicationDbContext.Entry(kh).State = EntityState.Modified;
