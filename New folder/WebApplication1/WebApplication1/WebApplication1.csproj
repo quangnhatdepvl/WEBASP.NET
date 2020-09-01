@@ -265,6 +265,14 @@
     <Compile Include="Migrations\202008310450587_update1.Designer.cs">
       <DependentUpon>202008310450587_update1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009010537343_update2.cs" />
+    <Compile Include="Migrations\202009010537343_update2.Designer.cs">
+      <DependentUpon>202009010537343_update2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009010539303_update3.cs" />
+    <Compile Include="Migrations\202009010539303_update3.Designer.cs">
+      <DependentUpon>202009010539303_update3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -749,6 +757,8 @@
     <Content Include="Content\fonts\scss\_path.scss" />
     <Content Include="Content\fonts\scss\_variables.scss" />
     <Content Include="Areas\Admin\Views\Admin\Test.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\SanPhamDaBan.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\SanPhamDangGiao.cshtml" />
     <None Include="Properties\PublishProfiles\testprojectaspnet - Web Deploy.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -1430,6 +1440,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202008310450587_update1.resx">
       <DependentUpon>202008310450587_update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009010537343_update2.resx">
+      <DependentUpon>202009010537343_update2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009010539303_update3.resx">
+      <DependentUpon>202009010539303_update3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

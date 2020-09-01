@@ -21,15 +21,7 @@ namespace WebApplication1.Controllers
             var sanphammoi = SanPhamMoi(4);
             return View(sanphammoi);
         }
-        public ActionResult Comment(int id)
-        {
-
-            var sp = from s in applicationDbContext.Comments where s.SachId == id select s;
-
-            return PartialView(sp);
-         
-
-        }
+     
         public ActionResult BanDocQuanTam()
         {
             var sanphammoi = SanPhamMoi(4);
@@ -295,7 +287,13 @@ namespace WebApplication1.Controllers
             }
             return View();
         }
+        public ActionResult Comment(int id)
+        {
+            var sp = applicationDbContext.Comments.Where(c => c.SachId == id).ToList();
+            return PartialView(sp);
 
+
+        }
         [HttpPost]
         [Authorize]
         public ActionResult Comments(CommentView comment)

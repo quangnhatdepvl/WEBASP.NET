@@ -15,14 +15,14 @@ namespace WebApplication1.Models
 
         public string Message { get; set; }
 
-        [ForeignKey("ApplicationUser")]
+        [ForeignKey("KhachHang")]
         public string UserId { get; set; }
 
         [ForeignKey("Sach")]
         public int SachId { get; set; }
 
         public virtual Sach Sach { get; set; }
-        public virtual KhachHang ApplicationUser { get; set; }
+        public virtual KhachHang KhachHang { get; set; }
 
     }
 }
