@@ -1,14 +1,13 @@
-﻿@model IEnumerable<WebApplication1.Models.ChiTietDonHang>
-
+﻿
 @{
-    ViewBag.Title = "DonHang";
+    ViewBag.Title = "SanPhamDangGiao";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminHeader.cshtml";
 }
 
 <div class="container" style="max-width: 100%;">
     <br />
 
-    <h3 style="text-align:center">QUẢN LÝ ĐƠN HÀNG</h3>
+    <h3 style="text-align:center">QUẢN LÝ ĐƠN HÀNG ĐANG GIAO</h3>
     <table class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable-buttons_info">
 
         <tr style="background-color: gray;font-size: 14px">
@@ -44,7 +43,7 @@
             <th>Thao tác</th>
         </tr>
 
-        @foreach (var item in Model)
+        @*@foreach (var item in Model)
         {
             <tr>
                 <td>
@@ -87,9 +86,9 @@
                         <button class="btn btn-xs btn-info btn-round text-center" style="font-size: 12px;">HỦY</button>
 
                     </td>
-                }
+                }*@
 
-            </tr>
+            
         }
 
     </table>

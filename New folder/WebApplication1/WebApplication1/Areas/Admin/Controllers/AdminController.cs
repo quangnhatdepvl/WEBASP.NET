@@ -148,10 +148,12 @@ namespace WebApplication1.Areas.Admin.Controllers
             return View();
 
         }
-        public ActionResult SanPhamConLai()
+        public ActionResult SanPhamDangGiao()
         {
             return View();
+
         }
+
 
         public ActionResult DonHang(int? page)
         {
