@@ -21,7 +21,7 @@ namespace WebApplication1.Controllers
             var sanphammoi = SanPhamMoi(4);
             return View(sanphammoi);
         }
-     
+
         public ActionResult BanDocQuanTam()
         {
             var sanphammoi = SanPhamMoi(4);
@@ -46,17 +46,17 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        public ActionResult DanhSach(int ? page)
+        public ActionResult DanhSach(int? page)
         {
             List<Sach> lst = new List<Sach>();
             lst = applicationDbContext.Saches.ToList();
             int pageNumber = (page ?? 1);
 
             return PartialView("DanhSach", lst.ToPagedList(pageNumber, 10));
-        
+
         }
 
-        
+
         [HttpGet]
         public ActionResult ChiTietSanPham(int id)
         {
@@ -214,9 +214,9 @@ namespace WebApplication1.Controllers
             {
                 return RedirectToAction("Index", "Shop");
             }
-            if(kh.FullName==null && kh.DiachiKH==null && kh.DienThoaiKH==null)
+            if (kh.FullName == null && kh.DiachiKH == null && kh.DienThoaiKH == null)
             {
-                return RedirectToAction("ThongTinKhachHang" , "Shop");
+                return RedirectToAction("ThongTinKhachHang", "Shop");
             }
             List<Giohang> lstGioHang = Laygiohang();
             ViewBag.Tongsoluong = TongSoLuong();
@@ -232,7 +232,7 @@ namespace WebApplication1.Controllers
             List<Giohang> gh = Laygiohang();
             ddh.KhachHang = kh;
             ddh.NgayDatHang = DateTime.Now;
-             ddh.TinhTrang = false;
+            ddh.TinhTrang = false;
             ddh.ThanhToan = false;
             applicationDbContext.DonDatHangs.Add(ddh);
             applicationDbContext.SaveChanges();
@@ -258,7 +258,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         [Authorize]
         public ActionResult ThongTinKhachHang()
-          {
+        {
             var userId = User.Identity.GetUserId();
             var kh = applicationDbContext.KhachHangs.FirstOrDefault(c => c.UserId == userId);
             return View(kh);
@@ -281,7 +281,7 @@ namespace WebApplication1.Controllers
 
                 applicationDbContext.Entry(khachHang).State = EntityState.Modified;
                 applicationDbContext.SaveChanges();
-                return RedirectToAction("Index","Shop");
+                return RedirectToAction("Index", "Shop");
             }
             return View();
         }
@@ -312,12 +312,18 @@ namespace WebApplication1.Controllers
             return View(donHang);
         }
         public ActionResult DonHangDangDat()
-        { 
-             var userId = User.Identity.GetUserId();
-             var donHangDangDat = applicationDbContext.ChiTietDonHangs.Where(p => p.DonDatHang.KhachHang.UserId == userId && p.DonDatHang.TinhTrang == true && p.DonDatHang.ThanhToan == false).ToList();
+        {
+            var userId = User.Identity.GetUserId();
+            var donHangDangDat = applicationDbContext.ChiTietDonHangs.Where(p => p.DonDatHang.KhachHang.UserId == userId && p.DonDatHang.TinhTrang == true && p.DonDatHang.ThanhToan == false).ToList();
             return View(donHangDangDat);
 
+        }
+        public ActionResult DonHangChoXacNhan()
+        {
+            var userId = User.Identity.GetUserId();
+            var donHangChoXacNhan = applicationDbContext.ChiTietDonHangs.Where(p => p.DonDatHang.KhachHang.UserId == userId && p.DonDatHang.TinhTrang == false && p.DonDatHang.ThanhToan == false).ToList();
+            return View(donHangChoXacNhan);
+
+        }
+    }
 }
-}
-}
-    

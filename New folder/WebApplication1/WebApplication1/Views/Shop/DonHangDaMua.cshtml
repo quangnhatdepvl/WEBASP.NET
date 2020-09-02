@@ -6,8 +6,7 @@
 }
 
 <div class="container" style="max-width: 100%;">
-    <br />
-
+    
     <h3 style="text-align:center">ĐƠN HÀNG ĐÃ MUA</h3>
     <table class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable-buttons_info">
 
@@ -30,14 +29,15 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td >
                     @item.Sach.TenSach
                 </td>
-                <td>
+                <td style="width:15%">
                     @item.SoLuong
                 </td>
-                <td>
-                    @item.Price
+                <td style="width:15%">
+                    @String.Format("{0:0,0}", item.Price) VND
+                
                 </td>
                 <td>
                     @item.DonDatHang.NgayDatHang
