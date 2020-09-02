@@ -53,4 +53,19 @@ namespace WebApplication1.Models
 
         
     }
+    public class NhaXuatBanView {
+        public int MaNXB { get; set; }
+        [Required]
+        public string TenNXB { get; set; }
+        public string Diachi { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        public string DienThoai{ get; set; }
+    } 
+    public class ChuDeView
+    {
+        public int MaCD { get; set; }
+        [Required]
+        public string TenCD { get; set; }
+    }
+
 }

@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Models.Sach
+﻿@model WebApplication1.Models.Sach 
 
 @{
     ViewBag.Title = "Chitietsach";
@@ -7,10 +7,10 @@
 
 
 
-<div class="form-horizontal">
+<div class="form-horizontal" style="margin:1% 15%;">
     <br />
-    <h2 style="text-align:center;margin-left:10px">CHI TIẾT SÁCH</h2>
-    <dl class="form-group" style="margin: 2% 25%;">
+    <h2 style="text-align:center;">CHI TIẾT SÁCH</h2>
+    <dl class="form-group" style="margin: 2% 2%;">
         <dt>
           Tên sách
         </dt>
@@ -25,10 +25,10 @@
 
         <dd>
             @String.Format("{0:0,0}", Model.price) VND
-        </dd>
+        </dd>   
 
         <dt>
-            @Html.DisplayNameFor(model => model.Mota)
+           Mô tả
         </dt>
 
         <dd>
@@ -76,8 +76,8 @@
         </dd>
 
     </dl>
-    <div class="form-group" style="margin: 2% 25%;">
-        <div class="col-md-offset-2 col-md-10">
+    <div class="form-group" style="margin: 1% 5%;">
+        <div class="col-md-offset-10 col-md-20">
 
             @Html.ActionLink("ĐIỀU CHỈNH", "Suasach", new { id = Model.MaSach }, new { @class = "btn btn-dark" })
 

@@ -39,14 +39,6 @@ namespace WebApplication1.Areas.Admin.Controllers
         }
 
 
-        [HttpGet]
-        public ActionResult ThemMoiSach()
-        {
-            ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
-            ViewBag.MaNXB = new SelectList(applicationDbContext.NhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
-            return View();
-        }
-
         public ActionResult Xacnhanxoa(int id)
         {
             Sach sach = applicationDbContext.Saches.SingleOrDefault(n => n.MaSach == id);
@@ -91,7 +83,8 @@ namespace WebApplication1.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     var fileName = Path.GetFileName(fileupLoad.FileName);
-                    var path = Path.Combine(Server.MapPath("~/images"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/images/"), fileName);
+            
                     if (System.IO.File.Exists(path))
                     {
                         ViewBag.Thongbao = "Hình ảnh đã tồn tại";
@@ -108,6 +101,61 @@ namespace WebApplication1.Areas.Admin.Controllers
                 return RedirectToAction("Sach");
             }
         }
+
+
+        [HttpGet]
+        public ActionResult ThemNXB()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+
+        [Authorize]
+        public ActionResult ThemNXB(NhaXuatBanView nxb)
+        {
+            NhaXuatBan n1 = new NhaXuatBan();
+            n1.MaNXB = nxb.MaNXB;
+            n1.TenNXB = nxb.TenNXB;
+            n1.DiaChi = nxb.Diachi;
+            n1.DienThoai = nxb.DienThoai;
+
+            applicationDbContext.NhaXuatBans.Add(n1);
+            applicationDbContext.SaveChanges();
+            return RedirectToAction("Sach");
+        }
+        [HttpGet]
+        public ActionResult ThemCD()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+
+        [Authorize]
+        public ActionResult ThemCD(ChuDeView cd)
+        {
+            ChuDe c1 = new ChuDe();
+            c1.MaCD = cd.MaCD;
+            c1.TenChuDe = cd.TenCD;
+
+            applicationDbContext.ChuDes.Add(c1);
+            applicationDbContext.SaveChanges();
+            return RedirectToAction("Sach");
+        }
+
+
+
+        [HttpGet]
+        public ActionResult ThemMoiSach()
+        {
+            ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
+            ViewBag.MaNXB = new SelectList(applicationDbContext.NhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
+            return View();
+        }
+
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult ThemMoiSach(Sach sach, HttpPostedFileBase fileupLoad)
@@ -125,7 +173,7 @@ namespace WebApplication1.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     var fileName = Path.GetFileName(fileupLoad.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/images/"), fileName);
                     if (System.IO.File.Exists(path))
                     {
                         ViewBag.Thongbao = "Hình ảnh đã tồn tại";
@@ -158,19 +206,19 @@ namespace WebApplication1.Areas.Admin.Controllers
                 case "Chi tiết":
                     return (Detail(MaDonHang, donDatHang));
                 case "Xác nhận":
-                    return (Confirm(MaDonHang,donDatHang));
+                    return (Confirm(MaDonHang, donDatHang));
                 case "Hủy":
-                    return (Cancel( MaDonHang,donDatHang));
+                    return (Cancel(MaDonHang, donDatHang));
                 default:
                     // If they've submitted the form without a submitButton, 
                     // just return the view again.
                     return (View());
             }
-            
+
         }
         private ActionResult Cancel(int MaDonHang, DonDatHang donDatHang)
         {
-             var chiTiet = applicationDbContext.ChiTietDonHangs.Where(p => p.MaDonHang == MaDonHang).ToList();
+            var chiTiet = applicationDbContext.ChiTietDonHangs.Where(p => p.MaDonHang == MaDonHang).ToList();
             foreach (var item in chiTiet)
             {
                 var sach = applicationDbContext.Saches.Where(s => s.MaSach == item.MaSach).SingleOrDefault();
@@ -187,7 +235,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         private ActionResult Detail(int MaDonHang, DonDatHang donDatHang)
         {
             var chiTietDonHang = applicationDbContext.ChiTietDonHangs.Where(p => p.MaDonHang == MaDonHang).ToList();
-            return (PartialView("Detail",chiTietDonHang));
+            return (PartialView("Detail", chiTietDonHang));
         }
         private ActionResult Confirm(int MaDonHang, DonDatHang donDatHang)
         {
@@ -195,17 +243,17 @@ namespace WebApplication1.Areas.Admin.Controllers
             applicationDbContext.DonDatHangs.Attach(donDatHang);
             applicationDbContext.Entry(donDatHang).State = EntityState.Modified;
             applicationDbContext.SaveChanges();
-            return RedirectToAction("SanPhamDangGiao","Admin", new { area = "Admin" });
+            return RedirectToAction("SanPhamDangGiao", "Admin", new { area = "Admin" });
         }
 
-        public ActionResult SanPhamDangGiao(int ?page)
+        public ActionResult SanPhamDangGiao(int? page)
         {
             var dh = applicationDbContext.DonDatHangs.Where(p => p.ThanhToan == false).ToList();
             int pageNumber = (page ?? 1);
             return PartialView("SanPhamDangGiao", dh.ToPagedList(pageNumber, 10));
 
         }
-     
+
         [HttpPost]
         public ActionResult ConfirmDonThanhToan(int MaDonHang, string submitButton)
         {
@@ -259,7 +307,7 @@ namespace WebApplication1.Areas.Admin.Controllers
             {
                 case "Chi tiết":
                     return (DetailThanhCong(MaDonHang, donDatHang));
-             
+
                 default:
                     // If they've submitted the form without a submitButton, 
                     // just return the view again.
