@@ -311,6 +311,13 @@ namespace WebApplication1.Controllers
             var donHang = applicationDbContext.ChiTietDonHangs.Where(p => p.DonDatHang.KhachHang.UserId == userId && p.DonDatHang.ThanhToan == true).ToList();
             return View(donHang);
         }
-    }
+        public ActionResult DonHangDangDat()
+        { 
+             var userId = User.Identity.GetUserId();
+             var donHangDangDat = applicationDbContext.ChiTietDonHangs.Where(p => p.DonDatHang.KhachHang.UserId == userId && p.DonDatHang.TinhTrang == true && p.DonDatHang.ThanhToan == false).ToList();
+            return View(donHangDangDat);
+
+}
+}
 }
     

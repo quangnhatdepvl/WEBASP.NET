@@ -1417,6 +1417,7 @@
     <Content Include="Views\Shop\Comment.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shop\DonHangDaMua.cshtml" />
+    <Content Include="Views\Shop\DonHangDangDat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
