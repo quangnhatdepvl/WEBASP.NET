@@ -27,10 +27,7 @@
             <th>
                 Địa chỉ
             </th>
-
-            
-
-            <th>Thao tác</th>
+ <th>Thao tác</th>
         </tr>
 
         @foreach (var item in Model)
@@ -57,9 +54,9 @@
                     @Html.AntiForgeryToken()
                 <td style="line-height: 3;padding: 0.1rem 0.2rem;">
                     <input type="hidden" value="@item.MaDonHang" name="MaDonHang" />
-                    <input type="submit" value="Detail" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
-                    <input type="submit" value="Confirm" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
-                    <input type="submit" value="Cancel" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
+                    <input type="submit" value="Chi tiết" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
+                    <input type="submit" value="Xác nhận" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
+                    <input type="submit" value="Hủy" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
 
                 </td>
                 }

@@ -142,17 +142,6 @@ namespace WebApplication1.Areas.Admin.Controllers
                 return RedirectToAction("Sach");
             }
         }
-        public ActionResult SanPhamDaBan()
-        {
-            return View();
-
-        }
-        public ActionResult SanPhamDangGiao()
-        {
-            return View();
-
-        }
-
 
         public ActionResult DonHang(int? page)
         {
@@ -166,11 +155,11 @@ namespace WebApplication1.Areas.Admin.Controllers
             DonDatHang donDatHang = applicationDbContext.DonDatHangs.Find(MaDonHang);
             switch (submitButton)
             {
-                case "Detail":
+                case "Chi tiết":
                     return (Detail(MaDonHang, donDatHang));
-                case "Confirm":
+                case "Xác nhận":
                     return (Confirm(MaDonHang,donDatHang));
-                case "Cancel":
+                case "Hủy":
                     return (Cancel( MaDonHang,donDatHang));
                 default:
                     // If they've submitted the form without a submitButton, 
@@ -196,8 +185,82 @@ namespace WebApplication1.Areas.Admin.Controllers
             applicationDbContext.DonDatHangs.Attach(donDatHang);
             applicationDbContext.Entry(donDatHang).State = EntityState.Modified;
             applicationDbContext.SaveChanges();
-            return Redirect(Request.UrlReferrer.ToString());
+            return RedirectToAction("SanPhamDangGiao","Admin", new { area = "Admin" });
         }
 
+        public ActionResult SanPhamDangGiao(int ?page)
+        {
+            var dh = applicationDbContext.DonDatHangs.Where(p => p.ThanhToan == false).ToList();
+            int pageNumber = (page ?? 1);
+            return PartialView("SanPhamDangGiao", dh.ToPagedList(pageNumber, 10));
+
+        }
+     
+        [HttpPost]
+        public ActionResult ConfirmDonThanhToan(int MaDonHang, string submitButton)
+        {
+            DonDatHang donDatHang = applicationDbContext.DonDatHangs.Find(MaDonHang);
+            switch (submitButton)
+            {
+                case "Chi tiết":
+                    return (DetailThanhToan(MaDonHang, donDatHang));
+                case "Xác nhận":
+                    return (ConfirmThanhToan(MaDonHang, donDatHang));
+                case "Hủy":
+                    return (CancelThanhToan(MaDonHang, donDatHang));
+                default:
+                    // If they've submitted the form without a submitButton, 
+                    // just return the view again.
+                    return (View());
+            }
+
+        }
+        private ActionResult ConfirmThanhToan(int MaDonHang, DonDatHang donDatHang)
+        {
+            donDatHang.ThanhToan = true;
+            applicationDbContext.DonDatHangs.Attach(donDatHang);
+            applicationDbContext.Entry(donDatHang).State = EntityState.Modified;
+            applicationDbContext.SaveChanges();
+            return RedirectToAction("SanPhamDaBan", "Admin", new { area = "Admin" });
+        }
+        private ActionResult CancelThanhToan(int MaDonHang, DonDatHang donDatHang)
+        {
+            applicationDbContext.Entry(donDatHang).State = EntityState.Deleted;
+            applicationDbContext.SaveChanges();
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+        private ActionResult DetailThanhToan(int MaDonHang, DonDatHang donDatHang)
+        {
+            var chiTietDonHang = applicationDbContext.ChiTietDonHangs.Where(p => p.MaDonHang == MaDonHang).ToList();
+            return (PartialView("Detail", chiTietDonHang));
+        }
+        public ActionResult SanPhamDaBan(int? page)
+        {
+            var dh = applicationDbContext.DonDatHangs.Where(p => p.TinhTrang == true && p.ThanhToan == true).ToList();
+            int pageNumber = (page ?? 1);
+            return PartialView("SanPhamDaBan", dh.ToPagedList(pageNumber, 10));
+
+        }
+        [HttpPost]
+        public ActionResult ConfirmThanhCong(int MaDonHang, string submitButton)
+        {
+            DonDatHang donDatHang = applicationDbContext.DonDatHangs.Find(MaDonHang);
+            switch (submitButton)
+            {
+                case "Chi tiết":
+                    return (DetailThanhCong(MaDonHang, donDatHang));
+             
+                default:
+                    // If they've submitted the form without a submitButton, 
+                    // just return the view again.
+                    return (View());
+            }
+
+        }
+        private ActionResult DetailThanhCong(int MaDonHang, DonDatHang donDatHang)
+        {
+            var chiTietDonHang = applicationDbContext.ChiTietDonHangs.Where(p => p.MaDonHang == MaDonHang).ToList();
+            return (PartialView("Detail", chiTietDonHang));
+        }
     }
 }
