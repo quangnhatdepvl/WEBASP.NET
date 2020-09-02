@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication1.Models.ChiTietDonHang>
+﻿@model IEnumerable<WebApplication1.Models.DonDatHang>
 
 @{
     ViewBag.Title = "DonHang";
@@ -28,18 +28,7 @@
                 Địa chỉ
             </th>
 
-            <th>
-                Tên sách
-            </th>
-            <th>
-                Số lượng
-            </th>
-            <th>
-                Đơn giá
-            </th>
-            <th>
-                Thành tiền
-            </th>
+            
 
             <th>Thao tác</th>
         </tr>
@@ -51,42 +40,28 @@
                     @item.MaDonHang
                 </td>
                 <td>
-                    @item.DonDatHang.NgayDatHang
+                    @item.NgayDatHang
                 </td>
                 <td>
-                    @item.DonDatHang.KhachHang.FullName
+                    @item.KhachHang.FullName
                 </td>
                 <td>
-                    @item.DonDatHang.KhachHang.DienThoaiKH
+                    @item.KhachHang.DienThoaiKH
                 </td>
                 <td>
-                    @item.DonDatHang.KhachHang.DiachiKH
+                    @item.KhachHang.DiachiKH
                 </td>
-                <td>
-                    @item.Sach.TenSach
-                </td>
-                <td>
-                    @item.SoLuong
-                </td>
-                <td>
-                    @item.Sach.price
-                </td>
-                <td>
-                    @item.Price
-                </td>
+               
                 @using (Html.BeginForm("ConfirmDonDatHang", "Admin", new { area = "Admin" }, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
+                <td style="line-height: 3;padding: 0.1rem 0.2rem;">
                     <input type="hidden" value="@item.MaDonHang" name="MaDonHang" />
+                    <input type="submit" value="Detail" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
+                    <input type="submit" value="Confirm" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
+                    <input type="submit" value="Cancel" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
 
-
-                    <td style="line-height: 3;padding: 0.1rem 0.2rem;">
-                        <input type="submit" value="XÁC NHẬN" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
-
-
-                        <button class="btn btn-xs btn-info btn-round text-center" style="font-size: 12px;">HỦY</button>
-
-                    </td>
+                </td>
                 }
 
             </tr>
@@ -94,3 +69,18 @@
 
     </table>
 </div>
+<script>
+    $(document).ready(function () {
+        $.getJSON(url,
+            function (json) {
+                var tr;
+                for (var i = 0; i < json.length; i++) {
+                    tr = $('<tr/>');
+                    tr.append("<td>" + json[i].User_Name + "</td>");
+                    tr.append("<td>" + json[i].score + "</td>");
+                    tr.append("<td>" + json[i].team + "</td>");
+                    $('table').append(tr);
+                }
+            });
+    });
+</script>
