@@ -31,7 +31,6 @@ namespace WebApplication1.Models
         public DateTime NgayCapNhat { get; set; }
 
         public int SoLuongTon { get; set; }
-
         public int MaCD { get; set; }
         [ForeignKey("MaCD")]
         public virtual ChuDe  ChuDe { get; set; }
@@ -44,7 +43,6 @@ namespace WebApplication1.Models
         public string GenerateSlug()
         {
             string phrase = string.Format("{0}-{1}", MaSach, TenSach);
-
             string str = RemoveAccent(phrase).ToLower();
             // invalid chars           
             str = RemoveSign4VietnameseString(str);
@@ -61,7 +59,7 @@ namespace WebApplication1.Models
             byte[] bytes = System.Text.Encoding.GetEncoding("UTF-8").GetBytes(text);
             return System.Text.Encoding.UTF8.GetString(bytes);
         }
-        public  string RemoveSign4VietnameseString(string str)
+        private string RemoveSign4VietnameseString(string str)
         {
             for (int i = 1; i < VietnameseSigns.Length; i++)
             {

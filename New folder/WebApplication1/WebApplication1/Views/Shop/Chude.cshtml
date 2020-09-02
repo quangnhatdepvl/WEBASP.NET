@@ -2,7 +2,7 @@
 
 @foreach (var item in Model)
 {
-    <li><a href="@Url.Action("SpTheoChuDe", "Shop",new { id = item.MaCD})" style="text-align:left"><span class="icon-align-left" style="color:ActiveCaption"></span>@item.TenChuDe</a></li>
+    <li><a href="@Url.Action("SpTheoChuDe", "Shop",new { id = item.GenerateSlug()})" style="text-align:left"><span class="icon-align-left" style="color:ActiveCaption"></span>@item.TenChuDe</a></li>
 }
 
 

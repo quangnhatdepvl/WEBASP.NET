@@ -13,9 +13,16 @@ namespace WebApplication1
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.Add("ProductDetails", new SeoFriendlyRoute("chi-tiet/{id}",
+            routes.Add("sach", new SeoFriendlyRoute("chi-tiet/{id}",
             new RouteValueDictionary(new { controller = "Shop", action = "ChiTietSanPham" }),
             new MvcRouteHandler()));
+            routes.Add("chude", new SeoFriendlyRoute("chu-de/{id}",
+           new RouteValueDictionary(new { controller = "Shop", action = "SpTheoChuDe" }),
+           new MvcRouteHandler()));
+
+            routes.Add("nxb", new SeoFriendlyRoute("nha-xuat-ban/{id}",
+         new RouteValueDictionary(new { controller = "Shop", action = "SpTheoNhaXuatBan" }),
+         new MvcRouteHandler()));
             routes.MapRoute(
                 name: "Contact",
                 url: "lien-he",
@@ -61,16 +68,7 @@ namespace WebApplication1
              url: "dang-ky",
              defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional }
          );
-            routes.MapRoute(
-            name: "SpTheoChuDe",
-            url: "chu-de/{id}",
-            defaults: new { controller = "Shop", action = "SpTheoChuDe", id = UrlParameter.Optional }
-        );
-            routes.MapRoute(
-            name: "SpTheoNXB",
-            url: "nha-xuat-ban/{id}",
-            defaults: new { controller = "Shop", action = "SpTheoNhaXuatBan", id = UrlParameter.Optional }
-        );
+           
         //    routes.MapRoute(
         //    name: "detailSach",
         //    url: "chi-tiet/{id}",
@@ -108,7 +106,6 @@ namespace WebApplication1
             if (id != null)
             {
                 string idValue = id.ToString();
-
                 var regex = new Regex(@"^(?<id>\d+).*$");
                 var match = regex.Match(idValue);
 
@@ -117,7 +114,6 @@ namespace WebApplication1
                     return match.Groups["id"].Value;
                 }
             }
-
             return id;
         }
     }
