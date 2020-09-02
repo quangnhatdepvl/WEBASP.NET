@@ -17,7 +17,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="~/Admin/css/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="~/Admin/logo.png" />
+ 
     <script src="~/tinymce/js/tinymce/tinymce.min.js"></script>
     <script>tinymce.init({ selector: 'textarea', entity_encoding: "raw" });</script>
 </head>
@@ -29,7 +29,7 @@
             <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                 <div class="navbar-brand-wrapper d-flex justify-content-center">
                     <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
-                        <a class="navbar-brand brand-logo" href="@Url.Action("AdminIndex","Admin")"><img src="~/images/logo-bootstrap-shoping-cart.png" alt="logo" /></a>
+                        <a class="navbar-brand brand-logo" href="@Url.Action("AdminIndex","Admin")"><img src="~/Content/images/logo-bootstrap-shoping-cart.jpg" alt="logo" /></a>
                         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                             <span class="mdi mdi-sort-variant"></span>
                         </button>
@@ -103,14 +103,6 @@
                                 <span class="menu-title">Quản lý đơn hàng</span>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="@Url.Action("Index","ManageUse")">
-                                <i class="mdi mdi-grid-large menu-icon"></i>
-                                <span class="menu-title">Quản lý khách hàng</span>
-                            </a>
-                        </li>
-
-
                     </ul>
                 </nav>
                 @RenderBody()

@@ -12,7 +12,7 @@
     <h2 style="text-align:center;margin-left:10px">CHI TIẾT SÁCH</h2>
     <dl class="form-group" style="margin: 2% 25%;">
         <dt>
-            @Html.DisplayNameFor(model => model.TenSach)
+          Tên sách
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.price)
+            Giá
         </dt>
 
         <dd>
@@ -36,15 +36,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Anhbia)
+           Ảnh sách
         </dt>
 
         <dd>
-            <img src="@Url.Content("~/images/" + Model.Anhbia)" width="120px" />
+            <img src="@Url.Content("~/Content/images/" + Model.Anhbia)" width="120px" />
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NgayCapNhat)
+            Ngày cập nhật
         </dt>
 
         <dd>
@@ -52,7 +52,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.SoLuongTon)
+          Số lượng trong kho
         </dt>
 
         <dd>
@@ -60,19 +60,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MaCD)
+            Tên chủ đề
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MaCD)
+            @Html.DisplayFor(model => model.ChuDe.TenChuDe)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.MaNXB)
+            Tên nhà sản xuất
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MaNXB)
+            @Html.DisplayFor(model => model.NhaXuatBan.TenNXB)
         </dd>
 
     </dl>

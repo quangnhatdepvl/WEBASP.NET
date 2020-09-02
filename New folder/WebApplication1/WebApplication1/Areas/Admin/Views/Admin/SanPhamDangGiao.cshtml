@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<WebApplication1.Models.DonDatHang>
 @{
     ViewBag.Title = "SanPhamDangGiao";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminHeader.cshtml";
@@ -26,70 +26,42 @@
             <th>
                 Địa chỉ
             </th>
-
-            <th>
-                Tên sách
-            </th>
-            <th>
-                Số lượng
-            </th>
-            <th>
-                Đơn giá
-            </th>
-            <th>
-                Thành tiền
-            </th>
-
             <th>Thao tác</th>
         </tr>
-
-        @*@foreach (var item in Model)
+        @foreach (var item in Model)
         {
             <tr>
                 <td>
                     @item.MaDonHang
                 </td>
                 <td>
-                    @item.DonDatHang.NgayDatHang
+                    @item.NgayDatHang
                 </td>
                 <td>
-                    @item.DonDatHang.KhachHang.FullName
+                    @item.KhachHang.FullName
                 </td>
                 <td>
-                    @item.DonDatHang.KhachHang.DienThoaiKH
+                    @item.KhachHang.DienThoaiKH
                 </td>
                 <td>
-                    @item.DonDatHang.KhachHang.DiachiKH
+                    @item.KhachHang.DiachiKH
                 </td>
-                <td>
-                    @item.Sach.TenSach
-                </td>
-                <td>
-                    @item.SoLuong
-                </td>
-                <td>
-                    @item.Sach.price
-                </td>
-                <td>
-                    @item.Price
-                </td>
-                @using (Html.BeginForm("ConfirmDonDatHang", "Admin", new { area = "Admin" }, FormMethod.Post))
+
+                @using (Html.BeginForm("ConfirmDonThanhToan", "Admin", new { area = "Admin" }, FormMethod.Post))
                 {
                     @Html.AntiForgeryToken()
-                    <input type="hidden" value="@item.MaDonHang" name="MaDonHang" />
-
-
                     <td style="line-height: 3;padding: 0.1rem 0.2rem;">
-                        <input type="submit" value="XÁC NHẬN" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
-
-
-                        <button class="btn btn-xs btn-info btn-round text-center" style="font-size: 12px;">HỦY</button>
+                        <input type="hidden" value="@item.MaDonHang" name="MaDonHang" />
+                        <input type="submit" value="Chi tiết" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
+                        <input type="submit" value="Xác nhận" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
+                        <input type="submit" value="Hủy" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
 
                     </td>
-                }*@
+                }
 
-            
+            </tr>
         }
+
 
     </table>
 </div>

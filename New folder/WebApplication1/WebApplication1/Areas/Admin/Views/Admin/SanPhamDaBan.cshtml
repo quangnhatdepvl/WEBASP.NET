@@ -1,8 +1,64 @@
-﻿
+﻿@model IEnumerable<WebApplication1.Models.DonDatHang>
+
 @{
     ViewBag.Title = "SanPhamDaBan";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdminHeader.cshtml";
 }
+<div class="container" style="max-width: 100%;">
+    <br />
+    <h3 style="text-align:center">QUẢN LÝ ĐƠN HÀNG ĐÃ BÁN</h3>
+    <table class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable-buttons_info">
 
-<h2>SanPhamDaBan</h2>
+        <tr style="background-color: gray;font-size: 14px">
+            <th>
+                Mã đơn hàng
+            </th>
+            <th>
+                Ngày đặt hàng
+            </th>
+            <th>
+                Tên khách hàng
+            </th>
+            <th>
+                Số điện thoại
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>Thao tác</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.MaDonHang
+                </td>
+                <td>
+                    @item.NgayDatHang
+                </td>
+                <td>
+                    @item.KhachHang.FullName
+                </td>
+                <td>
+                    @item.KhachHang.DienThoaiKH
+                </td>
+                <td>
+                    @item.KhachHang.DiachiKH
+                </td>
+
+                @using (Html.BeginForm("ConfirmThanhCong", "Admin", new { area = "Admin" }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <td style="line-height: 3;padding: 0.1rem 0.2rem;">
+                        <input type="hidden" value="@item.MaDonHang" name="MaDonHang" />
+                        <input type="submit" value="Chi tiết" name="submitButton" class="btn btn-xs btn-danger btn-round text-center" style="font-size: 12px;" />
+                    </td>
+                }
+
+            </tr>
+        }
+
+    </table>
+</div>
 
