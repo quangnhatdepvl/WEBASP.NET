@@ -3,19 +3,14 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap styles -->
     <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
-    <!-- Customize styles -->
     <link href="~/Content/css/style.css" rel="stylesheet" />
-    <!-- font awesome styles -->
     <link href="~/Content/fonts/css/font-awesome-ie7.min.css" rel="stylesheet">
     <link href="~/Content/fonts/css/font-awesome.css" rel="stylesheet">
-    <!-- Favicons -->
     <link rel="shortcut icon" href="~/Content/fonts/ico/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="~/Content/css/w3.css">
@@ -50,16 +45,13 @@
                 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
                 <div class="navbar-search pull-left">
-
                     <input type="text" placeholder="Tìm kiếm..." class="search-query span2 ui-autocomplete-input" style="width: 602px;height: 40px;padding:14px 14px;margin: 16px;" id="searchInput" autocomplete="off">
-
                 </div>
-
-
+                
                 <script>
     function onItemSelect(item){
    var siteRootUrl = '@Url.Content("~/")';
-   window.location.href = siteRootUrl + 'Shop/ChiTietSanPham/' + item;
+   window.location.href = siteRootUrl + 'chi-tiet/' + item;
 }
     $("#searchInput").autocomplete({
         source: function (request, response)
@@ -86,7 +78,6 @@
 
     });
                 </script>
-
 
 
             </div>
@@ -129,10 +120,8 @@
                         <hr style="border-top:1px solid black">
                         @Html.Action("Nhaxuatban", "Shop")
                         <li style="border:0"> &nbsp;</li>
-
                     </ul>
                 </div>
-
             </div>
             @RenderBody()
         </div>

@@ -238,6 +238,7 @@ namespace WebApplication1.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
+               
                 return RedirectToAction("ChangePassword", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);

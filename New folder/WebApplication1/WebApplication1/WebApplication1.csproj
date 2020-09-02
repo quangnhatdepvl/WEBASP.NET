@@ -1332,8 +1332,8 @@
     <Content Include="Views\Shop\GioHangPartial.cshtml" />
     <Content Include="Views\Shop\Chude.cshtml" />
     <Content Include="Views\Shop\Nhaxuatban.cshtml" />
-    <Content Include="Views\Shop\spTheoNhaXuatBan.cshtml" />
-    <Content Include="Views\Shop\spTheoChuDe.cshtml" />
+    <Content Include="Views\Shop\SpTheoNhaXuatBan.cshtml" />
+    <Content Include="Views\Shop\SpTheoChuDe.cshtml" />
     <Content Include="Views\Shop\DatHang.cshtml" />
     <Content Include="Views\Shop\Xacnhandonhang.cshtml" />
     <Content Include="Views\Shop\ThongTinKhachHang.cshtml" />

@@ -62,8 +62,6 @@ namespace WebApplication1.Controllers
         {
             Sach asach = new Sach();
             asach = applicationDbContext.Saches.Find(id);
-
-
             return View(asach);
         }
 
@@ -296,7 +294,7 @@ namespace WebApplication1.Controllers
         }
         [HttpPost]
         [Authorize]
-        public ActionResult Comments(CommentView comment)
+        public ActionResult ChiTietSanPham(CommentView comment)
         {
             Comments cmt = new Comments();
             cmt.Message = comment.Message;
