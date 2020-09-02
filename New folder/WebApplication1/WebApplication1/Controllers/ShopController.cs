@@ -305,6 +305,12 @@ namespace WebApplication1.Controllers
             applicationDbContext.SaveChanges();
             return Redirect(Request.UrlReferrer.ToString());
         }
+        public ActionResult DonHangDaMua()
+        {
+            var userId = User.Identity.GetUserId();
+            var donHang = applicationDbContext.ChiTietDonHangs.Where(p => p.DonDatHang.KhachHang.UserId == userId && p.DonDatHang.ThanhToan == true).ToList();
+            return View(donHang);
+        }
     }
 }
     

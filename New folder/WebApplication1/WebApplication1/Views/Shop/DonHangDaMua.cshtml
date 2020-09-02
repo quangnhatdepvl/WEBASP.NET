@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WebApplication1.Models.ChiTietDonHang>
+
+@{
+    ViewBag.Title = "DonHang";
+    Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
+}
+
+<div class="container" style="max-width: 100%;">
+    <br />
+
+    <h3 style="text-align:center">ĐƠN HÀNG ĐÃ MUA</h3>
+    <table class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable-buttons_info">
+
+        <tr style="background-color: gray;font-size: 14px">
+            <th>
+               TÊN SÁCH
+            </th>
+            <th>
+               SỐ LƯỢNG
+            </th>
+            <th>
+                GIÁ
+            </th>
+            <th>
+                NGÀY ĐẶT
+            </th>
+            
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Sach.TenSach
+                </td>
+                <td>
+                    @item.SoLuong
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    @item.DonDatHang.NgayDatHang
+                </td>
+                
+            </tr>
+        }
+    </table>
+</div>
