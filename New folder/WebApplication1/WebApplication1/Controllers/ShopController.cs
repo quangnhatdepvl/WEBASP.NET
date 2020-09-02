@@ -244,6 +244,10 @@ namespace WebApplication1.Controllers
                 ctdh.Price = item.Gh_ThanhTien;
                 ctdh.DonGia = item.Gh_Dongia;
                 ctdh.SoLuong = item.Gh_soLuong;
+                var sach = applicationDbContext.Saches.Where(s => s.MaSach == item.Gh_Masach).SingleOrDefault();
+                sach.SoLuongTon = sach.SoLuongTon - item.Gh_soLuong;
+                applicationDbContext.Saches.Attach(sach);
+                applicationDbContext.Entry(sach).State = EntityState.Modified;
                 applicationDbContext.ChiTietDonHangs.Add(ctdh);
 
             }
@@ -289,9 +293,8 @@ namespace WebApplication1.Controllers
         {
             var sp = applicationDbContext.Comments.Where(c => c.SachId == id).ToList();
             return PartialView(sp);
-
-
         }
+
         [HttpPost]
         [Authorize]
         public ActionResult ChiTietSanPham(CommentView comment)
@@ -305,6 +308,7 @@ namespace WebApplication1.Controllers
             applicationDbContext.SaveChanges();
             return Redirect(Request.UrlReferrer.ToString());
         }
+
         public ActionResult DonHangDaMua()
         {
             var userId = User.Identity.GetUserId();

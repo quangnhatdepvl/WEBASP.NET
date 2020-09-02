@@ -170,8 +170,18 @@ namespace WebApplication1.Areas.Admin.Controllers
         }
         private ActionResult Cancel(int MaDonHang, DonDatHang donDatHang)
         {
-            applicationDbContext.Entry(donDatHang).State = EntityState.Deleted;
+             var chiTiet = applicationDbContext.ChiTietDonHangs.Where(p => p.MaDonHang == MaDonHang).ToList();
+            foreach (var item in chiTiet)
+            {
+                var sach = applicationDbContext.Saches.Where(s => s.MaSach == item.MaSach).SingleOrDefault();
+                sach.SoLuongTon = sach.SoLuongTon + item.SoLuong;
+                applicationDbContext.Saches.Attach(sach);
+                applicationDbContext.Entry(sach).State = EntityState.Modified;
+                applicationDbContext.SaveChanges();
+            }
+            applicationDbContext.DonDatHangs.Remove(donDatHang);
             applicationDbContext.SaveChanges();
+
             return Redirect(Request.UrlReferrer.ToString());
         }
         private ActionResult Detail(int MaDonHang, DonDatHang donDatHang)
