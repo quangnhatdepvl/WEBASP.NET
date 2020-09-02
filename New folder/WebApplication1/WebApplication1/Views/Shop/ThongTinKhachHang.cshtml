@@ -24,11 +24,11 @@
                     </tr>
                     <tr>
                         <td><b>Giới tính :</b></td>
-                        <td style="color: #00a157">
+                        <td>
                             @Html.RadioButtonFor(model => model.Gender, true)
-                            <span>Male</span>
+                            <span>Nam</span>
                             @Html.RadioButtonFor(model => model.Gender, false)
-                            <span>FeMale</span>
+                            <span>Nữ</span>
                             @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                         </td>
                     </tr>
