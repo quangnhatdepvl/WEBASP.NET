@@ -22,7 +22,7 @@ namespace WebApplication1.Models
            
             return userIdentity;
         }
-        public KhachHang KhachHang { get; set; }
+        public virtual KhachHang KhachHang { get; set; }
     }
    
     [DbConfigurationType(typeof(MySqlEFConfiguration))]

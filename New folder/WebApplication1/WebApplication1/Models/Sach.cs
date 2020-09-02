@@ -65,6 +65,7 @@ namespace WebApplication1.Models
             {
                 for (int j = 0; j < VietnameseSigns[i].Length; j++)
                     str = str.Replace(VietnameseSigns[i][j], VietnameseSigns[0][i - 1]);
+                str = Regex.Replace(str, "[@&'(\\s)<>#?]", "-");
             }
             return str;
         }
