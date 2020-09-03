@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
+
 namespace WebApplication1.Models
 {
     public class ChiTietDonHang
@@ -24,5 +26,6 @@ namespace WebApplication1.Models
         [Range(0, double.MaxValue, ErrorMessage = "Please enter valid number")]
         public double DonGia { get; set; }
         public int SoLuong { get; set; }
+        
     }
 }
