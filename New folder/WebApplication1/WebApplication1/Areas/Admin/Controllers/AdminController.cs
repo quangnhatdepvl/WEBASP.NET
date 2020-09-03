@@ -159,7 +159,8 @@ namespace WebApplication1.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult ThemMoiSach(Sach sach, HttpPostedFileBase fileupLoad)
+        [ValidateAntiForgeryToken]
+        public ActionResult ThemMoiSach(Sach sach,TacGia tacGia, HttpPostedFileBase fileupLoad)
         {
 
             ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
@@ -171,8 +172,7 @@ namespace WebApplication1.Areas.Admin.Controllers
             }
             else
             {
-                if (ModelState.IsValid)
-                {
+                
                     var fileName = Path.GetFileName(fileupLoad.FileName);
                     var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
                     if (System.IO.File.Exists(path))
@@ -186,9 +186,17 @@ namespace WebApplication1.Areas.Admin.Controllers
                     sach.Anhbia = fileName;
                     sach.Mota = Regex.Replace(sach.Mota, "<(.|\\n)*?>", string.Empty);
                     applicationDbContext.Saches.Add(sach);
+                    applicationDbContext.TacGias.Add(tacGia);
+                    VietSach vietSach = new VietSach
+                    {
+                        MaSach = sach.MaSach,
+                        MaTG = tacGia.MaTG
+                    };
+                    applicationDbContext.VietSaches.Add(vietSach);
                     applicationDbContext.SaveChanges();
-                }
-                return RedirectToAction("Sach");
+                    return RedirectToAction("Sach");
+                
+               
             }
         }
      
