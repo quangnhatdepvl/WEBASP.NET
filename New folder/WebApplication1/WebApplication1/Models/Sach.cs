@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNet.Identity;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 
 namespace WebApplication1.Models
 {
@@ -15,7 +16,6 @@ namespace WebApplication1.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        
         public int MaSach { get; set; }
 
         [Required]
@@ -34,11 +34,11 @@ namespace WebApplication1.Models
         public int MaCD { get; set; }
         [ForeignKey("MaCD")]
         public virtual ChuDe  ChuDe { get; set; }
-
+        
         public  int MaNXB { get; set; }
         [ForeignKey("MaNXB")]
         public virtual NhaXuatBan NhaXuatBan { get; set; }
-
+            
 
         public string GenerateSlug()
         {

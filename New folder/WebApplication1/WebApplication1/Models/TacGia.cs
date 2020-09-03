@@ -16,13 +16,12 @@ namespace WebApplication1.Models
         public int MaTG { get; set; }
 
         [Required]
-        public virtual string TenTg { get; set; }
+        public string TenTg { get; set; }
 
         public string DiaChi { get; set; }
 
         public string TieuSu { get; set; }
-        [MaxLength(10)]
-        [MinLength(10)]
+       
         public string SoDienThoai { get; set; }
     }
 }
