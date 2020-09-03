@@ -191,10 +191,10 @@ namespace WebApplication1.Areas.Admin.Controllers
                 return RedirectToAction("Sach");
             }
         }
-
+     
         public ActionResult DonHang(int? page)
         {
-            var dh = applicationDbContext.DonDatHangs.Where(p => p.TinhTrang == false).ToList();
+            var dh = applicationDbContext.DonDatHangs.Where(p => p.TinhTrang == false && p.ThanhToan == false).ToList();
             int pageNumber = (page ?? 1);
             return PartialView("DonHang", dh.ToPagedList(pageNumber, 10));
         }
@@ -249,7 +249,7 @@ namespace WebApplication1.Areas.Admin.Controllers
 
         public ActionResult SanPhamDangGiao(int? page)
         {
-            var dh = applicationDbContext.DonDatHangs.Where(p => p.ThanhToan == false).ToList();
+            var dh = applicationDbContext.DonDatHangs.Where(p => p.ThanhToan == false && p.TinhTrang ==true).ToList();
             int pageNumber = (page ?? 1);
             return PartialView("SanPhamDangGiao", dh.ToPagedList(pageNumber, 10));
 

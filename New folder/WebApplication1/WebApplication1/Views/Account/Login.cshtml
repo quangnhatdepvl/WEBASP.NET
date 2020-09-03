@@ -50,16 +50,20 @@
         </div>
     </div>
     <br />
-    <p>
-        @Html.ActionLink("Bạn chưa có tài khoản?", "Register")
-    </p>
+    <div style="font-family:'Times New Roman'">
+        <p>
+            @Html.ActionLink("Bạn chưa có tài khoản?", "Register")
+        </p>
+    </div>
 
     @* Enable this once you have account confirmation enabled for password reset functionality*@
     <p>
         @Html.ActionLink("Bạn quên mật khẩu?", "ForgotPassword")
     </p>
-    <a href="@Url.Action("Index","Shop") ">
-        Quay về trang chủ
-    </a>
+    <div>
+        <a href="@Url.Action("Index","Shop") " style="font-family:'Times New Roman'">
+            Quay về trang chủ
+        </a>
+    </div>
 
 }

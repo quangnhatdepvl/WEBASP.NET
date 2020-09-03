@@ -16,14 +16,14 @@
                     <h2 style="color:black; font-weight:bold; text-align:center">THÔNG TIN KHÁCH HÀNG</h2>
 
                     <tr>
-                        <td><b>Họ và tên  :</b></td>
+                        <td><b>Họ và tên  </b></td>
                         <td style="color: #00a157">
                             @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
                         </td>
                     </tr>
                     <tr>
-                        <td><b>Giới tính :</b></td>
+                        <td><b>Giới tính </b></td>
                         <td>
                             @Html.RadioButtonFor(model => model.Gender, true)
                             <span>Nam</span>
@@ -34,14 +34,14 @@
                     </tr>
 
                     <tr>
-                        <td><b>Địa chỉ :</b></td>
+                        <td><b>Địa chỉ </b></td>
                         <td style="color: #00a157">
                             @Html.EditorFor(model => model.DiachiKH, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.DiachiKH, "", new { @class = "text-danger" })
                         </td>
                     </tr>
                     <tr>
-                        <td><b>Số điện thoại :</b></td>
+                        <td><b>Số điện thoại </b></td>
                         <td style="color: #00a157">
                             @Html.EditorFor(model => model.DienThoaiKH, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.DienThoaiKH, "", new { @class = "text-danger" })
