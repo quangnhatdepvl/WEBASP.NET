@@ -215,6 +215,7 @@ namespace WebApplication1.Controllers
 
         //
         // GET: /Manage/ChangePassword
+        [Authorize]
         public ActionResult ChangePassword()
         {
             return View();
