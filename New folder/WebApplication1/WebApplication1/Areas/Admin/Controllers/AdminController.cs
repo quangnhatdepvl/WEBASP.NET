@@ -94,7 +94,8 @@ namespace WebApplication1.Areas.Admin.Controllers
                         fileupLoad.SaveAs(path);
                     }
                     sach.Anhbia = fileName;
-
+                  
+                    sach.Mota = Regex.Replace(sach.Mota, "<(.|\\n)*?>", string.Empty);
                     applicationDbContext.Entry(sach).State = EntityState.Modified;
                     applicationDbContext.SaveChanges();
                 }
