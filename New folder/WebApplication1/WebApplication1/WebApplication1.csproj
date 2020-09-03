@@ -18,8 +18,7 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44346</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>
     </IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>
@@ -268,13 +267,9 @@
     <Compile Include="Migrations\202008310450587_update1.Designer.cs">
       <DependentUpon>202008310450587_update1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009010537343_update2.cs" />
-    <Compile Include="Migrations\202009010537343_update2.Designer.cs">
-      <DependentUpon>202009010537343_update2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009010539303_update3.cs" />
-    <Compile Include="Migrations\202009010539303_update3.Designer.cs">
-      <DependentUpon>202009010539303_update3.cs</DependentUpon>
+    <Compile Include="Migrations\202009031547548_update2.cs" />
+    <Compile Include="Migrations\202009031547548_update2.Designer.cs">
+      <DependentUpon>202009031547548_update2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -355,7 +350,6 @@
     <Content Include="Content\images\brand3.png" />
     <Content Include="Content\images\brand4.png" />
     <Content Include="Content\images\crossword.png" />
-    <Content Include="Content\images\Gearvn_thác nước_ %285%29.jpg" />
     <Content Include="Content\images\Gt_Thcb.jpg" />
     <Content Include="Content\images\h4-slide.png" />
     <Content Include="Content\images\home.png" />
@@ -1452,11 +1446,8 @@
     <EmbeddedResource Include="Migrations\202008310450587_update1.resx">
       <DependentUpon>202008310450587_update1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009010537343_update2.resx">
-      <DependentUpon>202009010537343_update2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009010539303_update3.resx">
-      <DependentUpon>202009010539303_update3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009031547548_update2.resx">
+      <DependentUpon>202009031547548_update2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
