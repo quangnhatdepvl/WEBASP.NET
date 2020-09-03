@@ -26,23 +26,32 @@
                 Giá
             </th>
         </tr>
-
+        @{
+            double i = 0;
+        }
         @foreach (var item in Model)
         {
+
             <tr>
                 <td>
                     @item.Sach.TenSach
                 </td>
                 <td>
-                    @item.Sach.price
+                    @String.Format("{0:0,0}", @item.Sach.price)
+
                 </td>
                 <td>
                     @item.SoLuong
                 </td>
                 <td>
-                    @item.Price
+                    @String.Format("{0:0,0}", @item.Price)
                 </td>
             </tr>
+
+            i = i + @item.Price;
+
         }
+
     </table>
+    <p style="float: right;">TỔNG TIỀN: @String.Format("{0:0,0}", @i) VNĐ</p>
 </div>
