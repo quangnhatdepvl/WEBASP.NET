@@ -47,7 +47,16 @@
                             </div>
                         </div>
                         <br />
-                        <a class="shopBtn" href="@Url.Action("ThemGiohang","Shop",new { @gh_Masach = Model.MaSach, @strURl = Request.Url.ToString()})"><span class=" icon-shopping-cart"></span>  Thêm vào giỏ hàng </a>
+
+                        @if (Model.SoLuongTon == 0)
+                        {
+                            <h4><a class="shopBtn"> Hết hàng</a></h4>
+                        }
+                        else
+                        {
+                            <a class="shopBtn" href="@Url.Action("ThemGiohang","Shop",new { @gh_Masach = Model.MaSach, @strURl = Request.Url.ToString()})"><span class=" icon-shopping-cart"></span>  Thêm vào giỏ hàng </a>
+                        }
+
 
 
                     </div>
