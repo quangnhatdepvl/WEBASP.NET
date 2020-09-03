@@ -83,7 +83,7 @@ namespace WebApplication1.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     var fileName = Path.GetFileName(fileupLoad.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/images/"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
             
                     if (System.IO.File.Exists(path))
                     {
@@ -173,7 +173,7 @@ namespace WebApplication1.Areas.Admin.Controllers
                 if (ModelState.IsValid)
                 {
                     var fileName = Path.GetFileName(fileupLoad.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/images/"), fileName);
+                    var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
                     if (System.IO.File.Exists(path))
                     {
                         ViewBag.Thongbao = "Hình ảnh đã tồn tại";
