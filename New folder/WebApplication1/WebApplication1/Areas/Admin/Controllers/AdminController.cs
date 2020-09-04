@@ -11,10 +11,10 @@ using System.Text.RegularExpressions;
 
 namespace WebApplication1.Areas.Admin.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-
 
 
         public ActionResult Sach(int? page)
