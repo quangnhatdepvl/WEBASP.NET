@@ -18,7 +18,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44346</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>
     </IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>
@@ -753,7 +754,6 @@
     <Content Include="Content\fonts\scss\_mixins.scss" />
     <Content Include="Content\fonts\scss\_path.scss" />
     <Content Include="Content\fonts\scss\_variables.scss" />
-    <Content Include="Areas\Admin\Views\Admin\Test.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\SanPhamDaBan.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\SanPhamDangGiao.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Detail.cshtml" />
