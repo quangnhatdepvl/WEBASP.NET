@@ -108,6 +108,7 @@ namespace WebApplication1.Areas.Admin.Controllers
                 applicationDbContext.SaveChanges();
                 applicationDbContext.TacGias.Remove(tg);
                 applicationDbContext.SaveChanges();
+                logger.Info(User.Identity.GetUserName() + "sua sach" + sach.TenSach);
                 return RedirectToAction("Sach");
             }
         }
@@ -130,9 +131,9 @@ namespace WebApplication1.Areas.Admin.Controllers
             n1.TenNXB = nxb.TenNXB;
             n1.DiaChi = nxb.Diachi;
             n1.DienThoai = nxb.DienThoai;
-
             applicationDbContext.NhaXuatBans.Add(n1);
             applicationDbContext.SaveChanges();
+            logger.Warn(User.Identity.GetUserName() + "Add nxb" + nxb.TenNXB);
             return RedirectToAction("Sach");
         }
         [HttpGet]
@@ -153,6 +154,7 @@ namespace WebApplication1.Areas.Admin.Controllers
 
             applicationDbContext.ChuDes.Add(c1);
             applicationDbContext.SaveChanges();
+            logger.Warn(User.Identity.GetUserName() + "Add cd" + cd.TenCD);
             return RedirectToAction("Sach");
         }
 
@@ -163,6 +165,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         {
             ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
             ViewBag.MaNXB = new SelectList(applicationDbContext.NhaXuatBans.ToList().OrderBy(n => n.TenNXB), "MANXB", "TenNXB");
+
             return View();
         }
 
