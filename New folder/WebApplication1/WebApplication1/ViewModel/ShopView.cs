@@ -18,6 +18,7 @@ namespace WebApplication1.Models
 
         [DataType(DataType.PhoneNumber)]
         [Required]
+        [StringLength(10, ErrorMessage = "Số điện thoại gồm 10 số")]
         [Display(Name = "Điện thoại")]
         public string DienThoaiKH { get; set; }
 
