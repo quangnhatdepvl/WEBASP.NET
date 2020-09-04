@@ -9,6 +9,7 @@ using System.Web.UI;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using NLog;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -19,6 +20,7 @@ namespace WebApplication1.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
+        private static Logger logger = LogManager.GetLogger("myAppLoggerRules");
         public AccountController()
         {
         }
@@ -70,6 +72,7 @@ namespace WebApplication1.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Shop");
@@ -90,7 +93,7 @@ namespace WebApplication1.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-
+            logger.Info("Entering the login controller.     Login method");
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -123,7 +126,7 @@ namespace WebApplication1.Controllers
                     if (UserManager.IsInRole(user.Id, "Admin"))
                     {
                         return RedirectToAction("Sach", "Admin", new { area = "Admin" });
-                    } else { 
+                    } else {
                         return RedirectToLocal(returnUrl);
                     }
                 case SignInStatus.LockedOut:
@@ -131,7 +134,7 @@ namespace WebApplication1.Controllers
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
-                default:
+                default:    
                     ModelState.AddModelError("", "Đăng nhập không hợp lệ.");
                         return View(model);
                     

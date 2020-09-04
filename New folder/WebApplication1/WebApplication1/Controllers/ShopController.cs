@@ -8,13 +8,14 @@ using PagedList;
 using PagedList.Mvc;
 using System.Data.Entity;
 using Microsoft.AspNet.Identity;
+using NLog;
 
 namespace WebApplication1.Controllers
 {
     public class ShopController : Controller
     {
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-
+        private static Logger logger = LogManager.GetLogger("myAppLoggerRules");
         // GET: Shop
         public ActionResult Index()
         {
@@ -56,7 +57,6 @@ namespace WebApplication1.Controllers
 
         }
 
-
         [HttpGet]
         public ActionResult ChiTietSanPham(int id)
         {
@@ -69,10 +69,12 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
+
         private List<Sach> SanPhamMoi(int count)
         {
             return applicationDbContext.Saches.OrderByDescending(a => a.NgayCapNhat).Take(count).ToList();
         }
+
         private List<Sach> Spgiacao(int count)
         {
             return applicationDbContext.Saches.OrderByDescending(a => a.price).Take(count).ToList();
@@ -84,11 +86,13 @@ namespace WebApplication1.Controllers
             var chude = from ChuDe in applicationDbContext.ChuDes select ChuDe;
             return PartialView(chude);
         }
+
         public ActionResult Nhaxuatban()
         {
             var nxb = from NhaXuatBan in applicationDbContext.NhaXuatBans select NhaXuatBan;
             return PartialView(nxb);
         }
+
         public ActionResult SpTheoNhaXuatBan(int id)
         {
             var sp = from s in applicationDbContext.Saches where s.MaNXB == id select s;
@@ -114,6 +118,7 @@ namespace WebApplication1.Controllers
             }
             return lstGiohang;
         }
+
         public ActionResult ThemGiohang(int gh_Masach, string strURL)
         {
             List<Giohang> lstGioHang = Laygiohang();
@@ -130,6 +135,7 @@ namespace WebApplication1.Controllers
                 return Redirect(strURL);
             }
         }
+        
         private int TongSoLuong()
         {
             int gh_TongSoLuong = 0;
@@ -171,6 +177,7 @@ namespace WebApplication1.Controllers
             return PartialView();
 
         }
+
         public ActionResult XoaGiohang(int gh_Masach)
         {
             List<Giohang> lstGioHang = Laygiohang();
@@ -186,6 +193,7 @@ namespace WebApplication1.Controllers
             }
             return RedirectToAction("GioHang");
         }
+
         public ActionResult CapNhatGioHang(int gh_Masach, FormCollection f)
         {
             List<Giohang> lstGioHang = Laygiohang();
@@ -251,6 +259,7 @@ namespace WebApplication1.Controllers
                 applicationDbContext.ChiTietDonHangs.Add(ctdh);
 
             }
+            logger.Info("User: " + User.Identity.GetUserName() + " Dat hang thanh cong");
             applicationDbContext.SaveChanges();
             Session["Giohang"] = null;
             return RedirectToAction("Xacnhandonhang", "Shop");
@@ -285,6 +294,7 @@ namespace WebApplication1.Controllers
 
                 applicationDbContext.Entry(khachHang).State = EntityState.Modified;
                 applicationDbContext.SaveChanges();
+                logger.Info("User: " +User.Identity.GetUserName()+" ChangInformation");
                 return RedirectToAction("Index", "Shop");
             }
             return View();
@@ -309,12 +319,15 @@ namespace WebApplication1.Controllers
             return Redirect(Request.UrlReferrer.ToString());
         }
 
+        [Authorize]
         public ActionResult DonHangDaMua()
         {
             var userId = User.Identity.GetUserId();
             var donHang = applicationDbContext.ChiTietDonHangs.Where(p => p.DonDatHang.KhachHang.UserId == userId && p.DonDatHang.ThanhToan == true).ToList();
             return View(donHang);
         }
+
+        [Authorize]
         public ActionResult DonHangDangDat()
         {
             var userId = User.Identity.GetUserId();
@@ -322,6 +335,7 @@ namespace WebApplication1.Controllers
             return View(donHangDangDat);
 
         }
+        [Authorize]
         public ActionResult DonHangChoXacNhan()
         {
             var userId = User.Identity.GetUserId();

@@ -8,14 +8,16 @@ using PagedList;
 using System.IO;
 using System.Data.Entity;
 using System.Text.RegularExpressions;
+using NLog;
+using Microsoft.AspNet.Identity;
 
 namespace WebApplication1.Areas.Admin.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         ApplicationDbContext applicationDbContext = new ApplicationDbContext();
-
+        private static Logger logger = LogManager.GetLogger("myAppLoggerRules");
 
         public ActionResult Sach(int? page)
         {
@@ -48,6 +50,7 @@ namespace WebApplication1.Areas.Admin.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
+            logger.Warn(User.Identity.GetUserName() + "Delete" + sach.TenSach);
             applicationDbContext.Saches.Remove(sach);
             applicationDbContext.SaveChanges();
             return RedirectToAction("Sach");
@@ -80,7 +83,6 @@ namespace WebApplication1.Areas.Admin.Controllers
             }
             else
             {
-
                 var fileName = Path.GetFileName(fileupLoad.FileName);
                 var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
 
@@ -93,18 +95,18 @@ namespace WebApplication1.Areas.Admin.Controllers
                     fileupLoad.SaveAs(path);
                 }
                 sach.Anhbia = fileName;
-
                 sach.Mota = Regex.Replace(sach.Mota, "<(.|\\n)*?>", string.Empty);
                 applicationDbContext.Entry(sach).State = EntityState.Modified;
 
-                //VietSach s1 = applicationDbContext.VietSaches.Where(p => p.MaSach== sach.MaSach  && p.MaTG == sach.)
+                VietSach vietSach = applicationDbContext.VietSaches.Where(p => p.MaSach == sach.MaSach).SingleOrDefault();
+                var tg = vietSach.TacGia;
                 applicationDbContext.TacGias.Add(tacGia);
-                VietSach vietSach = new VietSach
-                {
-                    MaSach = sach.MaSach,
-                    MaTG = tacGia.MaTG
-                };
-                applicationDbContext.VietSaches.Add(vietSach);
+                vietSach.TacGia = tacGia;
+                
+                applicationDbContext.VietSaches.Attach(vietSach);
+                applicationDbContext.Entry(vietSach).State = EntityState.Modified;
+                applicationDbContext.SaveChanges();
+                applicationDbContext.TacGias.Remove(tg);
                 applicationDbContext.SaveChanges();
                 return RedirectToAction("Sach");
             }
@@ -200,6 +202,7 @@ namespace WebApplication1.Areas.Admin.Controllers
                     MaTG = tacGia.MaTG
                 };
                 applicationDbContext.VietSaches.Add(vietSach);
+                logger.Info(User.Identity.GetUserName() + " add sach");
                 applicationDbContext.SaveChanges();
                 return RedirectToAction("Sach");
 
@@ -243,7 +246,9 @@ namespace WebApplication1.Areas.Admin.Controllers
                 applicationDbContext.Entry(sach).State = EntityState.Modified;
                 applicationDbContext.SaveChanges();
             }
+            logger.Info(User.Identity.GetUserName() + " huy don hang " + MaDonHang);
             applicationDbContext.DonDatHangs.Remove(donDatHang);
+
             applicationDbContext.SaveChanges();
 
             return Redirect(Request.UrlReferrer.ToString());
@@ -259,6 +264,7 @@ namespace WebApplication1.Areas.Admin.Controllers
             applicationDbContext.DonDatHangs.Attach(donDatHang);
             applicationDbContext.Entry(donDatHang).State = EntityState.Modified;
             applicationDbContext.SaveChanges();
+            logger.Info(User.Identity.GetUserName() + " xac nhan don hang " + MaDonHang);
             return RedirectToAction("SanPhamDangGiao", "Admin", new { area = "Admin" });
         }
 
@@ -281,7 +287,7 @@ namespace WebApplication1.Areas.Admin.Controllers
                 case "Xác nhận":
                     return (ConfirmThanhToan(MaDonHang, donDatHang));
                 case "Hủy":
-                    return (CancelThanhToan(MaDonHang, donDatHang));
+                    return (Cancel(MaDonHang, donDatHang));
                 default:
                     // If they've submitted the form without a submitButton, 
                     // just return the view again.
@@ -295,14 +301,10 @@ namespace WebApplication1.Areas.Admin.Controllers
             applicationDbContext.DonDatHangs.Attach(donDatHang);
             applicationDbContext.Entry(donDatHang).State = EntityState.Modified;
             applicationDbContext.SaveChanges();
+            logger.Info(User.Identity.GetUserName() + " da giao don hang " + MaDonHang);
             return RedirectToAction("SanPhamDaBan", "Admin", new { area = "Admin" });
         }
-        private ActionResult CancelThanhToan(int MaDonHang, DonDatHang donDatHang)
-        {
-            applicationDbContext.Entry(donDatHang).State = EntityState.Deleted;
-            applicationDbContext.SaveChanges();
-            return Redirect(Request.UrlReferrer.ToString());
-        }
+
         private ActionResult DetailThanhToan(int MaDonHang, DonDatHang donDatHang)
         {
             var chiTietDonHang = applicationDbContext.ChiTietDonHangs.Where(p => p.MaDonHang == MaDonHang).ToList();
@@ -325,12 +327,11 @@ namespace WebApplication1.Areas.Admin.Controllers
                     return (DetailThanhCong(MaDonHang, donDatHang));
 
                 default:
-                    // If they've submitted the form without a submitButton, 
-                    // just return the view again.
                     return (View());
             }
 
         }
+
         private ActionResult DetailThanhCong(int MaDonHang, DonDatHang donDatHang)
         {
             var chiTietDonHang = applicationDbContext.ChiTietDonHangs.Where(p => p.MaDonHang == MaDonHang).ToList();
