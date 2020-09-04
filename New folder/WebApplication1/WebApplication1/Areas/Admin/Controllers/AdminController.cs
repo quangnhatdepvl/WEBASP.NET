@@ -67,7 +67,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Suasach(Sach sach, HttpPostedFileBase fileupLoad)
+        public ActionResult Suasach(Sach sach, TacGia tacGia, HttpPostedFileBase fileupLoad)
         {
 
 
@@ -80,25 +80,32 @@ namespace WebApplication1.Areas.Admin.Controllers
             }
             else
             {
-                if (ModelState.IsValid)
+
+                var fileName = Path.GetFileName(fileupLoad.FileName);
+                var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
+
+                if (System.IO.File.Exists(path))
                 {
-                    var fileName = Path.GetFileName(fileupLoad.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
-            
-                    if (System.IO.File.Exists(path))
-                    {
-                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
-                    }
-                    else
-                    {
-                        fileupLoad.SaveAs(path);
-                    }
-                    sach.Anhbia = fileName;
-                  
-                    sach.Mota = Regex.Replace(sach.Mota, "<(.|\\n)*?>", string.Empty);
-                    applicationDbContext.Entry(sach).State = EntityState.Modified;
-                    applicationDbContext.SaveChanges();
+                    ViewBag.Thongbao = "Hình ảnh đã tồn tại";
                 }
+                else
+                {
+                    fileupLoad.SaveAs(path);
+                }
+                sach.Anhbia = fileName;
+
+                sach.Mota = Regex.Replace(sach.Mota, "<(.|\\n)*?>", string.Empty);
+                applicationDbContext.Entry(sach).State = EntityState.Modified;
+
+                //VietSach s1 = applicationDbContext.VietSaches.Where(p => p.MaSach== sach.MaSach  && p.MaTG == sach.)
+                applicationDbContext.TacGias.Add(tacGia);
+                VietSach vietSach = new VietSach
+                {
+                    MaSach = sach.MaSach,
+                    MaTG = tacGia.MaTG
+                };
+                applicationDbContext.VietSaches.Add(vietSach);
+                applicationDbContext.SaveChanges();
                 return RedirectToAction("Sach");
             }
         }
@@ -160,7 +167,7 @@ namespace WebApplication1.Areas.Admin.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult ThemMoiSach(Sach sach,TacGia tacGia, HttpPostedFileBase fileupLoad)
+        public ActionResult ThemMoiSach(Sach sach, TacGia tacGia, HttpPostedFileBase fileupLoad)
         {
 
             ViewBag.MaCD = new SelectList(applicationDbContext.ChuDes.ToList().OrderBy(n => n.TenChuDe), "MaCD", "TenChude");
@@ -172,34 +179,34 @@ namespace WebApplication1.Areas.Admin.Controllers
             }
             else
             {
-                
-                    var fileName = Path.GetFileName(fileupLoad.FileName);
-                    var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
-                    if (System.IO.File.Exists(path))
-                    {
-                        ViewBag.Thongbao = "Hình ảnh đã tồn tại";
-                    }
-                    else
-                    {
-                        fileupLoad.SaveAs(path);
-                    }
-                    sach.Anhbia = fileName;
-                    sach.Mota = Regex.Replace(sach.Mota, "<(.|\\n)*?>", string.Empty);
-                    applicationDbContext.Saches.Add(sach);
-                    applicationDbContext.TacGias.Add(tacGia);
-                    VietSach vietSach = new VietSach
-                    {
-                        MaSach = sach.MaSach,
-                        MaTG = tacGia.MaTG
-                    };
-                    applicationDbContext.VietSaches.Add(vietSach);
-                    applicationDbContext.SaveChanges();
-                    return RedirectToAction("Sach");
-                
-               
+
+                var fileName = Path.GetFileName(fileupLoad.FileName);
+                var path = Path.Combine(Server.MapPath("~/Content/images"), fileName);
+                if (System.IO.File.Exists(path))
+                {
+                    ViewBag.Thongbao = "Hình ảnh đã tồn tại";
+                }
+                else
+                {
+                    fileupLoad.SaveAs(path);
+                }
+                sach.Anhbia = fileName;
+                sach.Mota = Regex.Replace(sach.Mota, "<(.|\\n)*?>", string.Empty);
+                applicationDbContext.Saches.Add(sach);
+                applicationDbContext.TacGias.Add(tacGia);
+                VietSach vietSach = new VietSach
+                {
+                    MaSach = sach.MaSach,
+                    MaTG = tacGia.MaTG
+                };
+                applicationDbContext.VietSaches.Add(vietSach);
+                applicationDbContext.SaveChanges();
+                return RedirectToAction("Sach");
+
+
             }
         }
-     
+
         public ActionResult DonHang(int? page)
         {
             var dh = applicationDbContext.DonDatHangs.Where(p => p.TinhTrang == false && p.ThanhToan == false).ToList();
@@ -257,7 +264,7 @@ namespace WebApplication1.Areas.Admin.Controllers
 
         public ActionResult SanPhamDangGiao(int? page)
         {
-            var dh = applicationDbContext.DonDatHangs.Where(p => p.ThanhToan == false && p.TinhTrang ==true).ToList();
+            var dh = applicationDbContext.DonDatHangs.Where(p => p.ThanhToan == false && p.TinhTrang == true).ToList();
             int pageNumber = (page ?? 1);
             return PartialView("SanPhamDangGiao", dh.ToPagedList(pageNumber, 10));
 
