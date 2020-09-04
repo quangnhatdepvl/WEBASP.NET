@@ -282,8 +282,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Services\Utility\ILogger.cs" />
-    <Compile Include="Services\Utility\MyLogger.cs" />
+    
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChuDe.cs" />
