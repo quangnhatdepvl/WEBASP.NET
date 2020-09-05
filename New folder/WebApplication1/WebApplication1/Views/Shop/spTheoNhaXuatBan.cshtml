@@ -46,7 +46,7 @@
                                 <p>@Truncate(item.TenSach, 30)</p>
                                 <p style="color: red"> Giá :<strong>@String.Format("{0:0,0}", item.price) VND</strong></p>
 
-                                @if (item.SoLuongTon == 0)
+                                @if (item.SoLuongTon <= 0)
                                 {
                                 <h4><a class="shopBtn"> Hết hàng</a></h4>
                                 }

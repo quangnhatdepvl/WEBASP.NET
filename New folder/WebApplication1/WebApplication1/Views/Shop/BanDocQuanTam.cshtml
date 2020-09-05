@@ -33,9 +33,16 @@
             </form>
             <br />
             <div class="btn-group" style="margin-left:-100px;margin-top:20px">
-                <a href="@Url.Action("ThemGiohang","Shop",new { @gh_Masach = @item.MaSach, @strURl = Request.Url.ToString()})" class="defaultBtn" style=""><span class=" icon-shopping-cart"></span> Thêm vào giỏ hàng</a>
-                <a href="@Url.Action("ChiTietSanPham","Shop", new { id =item.GenerateSlug()})" class="shopBtn">Xem chi tiết</a>
-            </div>
+                @if (item.SoLuongTon <= 0)
+                {
+                    <h4><a class="shopBtn"> Hết hàng</a></h4>
+                }
+                else
+                {
+                    <a href="@Url.Action("ThemGiohang", "Shop", new { @gh_Masach = @item.MaSach, @strURl = Request.Url.ToString() })" class="defaultBtn" style=""><span class=" icon-shopping-cart"></span> Thêm vào giỏ hàng</a>
+                }
+                    <a href="@Url.Action("ChiTietSanPham","Shop", new { id =item.GenerateSlug()})" class="shopBtn">Xem chi tiết</a>
+                </div>
         </div>
     </div>
     <hr class="soften">
